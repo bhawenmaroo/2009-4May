@@ -31,12 +31,13 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         padding: scrolled ? "12px 32px" : "20px 40px",
-        background: scrolled ? "rgba(5,26,14,0.78)" : "rgba(5,26,14,0.35)",
+        background: scrolled ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.55)",
         backdropFilter: "blur(18px)",
         WebkitBackdropFilter: "blur(18px)",
         borderBottom: scrolled
-          ? "1px solid rgba(120,255,212,0.10)"
-          : "1px solid rgba(120,255,212,0.05)",
+          ? "1px solid rgba(20,181,126,0.18)"
+          : "1px solid rgba(20,181,126,0.08)",
+        boxShadow: scrolled ? "0 6px 24px rgba(11,106,77,0.08)" : "none",
       }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -66,11 +67,12 @@ export function Navbar() {
                     padding: "8px 14px",
                     fontSize: 13,
                     fontWeight: 500,
-                    color: active ? "#7AFFD4" : "rgba(232,245,238,0.78)",
+                    color: active ? "#0B6A4D" : "rgba(14,42,28,0.70)",
                     letterSpacing: "0.02em",
                     borderRadius: 6,
                     transition: "color 0.2s, background 0.2s",
                     display: "inline-block",
+                    background: active ? "rgba(20,181,126,0.10)" : "transparent",
                   }}
                 >
                   {item.label}
@@ -86,13 +88,12 @@ export function Navbar() {
             style={{
               padding: "10px 22px",
               borderRadius: 999,
-              background:
-                "linear-gradient(135deg, rgba(62,230,168,0.22), rgba(90,200,255,0.18))",
-              border: "1px solid rgba(122,255,212,0.40)",
-              color: "#E8F5EE",
+              background: "linear-gradient(135deg, #14B57E, #0B6A4D)",
+              color: "#FFFFFF",
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: "0.04em",
+              boxShadow: "0 6px 20px rgba(20,181,126,0.30)",
               transition: "all 0.2s",
             }}
           >
@@ -107,8 +108,8 @@ export function Navbar() {
           data-testid="button-mobile-menu"
           style={{
             background: "transparent",
-            border: "1px solid rgba(122,255,212,0.30)",
-            color: "#7AFFD4",
+            border: "1px solid rgba(20,181,126,0.30)",
+            color: "#0B6A4D",
             padding: "8px 12px",
             borderRadius: 6,
             cursor: "pointer",
@@ -122,10 +123,11 @@ export function Navbar() {
         <div
           className="lg:hidden mt-3 rounded-lg"
           style={{
-            background: "rgba(5,26,14,0.95)",
+            background: "rgba(255,255,255,0.98)",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(120,255,212,0.12)",
+            border: "1px solid rgba(20,181,126,0.14)",
             padding: 12,
+            boxShadow: "0 10px 30px rgba(11,106,77,0.12)",
           }}
         >
           {[...NAV, { label: "Contact", href: "/contact" }].map((item) => (
@@ -134,7 +136,7 @@ export function Navbar() {
                 style={{
                   padding: "12px 16px",
                   fontSize: 14,
-                  color: location === item.href ? "#7AFFD4" : "rgba(232,245,238,0.85)",
+                  color: location === item.href ? "#0B6A4D" : "rgba(14,42,28,0.85)",
                   cursor: "pointer",
                   borderRadius: 6,
                 }}

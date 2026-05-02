@@ -27,10 +27,10 @@ export default function About() {
           <div className="lg:col-span-7 page-reveal">
             <GlassCard style={{ padding: 36, height: "100%" }}>
               <SectionHeading eyebrow="Our Story" title="From laboratory to landscape." />
-              <p style={{ color: "rgba(232,245,238,0.78)", fontSize: "1.05rem", lineHeight: 1.8, fontWeight: 300, marginBottom: 16 }}>
+              <p style={{ color: "rgba(14,42,28,0.80)", fontSize: "1.05rem", lineHeight: 1.8, fontWeight: 300, marginBottom: 16 }}>
                 Founded by scientists and entrepreneurs with decades of combined experience across biotechnology, healthcare and agriculture, Indibiotek was created to bridge the gap between deep science and commercial viability.
               </p>
-              <p style={{ color: "rgba(232,245,238,0.62)", fontSize: "1rem", lineHeight: 1.8, fontWeight: 300 }}>
+              <p style={{ color: "rgba(14,42,28,0.65)", fontSize: "1rem", lineHeight: 1.8, fontWeight: 300 }}>
                 We believe biology is the most powerful manufacturing platform on Earth — one that can decarbonise industries, restore ecosystems, feed populations and heal diseases. Our work spans every step of that translation.
               </p>
             </GlassCard>
@@ -38,10 +38,10 @@ export default function About() {
           <div className="lg:col-span-5 page-reveal grid grid-cols-2 gap-4">
             {FACTS.map((f) => (
               <GlassCard key={f.label} style={{ padding: 24 }}>
-                <div className="font-display" style={{ fontSize: "2rem", fontWeight: 700, color: "#7AFFD4", marginBottom: 6, letterSpacing: "-0.02em" }}>
+                <div className="font-display" style={{ fontSize: "2rem", fontWeight: 700, color: "#0B6A4D", marginBottom: 6, letterSpacing: "-0.02em" }}>
                   {f.num}
                 </div>
-                <div style={{ color: "rgba(232,245,238,0.65)", fontSize: 13, lineHeight: 1.5 }}>{f.label}</div>
+                <div style={{ color: "rgba(14,42,28,0.65)", fontSize: 13, lineHeight: 1.5 }}>{f.label}</div>
               </GlassCard>
             ))}
           </div>
@@ -57,7 +57,7 @@ export default function About() {
                 <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#fff", marginBottom: 10 }}>
                   {v.title}
                 </h3>
-                <p style={{ color: "rgba(232,245,238,0.62)", fontSize: 14, lineHeight: 1.65, fontWeight: 300 }}>{v.desc}</p>
+                <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 14, lineHeight: 1.65, fontWeight: 300 }}>{v.desc}</p>
               </GlassCard>
             ))}
           </div>

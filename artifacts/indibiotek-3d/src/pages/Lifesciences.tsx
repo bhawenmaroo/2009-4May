@@ -26,7 +26,7 @@ export default function Lifesciences() {
                 <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#fff", marginBottom: 10 }}>
                   {p.title}
                 </h3>
-                <p style={{ color: "rgba(232,245,238,0.62)", fontSize: 14.5, lineHeight: 1.7, fontWeight: 300 }}>{p.desc}</p>
+                <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 14.5, lineHeight: 1.7, fontWeight: 300 }}>{p.desc}</p>
               </GlassCard>
             ))}
           </div>

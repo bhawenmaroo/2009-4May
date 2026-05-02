@@ -1,9 +1,7 @@
 import { useEffect, useRef } from "react";
 
 /* CSS-only 3D rotating molecule — works in ANY browser, no WebGL.
-   Positions nodes in 3D space using translate3d, wraps in a perspective
-   container that rotates continuously. Edges drawn with absolutely-
-   positioned thin divs that connect node pairs. */
+   Light-theme palette: deep teal nodes with mint glow, edges in mid-green. */
 
 type Node = { x: number; y: number; z: number };
 
@@ -107,24 +105,23 @@ export function CssMolecule({
           animation: "molecule-spin 32s linear infinite",
         }}
       >
-        {/* Inner spinning group so mouse tilt and auto-spin compose cleanly */}
         <div style={{ position: "absolute", inset: 0, transformStyle: "preserve-3d" }}>
-          {/* Edges */}
+          {/* Edges — mid-green, visible on light bg */}
           {edges.map((e, i) => (
             <div
               key={`e${i}`}
               style={{
                 position: "absolute",
                 left: "50%", top: "50%",
-                width: e.len, height: 1,
-                background: "linear-gradient(90deg, rgba(122,255,212,0.05), rgba(122,255,212,0.55), rgba(122,255,212,0.05))",
+                width: e.len, height: 1.5,
+                background: "linear-gradient(90deg, rgba(11,106,77,0.05), rgba(11,106,77,0.55), rgba(11,106,77,0.05))",
                 transformOrigin: "0% 50%",
                 transform: `translate3d(${e.midX - e.len / 2 - 0}px, ${e.midY}px, ${e.midZ}px) rotateY(${-e.rotY}deg) rotateZ(${e.rotZ}deg) translateX(${-e.len / 2}px) translateX(${e.len / 2}px)`,
                 opacity: 0.7,
               }}
             />
           ))}
-          {/* Nodes */}
+          {/* Nodes — saturated mint with deep core, glowing on light bg */}
           {nodes.map((n, i) => (
             <div
               key={`n${i}`}
@@ -134,19 +131,19 @@ export function CssMolecule({
                 width: 14, height: 14,
                 marginLeft: -7, marginTop: -7,
                 borderRadius: "50%",
-                background: "radial-gradient(circle at 30% 30%, #C8FFEC, #3EE6A8 40%, #1B8E66 90%)",
-                boxShadow: "0 0 18px rgba(62,230,168,0.85), 0 0 36px rgba(62,230,168,0.45)",
+                background: "radial-gradient(circle at 30% 30%, #6FE7B5, #14B57E 50%, #0B6A4D 100%)",
+                boxShadow: "0 0 14px rgba(20,181,126,0.55), 0 0 4px rgba(255,255,255,0.7) inset, 0 2px 4px rgba(11,106,77,0.25)",
                 transform: `translate3d(${n.x}px, ${n.y}px, ${n.z}px)`,
               }}
             />
           ))}
-          {/* Core glow */}
+          {/* Soft core glow */}
           <div
             style={{
               position: "absolute", left: "50%", top: "50%",
               width: 100, height: 100, marginLeft: -50, marginTop: -50,
               borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(62,230,168,0.55), rgba(62,230,168,0) 70%)",
+              background: "radial-gradient(circle, rgba(20,181,126,0.25), rgba(20,181,126,0) 70%)",
               filter: "blur(8px)",
             }}
           />

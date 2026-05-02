@@ -32,7 +32,7 @@ export default function Careers() {
             {PERKS.map((p) => (
               <GlassCard key={p.title} style={{ padding: 24 }} className="page-reveal">
                 <h3 className="font-display" style={{ fontSize: "1.05rem", fontWeight: 600, color: "#fff", marginBottom: 8 }}>{p.title}</h3>
-                <p style={{ color: "rgba(232,245,238,0.6)", fontSize: 13.5, lineHeight: 1.65, fontWeight: 300 }}>{p.desc}</p>
+                <p style={{ color: "rgba(14,42,28,0.62)", fontSize: 13.5, lineHeight: 1.65, fontWeight: 300 }}>{p.desc}</p>
               </GlassCard>
             ))}
           </div>
@@ -44,7 +44,7 @@ export default function Careers() {
                 key={r.title}
                 style={{
                   padding: "20px 22px",
-                  borderBottom: i < ROLES.length - 1 ? "1px solid rgba(122,255,212,0.08)" : "none",
+                  borderBottom: i < ROLES.length - 1 ? "1px solid rgba(20,181,126,0.12)" : "none",
                   display: "flex",
                   flexWrap: "wrap",
                   alignItems: "center",
@@ -54,8 +54,8 @@ export default function Careers() {
               >
                 <div>
                   <div style={{ color: "#fff", fontWeight: 600, fontSize: "1.02rem", marginBottom: 4 }}>{r.title}</div>
-                  <div style={{ color: "rgba(232,245,238,0.55)", fontSize: 13 }}>
-                    <span style={{ color: "#7AFFD4", marginRight: 12 }}>{r.team}</span>
+                  <div style={{ color: "rgba(14,42,28,0.55)", fontSize: 13 }}>
+                    <span style={{ color: "#0B6A4D", marginRight: 12 }}>{r.team}</span>
                     {r.loc}
                   </div>
                 </div>
@@ -65,9 +65,9 @@ export default function Careers() {
                     style={{
                       padding: "8px 18px",
                       borderRadius: 999,
-                      background: "rgba(122,255,212,0.10)",
-                      border: "1px solid rgba(122,255,212,0.30)",
-                      color: "#7AFFD4",
+                      background: "rgba(20,181,126,0.10)",
+                      border: "1px solid rgba(20,181,126,0.30)",
+                      color: "#0B6A4D",
                       fontSize: 12.5,
                       fontWeight: 600,
                     }}

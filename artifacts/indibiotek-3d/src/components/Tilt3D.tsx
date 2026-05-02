@@ -41,7 +41,7 @@ export function Tilt3D({
       c.gy += (t.gy - c.gy) * 0.12;
       node.style.transform = `perspective(1000px) rotateX(${c.rx}deg) rotateY(${c.ry}deg) scale3d(${c.s}, ${c.s}, ${c.s})`;
       if (sh) sh.style.background =
-        `radial-gradient(circle at ${c.gx}% ${c.gy}%, rgba(255,255,255,0.18), rgba(255,255,255,0) 50%)`;
+        `radial-gradient(circle at ${c.gx}% ${c.gy}%, rgba(255,255,255,0.65), rgba(255,255,255,0) 55%)`;
       raf.current = requestAnimationFrame(tick);
     };
 

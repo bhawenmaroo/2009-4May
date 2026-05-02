@@ -113,26 +113,26 @@
 
   body {
     @apply font-sans antialiased overflow-x-hidden;
-    /* Deep forest — biotech / agri */
-    background: #03130A;
-    color: #ffffff;
+    /* Light off-white with subtle mint cast */
+    background: #F4F8F5;
+    color: #0E2A1C;
     min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--app-font-display);
-    color: #ffffff;
+    color: #0E2A1C;
   }
 
   ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: #03130A; }
+  ::-webkit-scrollbar-track { background: #ECF3EE; }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #1E5C40, #0E2A1C);
+    background: linear-gradient(180deg, #14B57E, #0B6A4D);
     border-radius: 5px;
   }
-  ::-webkit-scrollbar-thumb:hover { background: #3EE6A8; }
+  ::-webkit-scrollbar-thumb:hover { background: #0B6A4D; }
 
-  ::selection { background: rgba(122,255,212,0.3); color: #fff; }
+  ::selection { background: rgba(20,181,126,0.25); color: #0E2A1C; }
 }
 
 @keyframes molecule-spin {

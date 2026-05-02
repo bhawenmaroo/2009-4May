@@ -20,18 +20,18 @@ export default function Contact() {
                 <div
                   style={{
                     padding: 28,
-                    background: "rgba(122,255,212,0.10)",
-                    border: "1px solid rgba(122,255,212,0.30)",
+                    background: "rgba(20,181,126,0.10)",
+                    border: "1px solid rgba(20,181,126,0.30)",
                     borderRadius: 12,
                     color: "#E8F5EE",
                     textAlign: "center",
                   }}
                   data-testid="contact-success"
                 >
-                  <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 6, color: "#7AFFD4" }}>
+                  <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 6, color: "#0B6A4D" }}>
                     Thank you.
                   </div>
-                  <div style={{ fontSize: 14, color: "rgba(232,245,238,0.7)" }}>
+                  <div style={{ fontSize: 14, color: "rgba(14,42,28,0.72)" }}>
                     We've received your message and will be in touch shortly.
                   </div>
                 </div>
@@ -56,7 +56,7 @@ export default function Contact() {
                         data-testid={f.id}
                         style={{
                           background: "rgba(255,255,255,0.04)",
-                          border: "1px solid rgba(122,255,212,0.20)",
+                          border: "1px solid rgba(20,181,126,0.25)",
                           borderRadius: 10,
                           padding: "13px 16px",
                           color: "#E8F5EE",
@@ -73,7 +73,7 @@ export default function Contact() {
                       data-testid="input-interest"
                       style={{
                         background: "rgba(255,255,255,0.04)",
-                        border: "1px solid rgba(122,255,212,0.20)",
+                        border: "1px solid rgba(20,181,126,0.25)",
                         borderRadius: 10,
                         padding: "13px 16px",
                         color: "#E8F5EE",
@@ -83,13 +83,13 @@ export default function Contact() {
                         fontFamily: "Inter, sans-serif",
                       }}
                     >
-                      <option style={{ background: "#03130A" }}>I'm interested in…</option>
-                      <option style={{ background: "#03130A" }}>Partnership / Investment</option>
-                      <option style={{ background: "#03130A" }}>Lifesciences</option>
-                      <option style={{ background: "#03130A" }}>Agri</option>
-                      <option style={{ background: "#03130A" }}>Scientific Services</option>
-                      <option style={{ background: "#03130A" }}>Careers</option>
-                      <option style={{ background: "#03130A" }}>Other</option>
+                      <option style={{ background: "#FFFFFF" }}>I'm interested in…</option>
+                      <option style={{ background: "#FFFFFF" }}>Partnership / Investment</option>
+                      <option style={{ background: "#FFFFFF" }}>Lifesciences</option>
+                      <option style={{ background: "#FFFFFF" }}>Agri</option>
+                      <option style={{ background: "#FFFFFF" }}>Scientific Services</option>
+                      <option style={{ background: "#FFFFFF" }}>Careers</option>
+                      <option style={{ background: "#FFFFFF" }}>Other</option>
                     </select>
                   </div>
                   <textarea
@@ -99,7 +99,7 @@ export default function Contact() {
                     data-testid="input-message"
                     style={{
                       background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(122,255,212,0.20)",
+                      border: "1px solid rgba(20,181,126,0.25)",
                       borderRadius: 10,
                       padding: "13px 16px",
                       color: "#E8F5EE",
@@ -119,7 +119,7 @@ export default function Contact() {
                       padding: "14px",
                       borderRadius: 999,
                       background: "linear-gradient(135deg, #3EE6A8, #5AC8FF)",
-                      color: "#03130A",
+                      color: "#FFFFFF",
                       fontWeight: 700,
                       fontSize: 14,
                       letterSpacing: "0.04em",
@@ -140,7 +140,7 @@ export default function Contact() {
               <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#fff", marginBottom: 14 }}>
                 Headquarters
               </h3>
-              <p style={{ color: "rgba(232,245,238,0.7)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}>
+              <p style={{ color: "rgba(14,42,28,0.72)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}>
                 Indibiotek Private Limited<br />
                 India
               </p>
@@ -152,7 +152,7 @@ export default function Contact() {
               </h3>
               <a
                 href="mailto:info@indibiotek.com"
-                style={{ color: "#7AFFD4", fontSize: 14, textDecoration: "none" }}
+                style={{ color: "#0B6A4D", fontSize: 14, textDecoration: "none" }}
                 data-testid="link-email"
               >
                 info@indibiotek.com
@@ -163,7 +163,7 @@ export default function Contact() {
               <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#fff", marginBottom: 14 }}>
                 Departments
               </h3>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, color: "rgba(232,245,238,0.7)", fontSize: 14, lineHeight: 1.9 }}>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, color: "rgba(14,42,28,0.72)", fontSize: 14, lineHeight: 1.9 }}>
                 <li>Partnerships — partners@indibiotek.com</li>
                 <li>Careers — careers@indibiotek.com</li>
                 <li>Press — press@indibiotek.com</li>

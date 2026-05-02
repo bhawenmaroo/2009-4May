@@ -9,7 +9,7 @@ const FOCUS = [
 
 const PIPELINE = [
   { stage: "Discovery", desc: "Target identification, screening, lead generation.", color: "#5AC8FF" },
-  { stage: "Development", desc: "Optimisation, preclinical validation, scale-up.", color: "#7AFFD4" },
+  { stage: "Development", desc: "Optimisation, preclinical validation, scale-up.", color: "#0B6A4D" },
   { stage: "Translation", desc: "Clinical, regulatory and field studies.", color: "#3EE6A8" },
   { stage: "Commercial", desc: "Manufacturing, distribution, deployment.", color: "#B8E8C8" },
 ];
@@ -31,7 +31,7 @@ export default function RnD() {
                 <h3 className="font-display" style={{ fontSize: "1.25rem", fontWeight: 600, color: "#fff", marginBottom: 12 }}>
                   {f.title}
                 </h3>
-                <p style={{ color: "rgba(232,245,238,0.65)", fontSize: 15, lineHeight: 1.7, fontWeight: 300 }}>{f.desc}</p>
+                <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 15, lineHeight: 1.7, fontWeight: 300 }}>{f.desc}</p>
               </GlassCard>
             ))}
           </div>
@@ -51,7 +51,7 @@ export default function RnD() {
                   </span>
                 </div>
                 <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#fff", marginBottom: 8 }}>{p.stage}</h3>
-                <p style={{ color: "rgba(232,245,238,0.6)", fontSize: 13.5, lineHeight: 1.6, fontWeight: 300 }}>{p.desc}</p>
+                <p style={{ color: "rgba(14,42,28,0.62)", fontSize: 13.5, lineHeight: 1.6, fontWeight: 300 }}>{p.desc}</p>
               </GlassCard>
             ))}
           </div>

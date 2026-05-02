@@ -3,13 +3,11 @@ import { Link } from "wouter";
 export function Footer() {
   return (
     <footer
-      className="relative z-10 mt-32"
+      className="relative z-10 mt-24"
       data-testid="footer"
       style={{
-        background:
-          "linear-gradient(180deg, rgba(3,19,10,0.0) 0%, rgba(3,19,10,0.85) 30%, rgba(3,19,10,0.98) 100%)",
-        borderTop: "1px solid rgba(122,255,212,0.10)",
-        backdropFilter: "blur(8px)",
+        background: "linear-gradient(180deg, #ECF3EE 0%, #DCE9DF 100%)",
+        borderTop: "1px solid rgba(20,181,126,0.18)",
       }}
     >
       <div className="max-w-7xl mx-auto px-8 md:px-16 py-16">
@@ -22,7 +20,7 @@ export function Footer() {
             />
             <p
               style={{
-                color: "rgba(184,212,197,0.65)",
+                color: "rgba(14,42,28,0.70)",
                 fontSize: 13,
                 lineHeight: 1.7,
                 maxWidth: 260,
@@ -63,7 +61,7 @@ export function Footer() {
             <div key={col.title}>
               <h4
                 style={{
-                  color: "#7AFFD4",
+                  color: "#0B6A4D",
                   fontSize: 12,
                   fontWeight: 700,
                   letterSpacing: "0.16em",
@@ -81,7 +79,7 @@ export function Footer() {
                         <span
                           className="cursor-pointer"
                           style={{
-                            color: "rgba(232,245,238,0.70)",
+                            color: "rgba(14,42,28,0.72)",
                             fontSize: 13.5,
                           }}
                         >
@@ -92,7 +90,7 @@ export function Footer() {
                       <a
                         href={href}
                         style={{
-                          color: "rgba(232,245,238,0.70)",
+                          color: "rgba(14,42,28,0.72)",
                           fontSize: 13.5,
                           textDecoration: "none",
                         }}
@@ -110,12 +108,12 @@ export function Footer() {
         <div
           style={{
             paddingTop: 24,
-            borderTop: "1px solid rgba(122,255,212,0.08)",
+            borderTop: "1px solid rgba(20,181,126,0.18)",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
             gap: 12,
-            color: "rgba(184,212,197,0.45)",
+            color: "rgba(14,42,28,0.55)",
             fontSize: 12.5,
           }}
         >

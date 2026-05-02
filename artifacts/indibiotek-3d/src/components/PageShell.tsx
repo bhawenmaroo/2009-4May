@@ -36,8 +36,8 @@ export function PageShell({
         style={{
           minHeight: "60vh",
           backgroundImage: heroImage
-            ? `linear-gradient(180deg, rgba(3,19,10,0.55) 0%, rgba(3,19,10,0.85) 70%, rgba(3,19,10,1) 100%), url("${heroImage}&w=1800&q=80&auto=format&fit=crop")`
-            : "linear-gradient(180deg, rgba(3,19,10,0.0) 0%, rgba(3,19,10,0.6) 100%)",
+            ? `linear-gradient(180deg, rgba(244,248,245,0.55) 0%, rgba(244,248,245,0.85) 70%, rgba(244,248,245,1) 100%), url("${heroImage}&w=1800&q=80&auto=format&fit=crop")`
+            : "linear-gradient(180deg, #ECF3EE 0%, #F4F8F5 100%)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -53,11 +53,11 @@ export function PageShell({
               fontWeight: 700,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#7AFFD4",
+              color: "#0B6A4D",
               marginBottom: 22,
             }}
           >
-            <span style={{ width: 28, height: 1, background: "#7AFFD4" }} />
+            <span style={{ width: 28, height: 1, background: "#0B6A4D" }} />
             {eyebrow}
           </div>
           <h1
@@ -67,7 +67,7 @@ export function PageShell({
               lineHeight: 1.05,
               letterSpacing: "-0.02em",
               fontWeight: 700,
-              color: "#fff",
+              color: "#0E2A1C",
               marginBottom: 22,
               maxWidth: "22ch",
             }}
@@ -78,10 +78,10 @@ export function PageShell({
             <p
               className="page-reveal"
               style={{
-                color: "rgba(232,245,238,0.78)",
+                color: "rgba(14,42,28,0.72)",
                 fontSize: "1.05rem",
                 lineHeight: 1.7,
-                fontWeight: 300,
+                fontWeight: 400,
                 maxWidth: 640,
               }}
             >
@@ -90,7 +90,7 @@ export function PageShell({
           )}
         </div>
       </section>
-      <div className="page-reveal relative" style={{ background: "#03130A" }}>
+      <div className="page-reveal relative" style={{ background: "#F4F8F5" }}>
         {children}
       </div>
     </div>
@@ -110,14 +110,11 @@ export function GlassCard({
     <div
       className={className}
       style={{
-        background:
-          "linear-gradient(135deg, rgba(20,52,36,0.55) 0%, rgba(8,28,18,0.40) 100%)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        border: "1px solid rgba(122,255,212,0.14)",
+        background: "#FFFFFF",
+        border: "1px solid rgba(20,181,126,0.16)",
         borderRadius: 16,
         boxShadow:
-          "0 12px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)",
+          "0 8px 32px rgba(11,106,77,0.08), 0 1px 0 rgba(255,255,255,0.9) inset",
         ...style,
       }}
     >
@@ -148,11 +145,11 @@ export function SectionHeading({
           fontWeight: 700,
           letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: light ? "#3EE6A8" : "#7AFFD4",
+          color: light ? "#FFFFFF" : "#0B6A4D",
           marginBottom: 14,
         }}
       >
-        <span style={{ width: 24, height: 1, background: light ? "#3EE6A8" : "#7AFFD4" }} />
+        <span style={{ width: 24, height: 1, background: light ? "#FFFFFF" : "#0B6A4D" }} />
         {eyebrow}
       </div>
       <h2
@@ -162,7 +159,7 @@ export function SectionHeading({
           lineHeight: 1.12,
           letterSpacing: "-0.015em",
           fontWeight: 700,
-          color: "#fff",
+          color: light ? "#FFFFFF" : "#0E2A1C",
           maxWidth: "26ch",
           margin: align === "center" ? "0 auto" : "0",
         }}
