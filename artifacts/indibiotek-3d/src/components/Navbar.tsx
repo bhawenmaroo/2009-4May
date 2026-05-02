@@ -8,7 +8,6 @@ const NAV = [
   { label: "Agri",        href: "/agri" },
   { label: "Scientific",  href: "/scientific" },
   { label: "Services",    href: "/services" },
-  { label: "Careers",     href: "/careers" },
 ];
 
 const LIME       = "#C8FF4D";
@@ -33,38 +32,40 @@ export function Navbar() {
   return (
     <nav
       data-testid="navbar"
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed left-1/2 z-50"
       style={{
-        background: scrolled ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.78)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        borderBottom: scrolled
-          ? "1px solid rgba(14,42,28,0.10)"
-          : "1px solid rgba(14,42,28,0.06)",
-        boxShadow: scrolled
-          ? "0 6px 24px rgba(11,28,18,0.08)"
-          : "0 1px 0 rgba(14,42,28,0.03)",
-        transition: "background 0.25s, border-color 0.25s, box-shadow 0.25s",
+        top: 18,
+        transform: "translateX(-50%)",
+        width: "calc(100% - 36px)",
+        maxWidth: 1180,
       }}
     >
       <div
         className="mx-auto flex items-center"
         style={{
-          maxWidth: 1320,
-          padding: "12px 24px",
+          padding: "8px 10px 8px 18px",
           gap: 4,
+          background: scrolled ? "rgba(255,255,255,0.94)" : "rgba(255,255,255,0.85)",
+          backdropFilter: "blur(22px)",
+          WebkitBackdropFilter: "blur(22px)",
+          border: "1px solid rgba(14,42,28,0.10)",
+          borderRadius: 999,
+          boxShadow: scrolled
+            ? "0 14px 40px rgba(11,28,18,0.14)"
+            : "0 8px 28px rgba(11,28,18,0.10)",
+          transition: "background 0.25s, box-shadow 0.25s",
         }}
       >
         {/* Prominent logo */}
         <Link href="/" data-testid="link-logo">
           <div
             className="cursor-pointer flex items-center"
-            style={{ marginRight: 18, padding: "4px 0" }}
+            style={{ marginRight: 14, padding: "2px 0" }}
           >
             <img
               src="/logo.png"
               alt="Indibiotek — Biotech Solutions for People and Planet"
-              style={{ height: 44, width: "auto", display: "block" }}
+              style={{ height: 38, width: "auto", display: "block" }}
             />
           </div>
         </Link>
@@ -82,15 +83,15 @@ export function Navbar() {
                 <span
                   className="cursor-pointer"
                   style={{
-                    padding: "10px 12px",
+                    padding: "8px 14px",
                     fontSize: 13,
                     fontWeight: 500,
                     color: active ? TEXT_ACT : TEXT_BODY,
                     letterSpacing: "0.005em",
-                    borderRadius: 8,
+                    borderRadius: 999,
                     transition: "all 0.2s",
                     display: "inline-block",
-                    background: active ? "rgba(20,181,126,0.10)" : "transparent",
+                    background: active ? "rgba(20,181,126,0.12)" : "transparent",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -108,10 +109,10 @@ export function Navbar() {
         <div
           className="hidden 2xl:flex items-center"
           style={{
-            background: "rgba(14,42,28,0.04)",
+            background: "rgba(14,42,28,0.05)",
             border: "1px solid rgba(14,42,28,0.10)",
-            borderRadius: 10,
-            padding: "0 12px",
+            borderRadius: 999,
+            padding: "0 14px",
             height: 38,
             gap: 8,
             minWidth: 200,
@@ -147,8 +148,8 @@ export function Navbar() {
           href="tel:+91"
           className="hidden md:flex items-center justify-center"
           style={{
-            width: 40, height: 38, borderRadius: 10,
-            background: "rgba(14,42,28,0.04)",
+            width: 38, height: 38, borderRadius: 999,
+            background: "rgba(14,42,28,0.05)",
             border: "1px solid rgba(14,42,28,0.10)",
             color: TEXT_BODY,
             marginLeft: 4,
@@ -160,36 +161,18 @@ export function Navbar() {
           </svg>
         </a>
 
-        {/* DEMO outlined dark */}
-        <Link href="/contact" data-testid="link-demo">
-          <span
-            className="hidden md:inline-flex items-center justify-center cursor-pointer"
-            style={{
-              height: 38, padding: "0 18px", borderRadius: 10,
-              background: "transparent",
-              color: TEXT_DARK,
-              border: `1px solid ${TEXT_DARK}`,
-              fontSize: 12.5, fontWeight: 700, letterSpacing: "0.10em",
-              fontFamily: "Menlo, monospace",
-              marginLeft: 4,
-            }}
-          >
-            DEMO
-          </span>
-        </Link>
-
-        {/* CONTACT — solid dark forest with lime hover (matches light ribbon better) */}
+        {/* CONTACT — solid dark forest with lime text */}
         <Link href="/contact" data-testid="link-contact-cta">
           <span
             className="inline-flex items-center justify-center cursor-pointer"
             style={{
-              height: 38, padding: "0 18px", borderRadius: 10,
+              height: 38, padding: "0 20px", borderRadius: 999,
               background: TEXT_DARK,
               color: LIME,
               fontSize: 12.5, fontWeight: 700, letterSpacing: "0.10em",
               fontFamily: "Menlo, monospace",
-              marginLeft: 4,
-              boxShadow: "0 6px 18px rgba(14,42,28,0.20)",
+              marginLeft: 6,
+              boxShadow: "0 6px 18px rgba(14,42,28,0.22)",
             }}
           >
             CONTACT
@@ -202,8 +185,8 @@ export function Navbar() {
           onClick={() => setOpen((v) => !v)}
           data-testid="button-mobile-menu"
           style={{
-            width: 40, height: 38, borderRadius: 10, marginLeft: 4,
-            background: "rgba(14,42,28,0.04)",
+            width: 38, height: 38, borderRadius: 999, marginLeft: 4,
+            background: "rgba(14,42,28,0.05)",
             border: "1px solid rgba(14,42,28,0.10)",
             color: TEXT_BODY,
           }}
