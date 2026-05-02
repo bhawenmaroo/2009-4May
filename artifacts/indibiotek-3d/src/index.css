@@ -113,8 +113,8 @@
 
   body {
     @apply font-sans antialiased overflow-x-hidden;
-    /* Pure deep space — no colour tint so teal 3D scene pops */
-    background: #050810;
+    /* Deep forest — biotech / agri */
+    background: #03130A;
     color: #ffffff;
     min-height: 100vh;
   }
@@ -123,4 +123,14 @@
     font-family: var(--app-font-display);
     color: #ffffff;
   }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #03130A; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1E5C40, #0E2A1C);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #3EE6A8; }
+
+  ::selection { background: rgba(122,255,212,0.3); color: #fff; }
 }

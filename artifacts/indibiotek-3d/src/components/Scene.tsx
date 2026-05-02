@@ -1,147 +1,80 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { PerspectiveCamera, Stars } from '@react-three/drei';
-import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SporeCloud, BioParticles } from './Particles';
-import { DNA } from './DNA';
-import { HexGrid } from './HexGrid';
-import { SceneErrorBoundary } from './SceneErrorBoundary';
-import * as THREE from 'three';
+import { useEffect } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
+import { PerspectiveCamera } from "@react-three/drei";
+import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
+import * as THREE from "three";
+import { MoleculeHero } from "./MoleculeHero";
+import { FloatingParticles } from "./Particles";
+import { SceneErrorBoundary } from "./SceneErrorBoundary";
+import { useCursorParallax } from "./CursorParallax";
+import { useFrame } from "@react-three/fiber";
 
-gsap.registerPlugin(ScrollTrigger);
-
-/* ── Ember sparks flying off the DNA ── */
-function EmberSparks({ count = 120 }: { count?: number }) {
-  const ref = useRef<THREE.Points>(null);
-
-  const { positions, velocities } = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    const vel = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      pos[i * 3 + 0] = (Math.random() - 0.5) * 8;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 24;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
-      vel[i * 3 + 0] = (Math.random() - 0.5) * 0.012;
-      vel[i * 3 + 1] = 0.005 + Math.random() * 0.015; // drift upward
-      vel[i * 3 + 2] = (Math.random() - 0.5) * 0.012;
-    }
-    return { positions: pos, velocities: vel };
-  }, [count]);
-
-  useFrame(() => {
-    if (!ref.current) return;
-    const pos = ref.current.geometry.attributes.position as THREE.BufferAttribute;
-    for (let i = 0; i < count; i++) {
-      pos.array[i * 3 + 0] += velocities[i * 3 + 0];
-      pos.array[i * 3 + 1] += velocities[i * 3 + 1];
-      pos.array[i * 3 + 2] += velocities[i * 3 + 2];
-      // wrap when too high
-      if (pos.array[i * 3 + 1] > 16) pos.array[i * 3 + 1] = -16;
-    }
-    pos.needsUpdate = true;
-  });
-
-  return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial size={0.12} color="#FF9A00" transparent opacity={0.8} sizeAttenuation />
-    </points>
-  );
+function SceneSetup() {
+  const { scene } = useThree();
+  useEffect(() => {
+    scene.fog = new THREE.FogExp2(0x051a0e, 0.028);
+  }, [scene]);
+  return null;
 }
 
-/* ── Scroll-driven camera ── */
-function SceneController() {
-  const { camera, scene } = useThree();
-
-  useEffect(() => {
-    camera.position.set(0, 0, 14);
-    // Warm near-black fog — no blue tint
-    scene.fog = new THREE.FogExp2(0x060300, 0.020);
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.documentElement,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 2.5,
-        },
-      });
-      tl.to(camera.position, { z: 26, y: -8, x: -5, ease: 'power1.inOut' }, 0);
-      tl.to(camera.position, { z: 18, y: 10, x: 6,  ease: 'power1.inOut' }, 0.5);
-      tl.to(camera.position, { z: 22, y: 0,  x: 0,  ease: 'power1.inOut' }, 1);
-    });
-
-    return () => ctx.revert();
-  }, [camera, scene]);
-
+function CameraRig() {
+  const { camera } = useThree();
+  const { getOffset } = useCursorParallax();
+  useFrame(() => {
+    const off = getOffset();
+    const tx = off.x * 0.6;
+    const ty = -off.y * 0.4;
+    camera.position.x += (tx - camera.position.x) * 0.04;
+    camera.position.y += (ty - camera.position.y) * 0.04;
+    camera.lookAt(0, 0, 0);
+  });
   return null;
 }
 
 export function Scene() {
   return (
-    <div className="fixed inset-0 w-full h-full pointer-events-none z-0" data-testid="3d-scene-container">
+    <div
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
+      data-testid="3d-scene-container"
+    >
       <SceneErrorBoundary>
         <Canvas
-          dpr={[1, 2]}
+          dpr={[1, 1.8]}
           gl={{
             alpha: false,
             antialias: true,
             toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 1.2,
+            toneMappingExposure: 1.05,
           }}
-          style={{ background: '#060300' }}
+          style={{ background: "#03130A" }}
         >
-          <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={58} near={0.1} far={250} />
-          <SceneController />
-
-          {/* ── Lighting — warm, dramatic ── */}
-          <ambientLight intensity={0.05} />
-
-          {/* Main fire spotlight on DNA */}
-          <spotLight position={[2, 25, 10]} angle={0.35} penumbra={0.7} intensity={150} color="#FF8800" />
-          {/* Orange key from left */}
-          <pointLight position={[-10, 5, 6]} intensity={20} color="#FF6A00" distance={60} />
-          {/* Amber fill from right */}
-          <pointLight position={[14, -4, 4]} intensity={14} color="#FF9A00" distance={55} />
-          {/* Deep warm back rim */}
-          <pointLight position={[0, -6, -12]} intensity={10} color="#441500" distance={70} />
-          {/* Green bioluminescent accent — far background */}
-          <pointLight position={[-20, 0, -20]} intensity={12} color="#44FF00" distance={60} />
-          <pointLight position={[20, 0, -20]} intensity={8} color="#88FF44" distance={50} />
-
-          {/* ── Hex lab grid — very faint warm tone ── */}
-          <HexGrid
-            cols={28} rows={20}
-            hexRadius={2.4} opacity={0.07}
-            color="#FF8800"
-            position={[0, -18, -28]}
-            rotation={[-0.44, 0, 0]}
+          <PerspectiveCamera
+            makeDefault
+            position={[0, 0, 11]}
+            fov={55}
+            near={0.1}
+            far={120}
           />
+          <SceneSetup />
+          <CameraRig />
 
-          {/* ── DNA — fire/amber, centre stage ── */}
-          <DNA position={[1, 0, 0]} rotation={[0.1, 0, 0.05]} speed={0.07} scale={1} />
+          {/* Calm cinematic lighting */}
+          <ambientLight intensity={0.18} />
+          <pointLight position={[6, 6, 8]} intensity={28} color="#3EE6A8" distance={50} />
+          <pointLight position={[-8, -3, 5]} intensity={20} color="#5AC8FF" distance={50} />
+          <pointLight position={[0, 5, -10]} intensity={14} color="#7AFFD4" distance={60} />
 
-          {/* ── Ember sparks rising off DNA ── */}
-          <EmberSparks count={120} />
+          <MoleculeHero radius={3.4} nodes={70} position={[0, 0, 0]} />
+          <FloatingParticles count={650} />
 
-          {/* ── Bioluminescent organisms ── */}
-          <BioParticles count={280} />
-
-          {/* ── Spore/dust cloud ── */}
-          <SporeCloud count={1200} />
-
-          {/* ── Stars in far background ── */}
-          <Stars radius={90} depth={50} count={1500} factor={3} saturation={0.3} fade speed={0.2} />
-
-          {/* ── Post-processing ── */}
           <EffectComposer>
-            <Bloom intensity={2.5} luminanceThreshold={0.12} luminanceSmoothing={0.9} radius={0.92} />
-            <Vignette eskil={false} offset={0.12} darkness={0.85} />
+            <Bloom
+              intensity={1.15}
+              luminanceThreshold={0.18}
+              luminanceSmoothing={0.92}
+              radius={0.85}
+            />
+            <Vignette eskil={false} offset={0.15} darkness={0.7} />
           </EffectComposer>
         </Canvas>
       </SceneErrorBoundary>
