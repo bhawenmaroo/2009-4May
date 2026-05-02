@@ -279,20 +279,23 @@ export default function Home() {
                   EXPLORE DIVISIONS →
                 </span>
               </Link>
-              <Link href="/contact" data-testid="button-contact-hero">
-                <span
-                  className="cursor-pointer inline-flex items-center"
-                  style={{
-                    height: 48, padding: "0 22px", borderRadius: 10,
-                    background: LIME, color: DARK_BG,
-                    fontWeight: 700, fontSize: 12.5, letterSpacing: "0.10em",
-                    fontFamily: "Menlo, monospace",
-                    boxShadow: "0 8px 24px rgba(200,255,77,0.30)",
-                  }}
-                >
-                  GET A DEMO →
-                </span>
-              </Link>
+              <a
+                href="https://wa.me/919608768647"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-contact-hero"
+                className="cursor-pointer inline-flex items-center"
+                style={{
+                  height: 48, padding: "0 22px", borderRadius: 10,
+                  background: LIME, color: DARK_BG,
+                  fontWeight: 700, fontSize: 12.5, letterSpacing: "0.10em",
+                  fontFamily: "Menlo, monospace",
+                  boxShadow: "0 8px 24px rgba(200,255,77,0.30)",
+                  textDecoration: "none",
+                }}
+              >
+                GET A DEMO →
+              </a>
             </div>
           </div>
         </div>
@@ -820,21 +823,23 @@ export default function Home() {
                 }}>
                   Investors, researchers and industry partners — connect with our team to explore collaborations.
                 </p>
-                <Link href="/contact">
-                  <span
-                    className="cursor-pointer inline-flex items-center"
-                    style={{
-                      height: 48, padding: "0 22px", borderRadius: 10,
-                      background: LIME, color: DARK_BG,
-                      fontWeight: 700, fontSize: 12.5, letterSpacing: "0.10em",
-                      fontFamily: "Menlo, monospace",
-                      boxShadow: "0 8px 24px rgba(200,255,77,0.30)",
-                    }}
-                    data-testid="button-cta-contact"
-                  >
-                    GET IN TOUCH →
-                  </span>
-                </Link>
+                <a
+                  href="https://wa.me/919608768647"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-cta-contact"
+                  className="cursor-pointer inline-flex items-center"
+                  style={{
+                    height: 48, padding: "0 22px", borderRadius: 10,
+                    background: LIME, color: DARK_BG,
+                    fontWeight: 700, fontSize: 12.5, letterSpacing: "0.10em",
+                    fontFamily: "Menlo, monospace",
+                    boxShadow: "0 8px 24px rgba(200,255,77,0.30)",
+                    textDecoration: "none",
+                  }}
+                >
+                  GET IN TOUCH →
+                </a>
               </div>
             </div>
           </div>

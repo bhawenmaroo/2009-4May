@@ -143,9 +143,11 @@ export function Navbar() {
           <span style={{ color: TEXT_BODY, fontSize: 14 }}>→</span>
         </div>
 
-        {/* Phone */}
+        {/* Phone — WhatsApp */}
         <a
-          href="tel:+91"
+          href="https://wa.me/919608768647"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:flex items-center justify-center"
           style={{
             width: 38, height: 38, borderRadius: 999,
@@ -161,23 +163,26 @@ export function Navbar() {
           </svg>
         </a>
 
-        {/* CONTACT — solid dark forest with lime text */}
-        <Link href="/contact" data-testid="link-contact-cta">
-          <span
-            className="inline-flex items-center justify-center cursor-pointer"
-            style={{
-              height: 38, padding: "0 20px", borderRadius: 999,
-              background: TEXT_DARK,
-              color: LIME,
-              fontSize: 12.5, fontWeight: 700, letterSpacing: "0.10em",
-              fontFamily: "Menlo, monospace",
-              marginLeft: 6,
-              boxShadow: "0 6px 18px rgba(14,42,28,0.22)",
-            }}
-          >
-            CONTACT
-          </span>
-        </Link>
+        {/* CONTACT — opens WhatsApp */}
+        <a
+          href="https://wa.me/919608768647"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-testid="link-contact-cta"
+          className="inline-flex items-center justify-center cursor-pointer"
+          style={{
+            height: 38, padding: "0 20px", borderRadius: 999,
+            background: TEXT_DARK,
+            color: LIME,
+            fontSize: 12.5, fontWeight: 700, letterSpacing: "0.10em",
+            fontFamily: "Menlo, monospace",
+            marginLeft: 6,
+            boxShadow: "0 6px 18px rgba(14,42,28,0.22)",
+            textDecoration: "none",
+          }}
+        >
+          CONTACT
+        </a>
 
         {/* Mobile menu toggle */}
         <button

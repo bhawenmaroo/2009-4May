@@ -46,15 +46,15 @@ export function Footer() {
                 ["About Us", "/about"],
                 ["Services", "/services"],
                 ["Careers", "/careers"],
-                ["Contact Us", "/contact"],
+                ["Contact Us", "https://wa.me/919608768647"],
               ],
             },
             {
               title: "Get in Touch",
               items: [
                 ["info@indibiotek.com", "mailto:info@indibiotek.com"],
-                ["+91 — Headquarters", "/contact"],
-                ["India", "/contact"],
+                ["WhatsApp: +91 96087 68647", "https://wa.me/919608768647"],
+                ["India", "https://wa.me/919608768647"],
               ],
             },
           ].map((col) => (

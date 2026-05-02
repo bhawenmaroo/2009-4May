@@ -59,22 +59,25 @@ export default function Careers() {
                     {r.loc}
                   </div>
                 </div>
-                <Link href="/contact">
-                  <span
-                    className="cursor-pointer"
-                    style={{
-                      padding: "8px 18px",
-                      borderRadius: 999,
-                      background: "rgba(20,181,126,0.10)",
-                      border: "1px solid rgba(20,181,126,0.30)",
-                      color: "#0B6A4D",
-                      fontSize: 12.5,
-                      fontWeight: 600,
-                    }}
-                  >
-                    Apply →
-                  </span>
-                </Link>
+                <a
+                  href="https://wa.me/919608768647"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cursor-pointer"
+                  style={{
+                    padding: "8px 18px",
+                    borderRadius: 999,
+                    background: "rgba(20,181,126,0.10)",
+                    border: "1px solid rgba(20,181,126,0.30)",
+                    color: "#0B6A4D",
+                    fontSize: 12.5,
+                    fontWeight: 600,
+                    textDecoration: "none",
+                    display: "inline-block",
+                  }}
+                >
+                  Apply →
+                </a>
               </div>
             ))}
           </GlassCard>
