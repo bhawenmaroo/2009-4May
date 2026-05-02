@@ -137,7 +137,7 @@ export default function Contact() {
 
           <div className="lg:col-span-5 page-reveal space-y-4">
             <GlassCard style={{ padding: 28 }}>
-              <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#fff", marginBottom: 14 }}>
+              <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 14 }}>
                 Headquarters
               </h3>
               <p style={{ color: "rgba(14,42,28,0.72)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}>
@@ -147,7 +147,7 @@ export default function Contact() {
             </GlassCard>
 
             <GlassCard style={{ padding: 28 }}>
-              <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#fff", marginBottom: 14 }}>
+              <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 14 }}>
                 Email
               </h3>
               <a
@@ -160,7 +160,7 @@ export default function Contact() {
             </GlassCard>
 
             <GlassCard style={{ padding: 28 }}>
-              <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#fff", marginBottom: 14 }}>
+              <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 14 }}>
                 Departments
               </h3>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, color: "rgba(14,42,28,0.72)", fontSize: 14, lineHeight: 1.9 }}>

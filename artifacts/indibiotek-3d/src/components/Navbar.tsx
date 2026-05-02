@@ -69,7 +69,7 @@ export function Navbar() {
         </Link>
 
         {/* Nav items */}
-        <div className="hidden xl:flex items-center" style={{ gap: 2 }}>
+        <div className="hidden md:flex items-center" style={{ gap: 0 }}>
           {NAV.map((item) => {
             const active = item.href === "/" ? location === "/" : location.startsWith(item.href);
             return (
@@ -81,15 +81,16 @@ export function Navbar() {
                 <span
                   className="cursor-pointer"
                   style={{
-                    padding: "10px 12px",
-                    fontSize: 13,
+                    padding: "10px 9px",
+                    fontSize: 12.5,
                     fontWeight: 500,
                     color: active ? TXT_ACT : TXT,
-                    letterSpacing: "0.01em",
+                    letterSpacing: "0.005em",
                     borderRadius: 8,
                     transition: "all 0.2s",
                     display: "inline-block",
                     background: active ? "rgba(255,255,255,0.06)" : "transparent",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   {item.label}
@@ -102,9 +103,9 @@ export function Navbar() {
         {/* Spacer */}
         <div className="flex-1 hidden md:block" />
 
-        {/* Ask Indibiotek search bar (decorative) */}
+        {/* Ask Indibiotek search bar (decorative) — only on very wide screens */}
         <div
-          className="hidden lg:flex items-center"
+          className="hidden 2xl:flex items-center"
           style={{
             background: "rgba(255,255,255,0.06)",
             border: "1px solid rgba(255,255,255,0.10)",
@@ -196,7 +197,7 @@ export function Navbar() {
 
         {/* Mobile menu toggle */}
         <button
-          className="xl:hidden"
+          className="md:hidden"
           onClick={() => setOpen((v) => !v)}
           data-testid="button-mobile-menu"
           style={{
@@ -213,7 +214,7 @@ export function Navbar() {
       {/* Mobile menu panel */}
       {open && (
         <div
-          className="xl:hidden mt-2 rounded-2xl"
+          className="md:hidden mt-2 rounded-2xl"
           style={{
             background: PILL_BG,
             backdropFilter: "blur(22px)",

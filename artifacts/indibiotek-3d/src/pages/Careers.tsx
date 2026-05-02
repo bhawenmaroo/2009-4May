@@ -31,8 +31,8 @@ export default function Careers() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
             {PERKS.map((p) => (
               <GlassCard key={p.title} style={{ padding: 24 }} className="page-reveal">
-                <h3 className="font-display" style={{ fontSize: "1.05rem", fontWeight: 600, color: "#fff", marginBottom: 8 }}>{p.title}</h3>
-                <p style={{ color: "rgba(14,42,28,0.62)", fontSize: 13.5, lineHeight: 1.65, fontWeight: 300 }}>{p.desc}</p>
+                <h3 className="font-display" style={{ fontSize: "1.05rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 8 }}>{p.title}</h3>
+                <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 13.5, lineHeight: 1.65, fontWeight: 400 }}>{p.desc}</p>
               </GlassCard>
             ))}
           </div>
@@ -53,9 +53,9 @@ export default function Careers() {
                 }}
               >
                 <div>
-                  <div style={{ color: "#fff", fontWeight: 600, fontSize: "1.02rem", marginBottom: 4 }}>{r.title}</div>
-                  <div style={{ color: "rgba(14,42,28,0.55)", fontSize: 13 }}>
-                    <span style={{ color: "#0B6A4D", marginRight: 12 }}>{r.team}</span>
+                  <div style={{ color: "#0E2A1C", fontWeight: 600, fontSize: "1.02rem", marginBottom: 4 }}>{r.title}</div>
+                  <div style={{ color: "rgba(14,42,28,0.62)", fontSize: 13 }}>
+                    <span style={{ color: "#0B6A4D", marginRight: 12, fontWeight: 600 }}>{r.team}</span>
                     {r.loc}
                   </div>
                 </div>

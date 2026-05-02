@@ -54,7 +54,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {VALUES.map((v) => (
               <GlassCard key={v.title} style={{ padding: 26 }}>
-                <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#fff", marginBottom: 10 }}>
+                <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 10 }}>
                   {v.title}
                 </h3>
                 <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 14, lineHeight: 1.65, fontWeight: 300 }}>{v.desc}</p>

@@ -23,7 +23,7 @@ export default function Scientific() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((s) => (
               <GlassCard key={s.title} style={{ padding: 28 }} className="page-reveal">
-                <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#fff", marginBottom: 10 }}>
+                <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 10 }}>
                   {s.title}
                 </h3>
                 <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 14.5, lineHeight: 1.7, fontWeight: 300 }}>{s.desc}</p>
