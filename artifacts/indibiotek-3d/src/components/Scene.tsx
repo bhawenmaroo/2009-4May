@@ -64,7 +64,7 @@ export function Scene() {
         <Canvas
           dpr={[1, 2]}
           gl={{ alpha: false, antialias: true }}
-          style={{ background: 'linear-gradient(160deg, #020d18 0%, #041e2e 40%, #031520 100%)' }}
+          style={{ background: '#050810' }}
         >
           <PerspectiveCamera makeDefault position={[0, 2, 22]} fov={55} />
           <SceneController />
