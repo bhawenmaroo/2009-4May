@@ -6,70 +6,40 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ── Atmospheric CSS background — always visible ── */
-function AtmosphericBg() {
+/* ── CSS atmospheric glow — warm amber + green bio ── */
+function AtmoBg() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0" aria-hidden>
-      {/* Base gradient — deep midnight blue, NOT teal */}
       <div className="absolute inset-0" style={{
-        background: 'radial-gradient(ellipse 80% 60% at 50% 0%, #0D1B3E 0%, #04071A 55%, #02040F 100%)',
+        background: 'radial-gradient(ellipse 100% 80% at 55% 10%, #1A0800 0%, #060300 55%, #020100 100%)',
       }} />
-      {/* Top-right: blue/indigo glow */}
+      {/* Warm amber glow — top-centre (from DNA) */}
       <div className="absolute" style={{
-        top: '-10vh', right: '-8vw',
-        width: '55vw', height: '55vw', maxWidth: 800, maxHeight: 800,
+        top: '-5vh', left: '35%', transform: 'translateX(-50%)',
+        width: '60vw', height: '60vw', maxWidth: 900, maxHeight: 900,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(68,136,255,0.20) 0%, rgba(68,136,255,0.06) 45%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(255,120,0,0.18) 0%, rgba(255,80,0,0.06) 40%, transparent 68%)',
       }} />
-      {/* Bottom-left: brand teal glow */}
+      {/* Green bioluminescent glow — bottom left */}
       <div className="absolute" style={{
-        bottom: '0', left: '-10vw',
-        width: '50vw', height: '50vw', maxWidth: 700, maxHeight: 700,
+        bottom: '-5vh', left: '-12vw',
+        width: '55vw', height: '55vw', maxWidth: 750, maxHeight: 750,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(83,207,207,0.16) 0%, rgba(83,207,207,0.04) 50%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(120,255,0,0.14) 0%, rgba(80,200,0,0.04) 50%, transparent 70%)',
       }} />
-      {/* Centre-right: faint green accent */}
+      {/* Subtle green glow right side */}
       <div className="absolute" style={{
-        top: '35vh', right: '5vw',
-        width: '30vw', height: '30vw', maxWidth: 400, maxHeight: 400,
+        top: '40vh', right: '-5vw',
+        width: '35vw', height: '35vw', maxWidth: 450, maxHeight: 450,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(57,255,136,0.08) 0%, transparent 65%)',
-      }} />
-      {/* Horizontal light band across middle */}
-      <div className="absolute" style={{
-        top: '48vh', left: 0, right: 0, height: 1,
-        background: 'linear-gradient(to right, transparent, rgba(68,136,255,0.12) 30%, rgba(83,207,207,0.12) 70%, transparent)',
+        background: 'radial-gradient(circle, rgba(100,255,50,0.07) 0%, transparent 65%)',
       }} />
     </div>
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase mb-6"
-      style={{ background: 'rgba(83,207,207,0.10)', border: '1px solid rgba(83,207,207,0.28)', color: '#53CFCF' }}
-    >
-      <span className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0" style={{ background: '#53CFCF' }} />
-      {children}
-    </div>
-  );
-}
-
-function GlassCard({ children, className = '', style = {} }: {
-  children: React.ReactNode; className?: string; style?: React.CSSProperties;
-}) {
-  return (
-    <div className={`rounded-2xl ${className}`} style={{
-      background: 'rgba(255,255,255,0.03)',
-      border: '1px solid rgba(255,255,255,0.08)',
-      backdropFilter: 'blur(20px)',
-      boxShadow: '0 4px 48px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)',
-      ...style,
-    }}>
-      {children}
-    </div>
-  );
+function RevealSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return <div className={`content-section ${className}`}>{children}</div>;
 }
 
 export default function Home() {
@@ -77,278 +47,334 @@ export default function Home() {
     const sections = gsap.utils.toArray('.content-section');
     sections.forEach((section: any) => {
       gsap.fromTo(
-        section.querySelectorAll('.reveal-element'),
-        { y: 44, opacity: 0 },
+        section.querySelectorAll('.reveal'),
+        { y: 50, opacity: 0 },
         {
-          y: 0, opacity: 1, duration: 1.1, stagger: 0.14, ease: 'power3.out',
-          scrollTrigger: { trigger: section, start: 'top 82%', toggleActions: 'play none none reverse' },
+          y: 0, opacity: 1, duration: 1.2, stagger: 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none reverse' },
         }
       );
     });
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ color: '#fff', fontFamily: 'Inter, sans-serif' }}>
+    <div className="min-h-screen" style={{ color: '#fff', fontFamily: "'Outfit', sans-serif" }}>
       <Navbar />
       <Scene />
-      <AtmosphericBg />
+      <AtmoBg />
 
-      {/* ── HERO ── */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-center px-6 z-10">
-        <div className="max-w-5xl mx-auto content-section">
-          {/* pill badge */}
-          <div className="reveal-element mb-8 flex justify-center">
-            <SectionLabel>Biotechnology Redefined</SectionLabel>
+      {/* ── HERO — text directly on 3D, no card ── */}
+      <section className="relative h-screen flex flex-col justify-end px-10 md:px-20 pb-24 z-10">
+        <RevealSection className="max-w-4xl">
+          <div className="reveal mb-4">
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: '#FF9A00', opacity: 0.9,
+            }}>
+              <span style={{ width: 28, height: 1, background: '#FF9A00', display: 'inline-block' }} />
+              Indibiotek Private Limited
+            </span>
           </div>
 
-          {/* main heading */}
           <h1
-            className="reveal-element font-display font-black leading-none mb-7"
-            style={{ fontSize: 'clamp(3.5rem, 11vw, 8.5rem)', letterSpacing: '-0.03em' }}
+            className="reveal font-display font-black"
+            style={{
+              fontSize: 'clamp(3rem, 9vw, 8rem)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.03em',
+              color: '#FFF8F0',
+              marginBottom: 24,
+              textShadow: '0 0 80px rgba(255,120,0,0.3)',
+            }}
           >
-            <span style={{ color: '#E8F4FF' }}>Engineer</span>
-            <br />
+            ENGINEER<br />
             <span style={{
-              display: 'inline-block',
               color: 'transparent',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
-              backgroundImage: 'linear-gradient(100deg, #4488FF 0%, #53CFCF 50%, #39FF88 100%)',
-              filter: 'drop-shadow(0 0 36px rgba(68,136,255,0.45))',
+              backgroundImage: 'linear-gradient(90deg, #FF6A00 0%, #FF9A00 50%, #FFD000 100%)',
+              filter: 'drop-shadow(0 0 30px rgba(255,120,0,0.7))',
             }}>
-              The Future
+              THE FUTURE.
             </span>
           </h1>
 
-          {/* sub-headline */}
-          <p
-            className="reveal-element mx-auto mb-10"
-            style={{ fontSize: '1.1rem', color: 'rgba(220,235,255,0.65)', fontWeight: 300, maxWidth: 540, lineHeight: 1.8, letterSpacing: '0.01em' }}
-          >
+          <p className="reveal" style={{
+            maxWidth: 500, fontSize: '1.05rem', lineHeight: 1.75,
+            color: 'rgba(255,240,220,0.60)', fontWeight: 300, marginBottom: 36,
+          }}>
             Pioneering breakthrough biotechnologies to solve humanity's most complex challenges — from our state-of-the-art facilities in India.
           </p>
 
-          {/* CTAs */}
-          <div className="reveal-element flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#technology"
-              data-testid="button-explore-tech"
-              className="relative px-9 py-4 rounded-full font-bold text-base tracking-wide overflow-hidden"
-              style={{ background: 'linear-gradient(100deg, #4488FF, #53CFCF)', color: '#02040F', boxShadow: '0 4px 24px rgba(68,136,255,0.35)' }}
-            >
-              Explore Our Tech →
+          <div className="reveal flex flex-wrap gap-4">
+            <a href="#about" data-testid="button-explore-tech"
+              style={{
+                padding: '14px 32px', borderRadius: 4,
+                background: 'linear-gradient(90deg, #FF6A00, #FF9A00)',
+                color: '#0A0300', fontWeight: 800, fontSize: 13,
+                letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none',
+                boxShadow: '0 4px 30px rgba(255,100,0,0.45)',
+              }}>
+              Explore Our Science
             </a>
-            <a
-              href="#contact"
-              data-testid="button-partner-hero"
-              className="px-9 py-4 rounded-full font-medium text-base tracking-wide transition-all duration-300"
-              style={{ border: '1.5px solid rgba(255,255,255,0.22)', color: '#E8F4FF' }}
-            >
+            <a href="#contact" data-testid="button-partner-hero"
+              style={{
+                padding: '14px 32px', borderRadius: 4,
+                border: '1px solid rgba(255,200,100,0.30)',
+                color: 'rgba(255,240,220,0.85)', fontWeight: 600, fontSize: 13,
+                letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none',
+              }}>
               Partner With Us
             </a>
           </div>
-        </div>
+        </RevealSection>
 
-        {/* scroll mouse indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30">
-          <div className="w-5 h-8 rounded-full flex items-start justify-center pt-1.5"
-            style={{ border: '1.5px solid rgba(68,136,255,0.6)' }}>
-            <div className="w-1 h-2 rounded-full animate-bounce" style={{ background: '#4488FF' }} />
+        {/* Scroll cue */}
+        <div style={{
+          position: 'absolute', bottom: 32, right: 40,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, opacity: 0.35,
+        }}>
+          <div style={{
+            width: 20, height: 32, borderRadius: 10,
+            border: '1.5px solid rgba(255,150,0,0.6)',
+            display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 6,
+          }}>
+            <div style={{
+              width: 4, height: 8, borderRadius: 2, background: '#FF9A00',
+              animation: 'scrollBounce 1.5s ease-in-out infinite',
+            }} />
           </div>
+          <style>{`@keyframes scrollBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }`}</style>
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
-      <section id="about" className="relative z-10 px-6 md:px-20 py-28">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center content-section">
-            <div>
-              <div className="reveal-element"><SectionLabel>Who We Are</SectionLabel></div>
-              <h2 className="reveal-element font-display font-black mb-5"
-                style={{ fontSize: 'clamp(2.2rem,5vw,3.8rem)', lineHeight: 1.1, letterSpacing: '-0.02em', color: '#E8F4FF' }}>
-                Redefining<br />Biological<br />Boundaries
-              </h2>
-              <div className="reveal-element w-16 h-[3px] rounded-full mb-8"
-                style={{ background: 'linear-gradient(to right, #4488FF, #53CFCF, #39FF88)' }} />
-              <p className="reveal-element mb-5 leading-relaxed"
-                style={{ color: 'rgba(210,228,255,0.72)', fontWeight: 300, fontSize: '1.05rem' }}>
-                At Indibiotek, we view biology as the most powerful technology platform on Earth. Based in India, we leverage global expertise to build scalable biotech solutions.
-              </p>
-              <p className="reveal-element leading-relaxed"
-                style={{ color: 'rgba(210,228,255,0.50)', fontWeight: 300 }}>
-                Our multidisciplinary team works at the intersection of nature and digital innovation — creating therapies and materials for the next century.
-              </p>
+      {/* ── ABOUT — text on scene, no glass ── */}
+      <section id="about" className="relative z-10 px-10 md:px-20 py-32">
+        <div className="max-w-5xl mx-auto">
+          <RevealSection>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div>
+                <p className="reveal" style={{
+                  fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+                  color: '#AAFF44', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 10,
+                }}>
+                  <span style={{ width: 28, height: 1, background: '#AAFF44', display: 'inline-block' }} />
+                  Who We Are
+                </p>
+                <h2 className="reveal font-display font-black"
+                  style={{
+                    fontSize: 'clamp(2.2rem, 5vw, 4.2rem)', lineHeight: 1.0,
+                    letterSpacing: '-0.025em', color: '#FFF8F0', marginBottom: 24,
+                    textShadow: '0 0 60px rgba(170,255,68,0.15)',
+                  }}>
+                  REDEFINING<br />BIOLOGICAL<br />BOUNDARIES.
+                </h2>
+                <div style={{ width: 48, height: 2, background: 'linear-gradient(to right, #AAFF44, #FF9A00)', marginBottom: 28, borderRadius: 1 }} />
+                <p className="reveal" style={{ color: 'rgba(255,240,220,0.65)', fontWeight: 300, lineHeight: 1.8, fontSize: '1.05rem' }}>
+                  At Indibiotek, we view biology as the most powerful technology platform on Earth. Based in India, we leverage global expertise to build scalable biotech solutions that transform lives.
+                </p>
+              </div>
+              <div className="reveal grid gap-px" style={{ border: '1px solid rgba(255,180,60,0.12)', borderRadius: 8, overflow: 'hidden' }}>
+                {[
+                  { num: '15+', label: 'Active Research Pipelines', col: '#FF9A00' },
+                  { num: '4',   label: 'Global Partnerships',       col: '#AAFF44' },
+                  { num: '∞',   label: 'Commitment to Innovation',  col: '#FFD000' },
+                ].map(({ num, label, col }, i) => (
+                  <div key={i} style={{
+                    padding: '28px 32px', display: 'flex', alignItems: 'center', gap: 20,
+                    background: 'rgba(255,255,255,0.025)',
+                    borderBottom: i < 2 ? '1px solid rgba(255,180,60,0.10)' : 'none',
+                  }}>
+                    <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 900, fontSize: 42, color: col, lineHeight: 1, minWidth: 70 }}>{num}</span>
+                    <span style={{ color: 'rgba(255,240,220,0.75)', fontSize: '0.95rem', fontWeight: 500 }}>{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            <div className="reveal-element grid gap-4">
-              {[
-                { num: '15+', label: 'Active Research Pipelines', col: '#4488FF' },
-                { num: '4',   label: 'Global Partnerships',       col: '#53CFCF' },
-                { num: '∞',   label: 'Commitment to Innovation',  col: '#39FF88' },
-              ].map(({ num, label, col }) => (
-                <GlassCard key={label} className="px-8 py-5 flex items-center gap-6">
-                  <span className="font-display font-black text-3xl shrink-0" style={{ color: col }}>{num}</span>
-                  <span className="font-medium" style={{ color: 'rgba(220,235,255,0.82)' }}>{label}</span>
-                </GlassCard>
-              ))}
-            </div>
-          </div>
+          </RevealSection>
         </div>
       </section>
 
       {/* ── TECHNOLOGY ── */}
-      <section id="technology" className="relative z-10 px-6 md:px-20 py-24">
-        <div className="max-w-6xl mx-auto content-section">
-          <div className="text-center mb-16">
-            <div className="reveal-element flex justify-center"><SectionLabel>Our Capabilities</SectionLabel></div>
-            <h2 className="reveal-element font-display font-black mb-4"
-              style={{ fontSize: 'clamp(2rem,5vw,4rem)', letterSpacing: '-0.02em', color: '#E8F4FF' }}>
-              Proprietary Platforms
-            </h2>
-            <p className="reveal-element max-w-md mx-auto"
-              style={{ color: 'rgba(210,228,255,0.55)', fontWeight: 300, lineHeight: 1.7 }}>
-              An interconnected ecosystem of bio-technologies accelerating discovery from months to days.
+      <section id="technology" className="relative z-10 px-10 md:px-20 py-24">
+        <div className="max-w-6xl mx-auto">
+          <RevealSection>
+            <p className="reveal" style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: '#FF9A00', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10,
+            }}>
+              <span style={{ width: 28, height: 1, background: '#FF9A00', display: 'inline-block' }} />
+              Our Capabilities
             </p>
-          </div>
+            <h2 className="reveal font-display font-black"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', letterSpacing: '-0.025em', color: '#FFF8F0', marginBottom: 56, lineHeight: 1.0 }}>
+              PROPRIETARY PLATFORMS.
+            </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { title: 'Synthetic Biology', desc: 'Engineering novel biological systems and redesigning existing ones for targeted purposes.', icon: '🧬', num: '01', accent: '#4488FF' },
-              { title: 'Computational Discovery', desc: 'AI-driven molecular modeling to predict interactions and optimize therapeutic candidates.', icon: '🤖', num: '02', accent: '#53CFCF' },
-              { title: 'Precision Biomanufacturing', desc: 'Scaling biological processes with unprecedented control and environmental sustainability.', icon: '⚗️', num: '03', accent: '#39FF88' },
-            ].map((tech) => (
-              <GlassCard key={tech.num} className="p-8 reveal-element flex flex-col">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-                    style={{ background: `rgba(${tech.accent === '#4488FF' ? '68,136,255' : tech.accent === '#53CFCF' ? '83,207,207' : '57,255,136'},0.10)` }}>
-                    {tech.icon}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: 'rgba(255,180,60,0.08)', borderRadius: 8, overflow: 'hidden' }}>
+              {[
+                { title: 'Synthetic\nBiology', desc: 'Engineering novel biological systems and redesigning existing ones for targeted medical and industrial purposes.', icon: '01', col: '#FF9A00' },
+                { title: 'Computational\nDiscovery', desc: 'AI-driven molecular modeling to predict binding interactions and optimize therapeutic candidates at scale.', icon: '02', col: '#AAFF44' },
+                { title: 'Precision\nBiomanufacturing', desc: 'Scaling biological processes with unprecedented precision, yield, and environmental sustainability.', icon: '03', col: '#FFD000' },
+              ].map((tech) => (
+                <div key={tech.icon} className="reveal" style={{ padding: '48px 36px', background: 'rgba(6,3,0,0.6)', position: 'relative', overflow: 'hidden' }}>
+                  <div style={{
+                    position: 'absolute', top: 24, right: 24,
+                    fontFamily: "'Outfit', sans-serif", fontWeight: 900, fontSize: 72,
+                    color: `${tech.col}12`, lineHeight: 1,
+                  }}>{tech.icon}</div>
+                  <div style={{
+                    width: 36, height: 36, borderRadius: 6, background: `${tech.col}18`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 28,
+                    border: `1px solid ${tech.col}30`,
+                  }}>
+                    <div style={{ width: 14, height: 14, borderRadius: '50%', background: tech.col }} />
                   </div>
-                  <span className="font-display font-black text-5xl" style={{ color: `${tech.accent}18`, lineHeight: 1 }}>
-                    {tech.num}
-                  </span>
+                  <h3 style={{
+                    fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                    fontSize: '1.3rem', color: '#FFF8F0', marginBottom: 14,
+                    lineHeight: 1.15, whiteSpace: 'pre-line',
+                  }}>{tech.title}</h3>
+                  <p style={{ color: 'rgba(255,240,220,0.50)', fontSize: '0.9rem', lineHeight: 1.75, fontWeight: 300 }}>{tech.desc}</p>
+                  <div style={{ marginTop: 28, color: tech.col, fontSize: 13, fontWeight: 700, letterSpacing: '0.1em' }}>LEARN MORE →</div>
                 </div>
-                <h3 className="font-display font-bold text-xl mb-3" style={{ color: '#E8F4FF' }}>{tech.title}</h3>
-                <p className="text-sm leading-relaxed flex-1" style={{ color: 'rgba(210,228,255,0.50)', fontWeight: 300 }}>{tech.desc}</p>
-                <div className="mt-6 text-sm font-semibold" style={{ color: tech.accent }}>Learn more →</div>
-              </GlassCard>
-            ))}
-          </div>
+              ))}
+            </div>
+          </RevealSection>
         </div>
       </section>
 
       {/* ── PIPELINE ── */}
-      <section id="solutions" className="relative z-10 px-6 md:px-20 py-24">
-        <div className="max-w-5xl mx-auto content-section">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
-            <div>
-              <div className="reveal-element"><SectionLabel>Therapeutics & Solutions</SectionLabel></div>
-              <h2 className="reveal-element font-display font-black"
-                style={{ fontSize: 'clamp(2rem,5vw,4rem)', letterSpacing: '-0.02em', color: '#E8F4FF' }}>
-                From Sequence<br />to Scale
-              </h2>
+      <section id="solutions" className="relative z-10 px-10 md:px-20 py-24">
+        <div className="max-w-5xl mx-auto">
+          <RevealSection>
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+              <div>
+                <p className="reveal" style={{
+                  fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+                  color: '#AAFF44', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10,
+                }}>
+                  <span style={{ width: 28, height: 1, background: '#AAFF44', display: 'inline-block' }} />
+                  Research Pipeline
+                </p>
+                <h2 className="reveal font-display font-black"
+                  style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', letterSpacing: '-0.025em', color: '#FFF8F0', lineHeight: 1.0 }}>
+                  FROM SEQUENCE<br />TO SCALE.
+                </h2>
+              </div>
+              <p className="reveal lg:max-w-xs" style={{ color: 'rgba(255,240,220,0.45)', fontWeight: 300, lineHeight: 1.7, fontSize: '0.95rem' }}>
+                A robust pipeline addressing critical unmet needs in healthcare and industry.
+              </p>
             </div>
-            <p className="reveal-element lg:max-w-xs lg:text-right"
-              style={{ color: 'rgba(210,228,255,0.50)', fontWeight: 300, fontSize: '0.95rem', lineHeight: 1.7 }}>
-              A robust pipeline addressing critical unmet needs in healthcare and industry.
-            </p>
-          </div>
 
-          <div className="space-y-3">
-            {[
-              { name: 'IBT-001', category: 'Oncology', phase: 'Pre-clinical', desc: 'Targeted nanoparticle therapy for solid tumors.', progress: 30, accent: '#FF4466' },
-              { name: 'SynEnzymes', category: 'Industrial', phase: 'Commercial', desc: 'Custom-engineered biocatalysts for industrial applications.', progress: 100, accent: '#39FF88' },
-              { name: 'BioMaterials', category: 'Sustainability', phase: 'Development', desc: 'Sustainable alternatives to petroleum-based polymers.', progress: 55, accent: '#4488FF' },
-            ].map((item, idx) => (
-              <GlassCard key={idx} className="px-8 py-7 reveal-element">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-4">
-                  <div className="flex items-start gap-5">
-                    <span className="font-display font-black text-4xl shrink-0" style={{ color: `${item.accent}28`, lineHeight: 1 }}>
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <div>
-                      <div className="flex items-center gap-3 mb-1">
-                        <h3 className="font-display font-bold text-xl" style={{ color: '#E8F4FF' }}>{item.name}</h3>
-                        <span className="text-xs px-2.5 py-0.5 rounded-full"
-                          style={{ background: 'rgba(255,255,255,0.07)', color: 'rgba(220,235,255,0.45)' }}>
-                          {item.category}
-                        </span>
+            <div style={{ borderTop: '1px solid rgba(255,180,60,0.12)' }}>
+              {[
+                { name: 'IBT-001', cat: 'Oncology', phase: 'Pre-clinical', desc: 'Targeted nanoparticle therapy for solid tumors.', prog: 30, col: '#FF6A00' },
+                { name: 'SynEnzymes', cat: 'Industrial', phase: 'Commercial', desc: 'Custom-engineered biocatalysts for industrial applications.', prog: 100, col: '#AAFF44' },
+                { name: 'BioMaterials', cat: 'Sustainability', phase: 'Development', desc: 'Sustainable alternatives to petroleum-based polymers.', prog: 55, col: '#FFD000' },
+              ].map((item, idx) => (
+                <div key={idx} className="reveal" style={{
+                  padding: '28px 0', borderBottom: '1px solid rgba(255,180,60,0.10)',
+                }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginBottom: 14 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+                      <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 900, fontSize: 36, color: `${item.col}22`, lineHeight: 1, minWidth: 44 }}>
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
+                          <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.2rem', color: '#FFF8F0' }}>{item.name}</span>
+                          <span style={{ fontSize: 11, padding: '2px 10px', borderRadius: 2, background: 'rgba(255,255,255,0.06)', color: 'rgba(255,240,220,0.40)', letterSpacing: '0.08em' }}>{item.cat}</span>
+                        </div>
+                        <span style={{ fontSize: '0.9rem', color: 'rgba(255,240,220,0.45)', fontWeight: 300 }}>{item.desc}</span>
                       </div>
-                      <p className="text-sm" style={{ color: 'rgba(210,228,255,0.50)', fontWeight: 300 }}>{item.desc}</p>
                     </div>
+                    <span style={{
+                      padding: '6px 16px', borderRadius: 2, fontSize: 11, fontWeight: 800,
+                      letterSpacing: '0.14em', textTransform: 'uppercase',
+                      background: `${item.col}18`, border: `1px solid ${item.col}40`, color: item.col,
+                    }}>{item.phase}</span>
                   </div>
-                  <div className="flex items-center gap-4 shrink-0">
-                    <span className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase"
-                      style={{ background: `${item.accent}18`, border: `1px solid ${item.accent}44`, color: item.accent }}>
-                      {item.phase}
-                    </span>
+                  {/* Progress bar */}
+                  <div style={{ height: 2, background: 'rgba(255,255,255,0.06)', borderRadius: 1 }}>
+                    <div style={{ height: '100%', width: `${item.prog}%`, background: item.col, borderRadius: 1, boxShadow: `0 0 8px ${item.col}88` }} />
                   </div>
                 </div>
-                <div className="h-[2px] rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
-                  <div className="h-full rounded-full" style={{ width: `${item.progress}%`, background: item.accent }} />
-                </div>
-              </GlassCard>
-            ))}
-          </div>
+              ))}
+            </div>
+          </RevealSection>
         </div>
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" className="relative z-10 px-6 md:px-20 py-36">
-        <div className="max-w-2xl mx-auto text-center content-section">
-          <div className="reveal-element flex justify-center"><SectionLabel>Connect</SectionLabel></div>
-          <h2 className="reveal-element font-display font-black mb-5"
-            style={{ fontSize: 'clamp(2.5rem,8vw,5.5rem)', lineHeight: 1.0, letterSpacing: '-0.03em', color: '#E8F4FF' }}>
-            Shape the<br />
-            <span style={{
-              color: 'transparent',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              backgroundImage: 'linear-gradient(100deg, #4488FF, #53CFCF)',
+      <section id="contact" className="relative z-10 px-10 md:px-20 py-36">
+        <div className="max-w-2xl">
+          <RevealSection>
+            <p className="reveal" style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: '#FF9A00', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10,
             }}>
-              Future.
-            </span>
-          </h2>
-          <p className="reveal-element mb-10 max-w-sm mx-auto"
-            style={{ color: 'rgba(210,228,255,0.55)', fontWeight: 300, lineHeight: 1.75 }}>
-            Investor, researcher, or potential partner — join us in engineering tomorrow.
-          </p>
+              <span style={{ width: 28, height: 1, background: '#FF9A00', display: 'inline-block' }} />
+              Connect With Us
+            </p>
+            <h2 className="reveal font-display font-black"
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 6rem)', lineHeight: 0.95,
+                letterSpacing: '-0.03em', color: '#FFF8F0', marginBottom: 20,
+              }}>
+              SHAPE THE<br />
+              <span style={{
+                color: 'transparent', backgroundClip: 'text', WebkitBackgroundClip: 'text',
+                backgroundImage: 'linear-gradient(90deg, #FF6A00, #FFD000)',
+                filter: 'drop-shadow(0 0 20px rgba(255,120,0,0.5))',
+              }}>FUTURE.</span>
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,240,220,0.50)', lineHeight: 1.75, marginBottom: 40, fontWeight: 300, maxWidth: 420 }}>
+              Investor, researcher, or potential partner — join us in engineering tomorrow's solutions.
+            </p>
 
-          <GlassCard className="p-8 md:p-10 reveal-element text-left">
-            <form onSubmit={(e) => e.preventDefault()} data-testid="contact-form" className="space-y-4">
+            <form onSubmit={(e) => e.preventDefault()} data-testid="contact-form" className="reveal space-y-4"
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,180,60,0.12)', borderRadius: 8, padding: 36 }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { placeholder: 'Name', type: 'text', id: 'input-name' },
-                  { placeholder: 'Email', type: 'email', id: 'input-email' },
-                ].map(({ placeholder, type, id }) => (
-                  <input key={id} type={type} placeholder={placeholder} data-testid={id}
-                    className="rounded-xl px-4 py-3.5 text-sm text-white outline-none w-full"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)', transition: 'border-color 0.3s' }}
-                    onFocus={e => (e.currentTarget.style.borderColor = '#4488FF')}
-                    onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)')} />
+                {[{ ph: 'Name', type: 'text', id: 'input-name' }, { ph: 'Email', type: 'email', id: 'input-email' }].map(({ ph, type, id }) => (
+                  <input key={id} type={type} placeholder={ph} data-testid={id}
+                    style={{
+                      background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,180,60,0.15)',
+                      borderRadius: 4, padding: '12px 16px', color: '#FFF8F0', fontSize: 14,
+                      outline: 'none', width: '100%', fontFamily: 'Inter, sans-serif',
+                    }} />
                 ))}
               </div>
               <textarea placeholder="Tell us about your interest…" rows={4} data-testid="input-message"
-                className="w-full rounded-xl px-4 py-3.5 text-sm text-white outline-none resize-none"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)', transition: 'border-color 0.3s' }}
-                onFocus={e => (e.currentTarget.style.borderColor = '#4488FF')}
-                onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)')} />
+                style={{
+                  background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,180,60,0.15)',
+                  borderRadius: 4, padding: '12px 16px', color: '#FFF8F0', fontSize: 14,
+                  outline: 'none', resize: 'none', width: '100%', fontFamily: 'Inter, sans-serif',
+                }} />
               <button type="submit" data-testid="button-submit"
-                className="w-full py-4 rounded-xl font-bold text-base tracking-wide"
-                style={{ background: 'linear-gradient(100deg, #4488FF, #53CFCF)', color: '#02040F', boxShadow: '0 4px 24px rgba(68,136,255,0.30)' }}>
+                style={{
+                  width: '100%', padding: '14px', borderRadius: 4,
+                  background: 'linear-gradient(90deg, #FF6A00, #FF9A00)',
+                  color: '#0A0300', fontWeight: 800, fontSize: 13, letterSpacing: '0.12em',
+                  textTransform: 'uppercase', border: 'none', cursor: 'pointer',
+                  boxShadow: '0 4px 24px rgba(255,100,0,0.35)',
+                }}>
                 Send Inquiry →
               </button>
             </form>
-          </GlassCard>
 
-          <div className="reveal-element mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
-            style={{ borderTop: '1px solid rgba(255,255,255,0.06)', color: 'rgba(210,228,255,0.30)' }}>
-            <p>&copy; {new Date().getFullYear()} Indibiotek Private Limited.</p>
-            <div className="flex gap-6">
-              {['Privacy', 'Terms', 'LinkedIn'].map(link => (
-                <a key={link} href="#" className="hover:text-white transition-colors">{link}</a>
-              ))}
+            <div className="reveal" style={{
+              marginTop: 40, paddingTop: 28, borderTop: '1px solid rgba(255,180,60,0.08)',
+              display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 12,
+              fontSize: 13, color: 'rgba(255,240,220,0.28)',
+            }}>
+              <p>&copy; {new Date().getFullYear()} Indibiotek Private Limited.</p>
+              <div style={{ display: 'flex', gap: 24 }}>
+                {['Privacy', 'Terms', 'LinkedIn'].map(l => <a key={l} href="#" style={{ color: 'inherit', textDecoration: 'none' }}>{l}</a>)}
+              </div>
             </div>
-          </div>
+          </RevealSection>
         </div>
       </section>
     </div>

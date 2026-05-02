@@ -6,11 +6,11 @@ export function Navbar() {
       data-testid="navbar"
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-        padding: '14px 48px',
+        padding: '16px 40px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        backdropFilter: 'blur(20px)',
-        background: 'rgba(2,4,15,0.75)',
-        borderBottom: '1px solid rgba(255,255,255,0.05)',
+        backdropFilter: 'blur(16px)',
+        background: 'rgba(6,3,0,0.65)',
+        borderBottom: '1px solid rgba(255,180,60,0.08)',
         animation: 'navbarIn 0.7s ease-out both',
       }}
     >
@@ -22,7 +22,7 @@ export function Navbar() {
       `}</style>
 
       <Link href="/">
-        <img src="/logo.png" alt="Indibiotek" style={{ height: 42, width: 'auto', objectFit: 'contain' }} />
+        <img src="/logo.png" alt="Indibiotek" style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
       </Link>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
@@ -32,13 +32,13 @@ export function Navbar() {
             href={`#${item.toLowerCase()}`}
             data-testid={`link-${item.toLowerCase()}`}
             style={{
-              color: 'rgba(220,235,255,0.80)',
-              fontSize: 13, fontWeight: 500,
-              letterSpacing: '0.12em', textTransform: 'uppercase',
+              color: 'rgba(255,240,220,0.75)',
+              fontSize: 12, fontWeight: 600,
+              letterSpacing: '0.16em', textTransform: 'uppercase',
               textDecoration: 'none', transition: 'color 0.2s',
             }}
-            onMouseEnter={e => ((e.target as HTMLElement).style.color = '#4488FF')}
-            onMouseLeave={e => ((e.target as HTMLElement).style.color = 'rgba(220,235,255,0.80)')}
+            onMouseEnter={e => ((e.target as HTMLElement).style.color = '#FF9A00')}
+            onMouseLeave={e => ((e.target as HTMLElement).style.color = 'rgba(255,240,220,0.75)')}
           >
             {item}
           </a>
@@ -47,18 +47,24 @@ export function Navbar() {
           href="#contact"
           data-testid="button-partner"
           style={{
-            padding: '10px 22px',
-            background: 'linear-gradient(100deg, #4488FF, #53CFCF)',
-            color: '#02040F',
-            fontWeight: 700, fontSize: 13,
-            borderRadius: 999,
-            letterSpacing: '0.04em',
+            padding: '9px 22px',
+            background: 'transparent',
+            border: '1px solid rgba(255,150,30,0.50)',
+            color: '#FF9A00',
+            fontWeight: 700, fontSize: 12,
+            borderRadius: 3,
+            letterSpacing: '0.12em', textTransform: 'uppercase',
             textDecoration: 'none',
-            boxShadow: '0 4px 18px rgba(68,136,255,0.30)',
-            transition: 'opacity 0.2s, box-shadow 0.2s',
+            transition: 'background 0.2s, border-color 0.2s',
           }}
-          onMouseEnter={e => { (e.target as HTMLElement).style.opacity = '0.85'; }}
-          onMouseLeave={e => { (e.target as HTMLElement).style.opacity = '1'; }}
+          onMouseEnter={e => {
+            (e.target as HTMLElement).style.background = 'rgba(255,150,30,0.15)';
+            (e.target as HTMLElement).style.borderColor = '#FF9A00';
+          }}
+          onMouseLeave={e => {
+            (e.target as HTMLElement).style.background = 'transparent';
+            (e.target as HTMLElement).style.borderColor = 'rgba(255,150,30,0.50)';
+          }}
         >
           Partner With Us
         </a>

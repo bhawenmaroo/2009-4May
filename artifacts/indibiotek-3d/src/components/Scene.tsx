@@ -1,40 +1,44 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { PerspectiveCamera, Stars, Environment } from '@react-three/drei';
+import { PerspectiveCamera, Stars } from '@react-three/drei';
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Particles } from './Particles';
+import { SporeCloud, BioParticles } from './Particles';
 import { DNA } from './DNA';
 import { HexGrid } from './HexGrid';
-import { LabElements } from './LabElements';
 import { SceneErrorBoundary } from './SceneErrorBoundary';
 import * as THREE from 'three';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ── Slowly drifting microscope dust motes ── */
-function DustMotes() {
+/* ── Ember sparks flying off the DNA ── */
+function EmberSparks({ count = 120 }: { count?: number }) {
   const ref = useRef<THREE.Points>(null);
-  const count = 500;
 
-  const basePositions = useMemo(() => {
-    const arr = new Float32Array(count * 3);
+  const { positions, velocities } = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    const vel = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      arr[i * 3 + 0] = (Math.random() - 0.5) * 36;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 36;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 28 - 6;
+      pos[i * 3 + 0] = (Math.random() - 0.5) * 8;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 24;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
+      vel[i * 3 + 0] = (Math.random() - 0.5) * 0.012;
+      vel[i * 3 + 1] = 0.005 + Math.random() * 0.015; // drift upward
+      vel[i * 3 + 2] = (Math.random() - 0.5) * 0.012;
     }
-    return arr;
-  }, []);
+    return { positions: pos, velocities: vel };
+  }, [count]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!ref.current) return;
     const pos = ref.current.geometry.attributes.position as THREE.BufferAttribute;
-    const t = state.clock.elapsedTime;
     for (let i = 0; i < count; i++) {
-      const base = basePositions[i * 3 + 1];
-      pos.array[i * 3 + 1] = base + Math.sin(t * 0.12 + i * 0.3) * 0.5 + ((t * 0.04 * (i % 3 + 1)) % 18) - 9;
+      pos.array[i * 3 + 0] += velocities[i * 3 + 0];
+      pos.array[i * 3 + 1] += velocities[i * 3 + 1];
+      pos.array[i * 3 + 2] += velocities[i * 3 + 2];
+      // wrap when too high
+      if (pos.array[i * 3 + 1] > 16) pos.array[i * 3 + 1] = -16;
     }
     pos.needsUpdate = true;
   });
@@ -42,20 +46,21 @@ function DustMotes() {
   return (
     <points ref={ref}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[basePositions, 3]} />
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.06} color="#53CFCF" transparent opacity={0.45} sizeAttenuation />
+      <pointsMaterial size={0.12} color="#FF9A00" transparent opacity={0.8} sizeAttenuation />
     </points>
   );
 }
 
-/* ── Scroll-driven camera + scene fog ── */
+/* ── Scroll-driven camera ── */
 function SceneController() {
   const { camera, scene } = useThree();
 
   useEffect(() => {
-    camera.position.set(0, 0, 13);
-    scene.fog = new THREE.FogExp2(0x010608, 0.022);
+    camera.position.set(0, 0, 14);
+    // Warm near-black fog — no blue tint
+    scene.fog = new THREE.FogExp2(0x060300, 0.020);
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -66,8 +71,8 @@ function SceneController() {
           scrub: 2.5,
         },
       });
-      tl.to(camera.position, { z: 24, y: -7, x: -6, ease: 'power1.inOut' }, 0);
-      tl.to(camera.position, { z: 17, y: 9,  x: 8,  ease: 'power1.inOut' }, 0.5);
+      tl.to(camera.position, { z: 26, y: -8, x: -5, ease: 'power1.inOut' }, 0);
+      tl.to(camera.position, { z: 18, y: 10, x: 6,  ease: 'power1.inOut' }, 0.5);
       tl.to(camera.position, { z: 22, y: 0,  x: 0,  ease: 'power1.inOut' }, 1);
     });
 
@@ -87,89 +92,56 @@ export function Scene() {
             alpha: false,
             antialias: true,
             toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 1.4,
+            toneMappingExposure: 1.2,
           }}
-          style={{ background: '#010608' }}
+          style={{ background: '#060300' }}
         >
-          <PerspectiveCamera makeDefault position={[0, 0, 13]} fov={58} near={0.1} far={250} />
+          <PerspectiveCamera makeDefault position={[0, 0, 14]} fov={58} near={0.1} far={250} />
           <SceneController />
 
-          {/* Studio environment — realistic reflections on glass test tubes */}
-          <Environment preset="studio" />
+          {/* ── Lighting — warm, dramatic ── */}
+          <ambientLight intensity={0.05} />
 
-          {/* ── Lighting ── */}
-          <ambientLight intensity={0.08} />
+          {/* Main fire spotlight on DNA */}
+          <spotLight position={[2, 25, 10]} angle={0.35} penumbra={0.7} intensity={150} color="#FF8800" />
+          {/* Orange key from left */}
+          <pointLight position={[-10, 5, 6]} intensity={20} color="#FF6A00" distance={60} />
+          {/* Amber fill from right */}
+          <pointLight position={[14, -4, 4]} intensity={14} color="#FF9A00" distance={55} />
+          {/* Deep warm back rim */}
+          <pointLight position={[0, -6, -12]} intensity={10} color="#441500" distance={70} />
+          {/* Green bioluminescent accent — far background */}
+          <pointLight position={[-20, 0, -20]} intensity={12} color="#44FF00" distance={60} />
+          <pointLight position={[20, 0, -20]} intensity={8} color="#88FF44" distance={50} />
 
-          {/* Microscope-style top beam on DNA */}
-          <spotLight
-            position={[2, 22, 8]}
-            angle={0.4}
-            penumbra={0.6}
-            intensity={120}
-            color="#ffffff"
-          />
-          {/* Teal key from left */}
-          <pointLight position={[-12, 6, 6]} intensity={18} color="#53CFCF" distance={60} />
-          {/* Cyan fill from right */}
-          <pointLight position={[14, -4, 4]} intensity={12} color="#00FFCC" distance={55} />
-          {/* Back rim — deep teal */}
-          <pointLight position={[0, -6, -12]} intensity={10} color="#0a4040" distance={70} />
-          {/* Cold under light for depth */}
-          <pointLight position={[0, -18, 0]} intensity={8} color="#004444" distance={50} />
-
-          {/* ── Hex grid — microscope stage grid lines ── */}
+          {/* ── Hex lab grid — very faint warm tone ── */}
           <HexGrid
-            cols={32} rows={22}
-            hexRadius={2.6} opacity={0.09}
-            color="#53CFCF"
-            position={[0, -18, -30]}
-            rotation={[-0.42, 0, 0]}
-          />
-          <HexGrid
-            cols={20} rows={16}
-            hexRadius={2.0} opacity={0.05}
-            color="#00FFCC"
-            position={[-35, 0, -22]}
-            rotation={[0, 0.55, 0]}
+            cols={28} rows={20}
+            hexRadius={2.4} opacity={0.07}
+            color="#FF8800"
+            position={[0, -18, -28]}
+            rotation={[-0.44, 0, 0]}
           />
 
-          {/* ── Primary DNA — large, close, filling viewport ── */}
-          <DNA
-            position={[0.5, 0, 0]}
-            rotation={[0.12, 0, 0.06]}
-            speed={0.08}
-            scale={1}
-          />
+          {/* ── DNA — fire/amber, centre stage ── */}
+          <DNA position={[1, 0, 0]} rotation={[0.1, 0, 0.05]} speed={0.07} scale={1} />
 
-          {/* ── Secondary DNA — deep background, fading in fog ── */}
-          <DNA
-            position={[-20, -6, -28]}
-            rotation={[0.4, 1.0, 0.2]}
-            speed={0.04}
-            scale={0.45}
-          />
+          {/* ── Ember sparks rising off DNA ── */}
+          <EmberSparks count={120} />
 
-          {/* ── Lab equipment ── */}
-          <LabElements />
+          {/* ── Bioluminescent organisms ── */}
+          <BioParticles count={280} />
 
-          {/* ── Ambient particles ── */}
-          <Particles count={2000} />
+          {/* ── Spore/dust cloud ── */}
+          <SporeCloud count={1200} />
 
-          {/* ── Microscope dust motes ── */}
-          <DustMotes />
-
-          {/* ── Distant stars ── */}
-          <Stars radius={90} depth={50} count={1800} factor={3} saturation={0.5} fade speed={0.25} />
+          {/* ── Stars in far background ── */}
+          <Stars radius={90} depth={50} count={1500} factor={3} saturation={0.3} fade speed={0.2} />
 
           {/* ── Post-processing ── */}
           <EffectComposer>
-            <Bloom
-              intensity={2.2}
-              luminanceThreshold={0.15}
-              luminanceSmoothing={0.88}
-              radius={0.9}
-            />
-            <Vignette eskil={false} offset={0.15} darkness={0.7} />
+            <Bloom intensity={2.5} luminanceThreshold={0.12} luminanceSmoothing={0.9} radius={0.92} />
+            <Vignette eskil={false} offset={0.12} darkness={0.85} />
           </EffectComposer>
         </Canvas>
       </SceneErrorBoundary>
