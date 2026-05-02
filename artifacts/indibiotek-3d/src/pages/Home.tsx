@@ -138,22 +138,50 @@ export default function Home() {
         style={{ background: BG, paddingTop: 120, paddingBottom: 100 }}
       >
         <div className="max-w-[1180px] mx-auto">
+          {/* Prominent brand lockup */}
           <div
             className="reveal"
             style={{
-              fontFamily: "Menlo, monospace",
-              fontSize: 11,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: ACCENT,
-              marginBottom: 32,
+              marginBottom: 44,
               display: "flex",
               alignItems: "center",
-              gap: 10,
+              gap: 28,
+              flexWrap: "wrap",
             }}
           >
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: LIME, boxShadow: `0 0 12px ${LIME}` }} />
-            Indibiotek Private Limited — est. India
+            <img
+              src="/logo.png"
+              alt="Indibiotek — Biotech Solutions for People and Planet"
+              data-testid="img-brand-logo"
+              style={{
+                height: "clamp(72px, 11vw, 132px)",
+                width: "auto",
+                display: "block",
+                filter: "drop-shadow(0 8px 24px rgba(11,106,77,0.18))",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                paddingLeft: 24,
+                borderLeft: "1px solid rgba(14,42,28,0.16)",
+                fontFamily: "Menlo, monospace",
+                fontSize: 11,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: ACCENT,
+              }}
+            >
+              <span
+                style={{
+                  width: 8, height: 8, borderRadius: "50%",
+                  background: LIME, boxShadow: `0 0 12px ${LIME}`,
+                }}
+              />
+              Indibiotek Private Limited<br/>est. India
+            </div>
           </div>
           <h1
             className="reveal font-display"
