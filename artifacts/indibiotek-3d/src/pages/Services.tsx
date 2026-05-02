@@ -18,6 +18,7 @@ export default function Services() {
       eyebrow="Healthcare & Waste Management"
       title="Applied biology for human and planetary health."
       intro="Beyond discovery, we design and deliver services that improve clinical outcomes and restore environmental balance — at industrial scale."
+      heroImage="https://images.unsplash.com/photo-1559757175-5700dde675bc?"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto">

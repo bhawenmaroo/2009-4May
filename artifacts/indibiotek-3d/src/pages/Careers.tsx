@@ -23,6 +23,7 @@ export default function Careers() {
       eyebrow="Careers"
       title="Build a career at the intersection of biology, technology and impact."
       intro="We are hiring scientists, engineers and operators who want to do science that ships — and ships at scale."
+      heroImage="https://images.unsplash.com/photo-1582719471384-894fbb16e074?"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto">

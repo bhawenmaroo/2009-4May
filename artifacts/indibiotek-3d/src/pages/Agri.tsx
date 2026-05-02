@@ -15,6 +15,7 @@ export default function Agri() {
       eyebrow="Agri Division"
       title="Biology that grows with the planet."
       intro="Our agricultural biotechnology division develops products and platforms that help farmers grow more food with fewer chemicals, less water and healthier soils."
+      heroImage="https://images.unsplash.com/photo-1500382017468-9049fed747ef?"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto">

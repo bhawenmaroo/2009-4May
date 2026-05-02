@@ -20,6 +20,7 @@ export default function RnD() {
       eyebrow="Research & Development"
       title="The engine that powers every Indibiotek division."
       intro="Our R&D platform brings together molecular biology, computation and engineering — operating across the full path from hypothesis to product."
+      heroImage="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto">

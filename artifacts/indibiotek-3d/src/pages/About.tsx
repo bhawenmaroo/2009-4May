@@ -20,6 +20,7 @@ export default function About() {
       eyebrow="About Indibiotek"
       title="A biotech company built for India, designed for the world."
       intro="Indibiotek brings deep scientific capability and operational rigour together to build durable bio-based businesses across human health, agriculture and the environment."
+      heroImage="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">

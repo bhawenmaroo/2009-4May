@@ -9,6 +9,7 @@ export default function Contact() {
       eyebrow="Contact Us"
       title="Let's build something biological — together."
       intro="Reach out to discuss collaborations, partnerships, scientific services or career opportunities. Our team responds within two working days."
+      heroImage="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
