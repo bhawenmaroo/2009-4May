@@ -87,6 +87,8 @@ export default function Home() {
             backgroundSize: "cover",
             backgroundPosition: "center",
             willChange: "transform",
+            filter: "blur(6px)",
+            transform: "scale(1.06)",
           }}
         />
         {/* Subtle warm-to-cool gradient over photo */}
@@ -94,9 +96,62 @@ export default function Home() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(14,28,20,0.20) 0%, rgba(14,28,20,0.05) 30%, rgba(14,28,20,0.10) 60%, rgba(244,248,245,0.85) 92%, rgba(244,248,245,1) 100%)",
+              "linear-gradient(180deg, rgba(14,28,20,0.45) 0%, rgba(14,28,20,0.25) 30%, rgba(14,28,20,0.30) 60%, rgba(244,248,245,0.88) 92%, rgba(244,248,245,1) 100%)",
           }}
         />
+        {/* Centered "Waste Management" overlay headline on the photo */}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-6"
+          style={{ zIndex: 2 }}
+        >
+          <div
+            className="reveal"
+            style={{
+              fontFamily: "Menlo, monospace",
+              fontSize: 12,
+              letterSpacing: "0.30em",
+              textTransform: "uppercase",
+              color: LIME,
+              marginBottom: 26,
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              textShadow: "0 2px 12px rgba(0,0,0,0.35)",
+            }}
+          >
+            <span style={{ width: 8, height: 8, borderRadius: "50%", background: LIME, boxShadow: `0 0 14px ${LIME}` }} />
+            Now in focus — Division 06
+          </div>
+          <h2
+            className="reveal font-display text-center"
+            data-testid="hero-overlay-waste"
+            style={{
+              fontSize: "clamp(3rem, 9vw, 8rem)",
+              lineHeight: 0.95,
+              letterSpacing: "-0.04em",
+              fontWeight: 700,
+              color: "#FFFFFF",
+              textShadow: "0 6px 40px rgba(0,0,0,0.45)",
+              maxWidth: "16ch",
+            }}
+          >
+            Waste <span style={{ fontStyle: "italic", color: LIME }}>Management</span>.
+          </h2>
+          <div
+            className="reveal text-center"
+            style={{
+              marginTop: 22,
+              color: "rgba(255,255,255,0.85)",
+              fontSize: "1.05rem",
+              lineHeight: 1.6,
+              maxWidth: 540,
+              fontWeight: 400,
+              textShadow: "0 2px 12px rgba(0,0,0,0.35)",
+            }}
+          >
+            Bioremediation and circular bio-based environmental solutions — turning waste streams into resources.
+          </div>
+        </div>
         {/* Bottom-left attribution / caption */}
         <div
           className="absolute"
@@ -197,7 +252,7 @@ export default function Home() {
             }}
           >
             Solutions in <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>life</span>sciences,
-            biotechnology, agriculture, healthcare &amp; <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>waste</span> management.
+            biotechnology, <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>agriculture</span> &amp; healthcare.
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <p
