@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Indibiotek 3D Website"
+version = "1.0.0"
+id = "artifacts/indibiotek-3d"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25833
+
+[services.development]
+run = "pnpm --filter @workspace/indibiotek-3d run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/indibiotek-3d", "run", "build" ]
+publicDir = "artifacts/indibiotek-3d/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25833"
+BASE_PATH = "/"
