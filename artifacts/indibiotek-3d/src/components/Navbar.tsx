@@ -16,13 +16,10 @@ export function Navbar() {
       `}</style>
       <Link href="/" className="flex items-center gap-3 group">
         <img
-          src="https://img1.wsimg.com/isteam/ip/ec13f5f3-a0ab-4f8f-a34c-f4e8a45b887f/Screenshot%202026-02-21%20183145.png"
+          src="/logo.png"
           alt="Indibiotek Logo"
-          className="h-10 md:h-12 w-auto object-contain mix-blend-screen"
+          className="h-10 md:h-14 w-auto object-contain"
         />
-        <span className="text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-primary transition-colors">
-          Indibiotek
-        </span>
       </Link>
 
       <div className="hidden md:flex items-center gap-8">
