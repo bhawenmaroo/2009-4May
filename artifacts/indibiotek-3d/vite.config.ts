@@ -50,7 +50,7 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "src"),
       "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),
     },
-    dedupe: ["react", "react-dom"],
+    dedupe: ["react", "react-dom", "three", "@react-three/fiber", "@react-three/drei"],
   },
   root: path.resolve(import.meta.dirname),
   build: {
