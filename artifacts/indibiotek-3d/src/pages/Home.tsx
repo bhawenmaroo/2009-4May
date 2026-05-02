@@ -99,7 +99,7 @@ export default function Home() {
               "linear-gradient(180deg, rgba(14,28,20,0.45) 0%, rgba(14,28,20,0.25) 30%, rgba(14,28,20,0.30) 60%, rgba(244,248,245,0.88) 92%, rgba(244,248,245,1) 100%)",
           }}
         />
-        {/* Centered "Waste Management" overlay headline on the photo */}
+        {/* MAIN SOLUTIONS headline overlaid on the photo */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-6"
           style={{ zIndex: 2 }}
@@ -112,44 +112,44 @@ export default function Home() {
               letterSpacing: "0.30em",
               textTransform: "uppercase",
               color: LIME,
-              marginBottom: 26,
+              marginBottom: 28,
               display: "flex",
               alignItems: "center",
               gap: 12,
-              textShadow: "0 2px 12px rgba(0,0,0,0.35)",
+              textShadow: "0 2px 12px rgba(0,0,0,0.4)",
             }}
           >
             <span style={{ width: 8, height: 8, borderRadius: "50%", background: LIME, boxShadow: `0 0 14px ${LIME}` }} />
-            Now in focus — Division 06
+            Indibiotek Private Limited
           </div>
-          <h2
+          <h1
             className="reveal font-display text-center"
-            data-testid="hero-overlay-waste"
+            data-testid="hero-headline"
             style={{
-              fontSize: "clamp(3rem, 9vw, 8rem)",
-              lineHeight: 0.95,
-              letterSpacing: "-0.04em",
+              fontSize: "clamp(2.4rem, 6.4vw, 6rem)",
+              lineHeight: 1.02,
+              letterSpacing: "-0.035em",
               fontWeight: 700,
               color: "#FFFFFF",
-              textShadow: "0 6px 40px rgba(0,0,0,0.45)",
-              maxWidth: "16ch",
+              textShadow: "0 8px 40px rgba(0,0,0,0.55)",
+              maxWidth: "18ch",
             }}
           >
-            Waste <span style={{ fontStyle: "italic", color: LIME }}>Management</span>.
-          </h2>
+            Solutions in <span style={{ fontStyle: "italic", color: LIME }}>lifesciences</span>, biotechnology, <span style={{ fontStyle: "italic", color: LIME }}>agriculture</span> &amp; healthcare.
+          </h1>
           <div
             className="reveal text-center"
             style={{
-              marginTop: 22,
-              color: "rgba(255,255,255,0.85)",
-              fontSize: "1.05rem",
+              marginTop: 26,
+              color: "rgba(255,255,255,0.88)",
+              fontSize: "1.08rem",
               lineHeight: 1.6,
-              maxWidth: 540,
+              maxWidth: 580,
               fontWeight: 400,
-              textShadow: "0 2px 12px rgba(0,0,0,0.35)",
+              textShadow: "0 2px 12px rgba(0,0,0,0.4)",
             }}
           >
-            Bioremediation and circular bio-based environmental solutions — turning waste streams into resources.
+            A science-driven biotechnology company building integrated solutions across the lifesciences and agri value chain — from molecular discovery to scaled, sustainable delivery.
           </div>
         </div>
         {/* Bottom-left attribution / caption */}
@@ -238,22 +238,21 @@ export default function Home() {
               Indibiotek Private Limited<br/>est. India
             </div>
           </div>
-          <h1
+          <h2
             className="reveal font-display"
-            data-testid="hero-headline"
+            data-testid="hero-secondary-headline"
             style={{
-              fontSize: "clamp(2.6rem, 7.5vw, 7rem)",
-              lineHeight: 0.96,
-              letterSpacing: "-0.035em",
+              fontSize: "clamp(2.2rem, 5.4vw, 5rem)",
+              lineHeight: 1.02,
+              letterSpacing: "-0.03em",
               fontWeight: 700,
               color: TEXT_DARK,
-              marginBottom: 48,
-              maxWidth: "16ch",
+              marginBottom: 40,
+              maxWidth: "18ch",
             }}
           >
-            Solutions in <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>life</span>sciences,
-            biotechnology, <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>agriculture</span> &amp; healthcare.
-          </h1>
+            Biotech solutions for <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>people</span> and <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>planet</span>.
+          </h2>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <p
               className="reveal lg:col-span-7"
@@ -263,7 +262,7 @@ export default function Home() {
                 maxWidth: 620,
               }}
             >
-              A science-driven biotechnology company building integrated solutions across the lifesciences and agri value chain — from molecular discovery to scaled, sustainable delivery.
+              We bring deep scientific capability and operational rigour together to build durable bio-based businesses across human health, agriculture, scientific services and the environment — including bioremediation and circular waste management.
             </p>
             <div className="reveal lg:col-span-5 flex flex-wrap gap-3 lg:justify-end">
               <Link href="/about" data-testid="button-explore-divisions">
