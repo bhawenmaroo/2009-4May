@@ -25,3 +25,16 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Artifacts
+
+### Indibiotek 3D Website (`artifacts/indibiotek-3d`)
+- **Kind**: React + Vite frontend (static SPA)
+- **Preview path**: `/`
+- **Purpose**: Immersive 3D landing website for Indibiotek Private Limited (biotech brand)
+- **Stack**: React 19, React Three Fiber, @react-three/drei, GSAP + ScrollTrigger, Tailwind CSS
+- **3D**: Animated DNA double helix + 1500 floating particles; scroll-driven camera animation
+- **Videos**: AI-generated background videos in `public/` (dna_hero_bg.mp4, molecular_tech_bg.mp4, lab_bg.mp4)
+- **Background**: Transparent R3F canvas over vivid teal radial-gradient body; videos per section with light overlays
+- **Brand**: Teal palette (#53CFCF primary), Outfit + Inter fonts, Indibiotek logo in navbar
+- **Sections**: Hero, About, Technology, Solutions, Contact

@@ -62,69 +62,69 @@
   /* Indibiotek Brand Colors */
   /* Teal #53CFCF -> HSL(180, 57%, 57%) */
   /* Deep Accent #308282 -> HSL(180, 46%, 35%) */
-  /* Dark Navy Background -> HSL(222, 47%, 4%) */
-  
-  --background: 222 47% 4%;
-  --foreground: 210 40% 98%;
+  /* Deep teal-blue base: still dark but with colour */
 
-  --card: 222 47% 6%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 180 57% 57% / 0.1;
+  --background: 185 65% 14%;
+  --foreground: 180 20% 97%;
 
-  --popover: 222 47% 6%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 180 57% 57% / 0.1;
+  --card: 185 60% 18%;
+  --card-foreground: 180 20% 97%;
+  --card-border: 180 70% 65% / 0.2;
 
-  --primary: 180 57% 57%;
-  --primary-foreground: 222 47% 4%;
+  --popover: 185 60% 18%;
+  --popover-foreground: 180 20% 97%;
+  --popover-border: 180 70% 65% / 0.2;
 
-  --secondary: 180 46% 35%;
-  --secondary-foreground: 210 40% 98%;
+  --primary: 180 65% 62%;
+  --primary-foreground: 185 65% 10%;
 
-  --muted: 217 32% 17%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --secondary: 180 55% 45%;
+  --secondary-foreground: 180 20% 97%;
 
-  --accent: 180 46% 35%;
-  --accent-foreground: 210 40% 98%;
+  --muted: 185 45% 22%;
+  --muted-foreground: 180 40% 78%;
+
+  --accent: 180 65% 62%;
+  --accent-foreground: 185 65% 10%;
 
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 180 20% 97%;
 
-  --border: 217 32% 17%;
-  --input: 217 32% 17%;
-  --ring: 180 57% 57%;
+  --border: 185 45% 22%;
+  --input: 185 45% 22%;
+  --ring: 180 65% 62%;
 }
 
 .dark {
-  --background: 222 47% 4%;
-  --foreground: 210 40% 98%;
+  --background: 185 65% 14%;
+  --foreground: 180 20% 97%;
 
-  --card: 222 47% 6%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 180 57% 57% / 0.1;
+  --card: 185 60% 18%;
+  --card-foreground: 180 20% 97%;
+  --card-border: 180 70% 65% / 0.2;
 
-  --popover: 222 47% 6%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 180 57% 57% / 0.1;
+  --popover: 185 60% 18%;
+  --popover-foreground: 180 20% 97%;
+  --popover-border: 180 70% 65% / 0.2;
 
-  --primary: 180 57% 57%;
-  --primary-foreground: 222 47% 4%;
+  --primary: 180 65% 62%;
+  --primary-foreground: 185 65% 10%;
 
-  --secondary: 180 46% 35%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 180 55% 45%;
+  --secondary-foreground: 180 20% 97%;
 
-  --muted: 217 32% 17%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --muted: 185 45% 22%;
+  --muted-foreground: 180 40% 78%;
 
-  --accent: 180 46% 35%;
-  --accent-foreground: 210 40% 98%;
+  --accent: 180 65% 62%;
+  --accent-foreground: 185 65% 10%;
 
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 180 20% 97%;
 
-  --border: 217 32% 17%;
-  --input: 217 32% 17%;
-  --ring: 180 57% 57%;
+  --border: 185 45% 22%;
+  --input: 185 45% 22%;
+  --ring: 180 65% 62%;
 }
 
 @layer base {
@@ -133,9 +133,10 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
-    background-color: hsl(var(--background));
+    @apply font-sans antialiased text-foreground overflow-x-hidden;
     color: hsl(var(--foreground));
+    background: radial-gradient(ellipse at 60% 0%, #1a8f8f 0%, #0d5e6e 30%, #083d50 60%, #052e3c 100%);
+    min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
