@@ -128,19 +128,18 @@ function LocationRow({ label, text }: { label: string; text: string }) {
       }}
     >
       <span
+        className="font-display"
         style={{
-          fontFamily: "Menlo, monospace",
-          fontSize: 10,
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
+          fontSize: 13,
+          letterSpacing: "0.01em",
           color: ACCENT,
           fontWeight: 700,
           flexShrink: 0,
         }}
       >
-        {label}
+        {label}:
       </span>
-      <span style={{ color: TEXT_BODY }}>{text}</span>
+      <span style={{ color: TEXT_BODY, fontFamily: "Inter, sans-serif" }}>{text}</span>
     </div>
   );
 }
