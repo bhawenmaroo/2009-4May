@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CssMolecule } from "@/components/CssMolecule";
 import { Tilt3D } from "@/components/Tilt3D";
 import { useParallax } from "@/hooks/useParallax";
 
@@ -662,46 +661,6 @@ export default function Home() {
                 EXPLORE AGRI →
               </span>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── QUOTE with floating molecules ─── */}
-      <section className="relative px-6 md:px-12 py-28 overflow-hidden" style={{ background: BG }}>
-        <div
-          className="absolute pointer-events-none opacity-40"
-          style={{ left: "-120px", top: "50%", transform: "translateY(-50%)", width: 360, height: 360 }}
-        >
-          <CssMolecule size={340} nodeCount={20} />
-        </div>
-        <div
-          className="absolute pointer-events-none opacity-40"
-          style={{ right: "-120px", top: "50%", transform: "translateY(-50%)", width: 360, height: 360 }}
-        >
-          <CssMolecule size={340} nodeCount={20} />
-        </div>
-        <div className="max-w-3xl mx-auto reveal text-center relative" style={{ zIndex: 2 }}>
-          <p
-            className="font-display"
-            style={{
-              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-              lineHeight: 1.25,
-              fontWeight: 500,
-              color: TEXT_DARK,
-              marginBottom: 28,
-              letterSpacing: "-0.015em",
-            }}
-          >
-            “Biology is the most powerful manufacturing platform on Earth — Indibiotek exists to make it work for everyone.”
-          </p>
-          <div
-            style={{
-              fontFamily: "Menlo, monospace",
-              fontSize: 11, fontWeight: 700, color: ACCENT,
-              letterSpacing: "0.18em", textTransform: "uppercase",
-            }}
-          >
-            — Indibiotek Leadership
           </div>
         </div>
       </section>
