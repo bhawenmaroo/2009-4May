@@ -7,13 +7,6 @@ const VALUES = [
   { title: "Inclusion", desc: "Diverse minds collaborating to solve problems that affect everyone." },
 ];
 
-const FACTS = [
-  { num: "15+", label: "Active research pipelines" },
-  { num: "3",   label: "Operating divisions" },
-  { num: "120+", label: "Scientists & engineers" },
-  { num: "20+", label: "Industry partners" },
-];
-
 type Person = {
   name: string;
   role: string;
@@ -215,9 +208,9 @@ export default function About() {
       heroImage="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?"
     >
       <section className="px-8 md:px-16 py-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-          <div className="lg:col-span-7 page-reveal">
-            <GlassCard style={{ padding: 36, height: "100%" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="page-reveal">
+            <GlassCard style={{ padding: 40 }}>
               <SectionHeading eyebrow="Our Story" title="From laboratory to landscape." />
               <p style={{ color: "rgba(14,42,28,0.80)", fontSize: "1.05rem", lineHeight: 1.8, fontWeight: 300, marginBottom: 16 }}>
                 Founded by scientists and entrepreneurs with decades of combined experience across biotechnology, healthcare and agriculture, Indibiotek was created to bridge the gap between deep science and commercial viability.
@@ -226,16 +219,6 @@ export default function About() {
                 We believe biology is the most powerful manufacturing platform on Earth — one that can decarbonise industries, restore ecosystems, feed populations and heal diseases. Our work spans every step of that translation.
               </p>
             </GlassCard>
-          </div>
-          <div className="lg:col-span-5 page-reveal grid grid-cols-2 gap-4">
-            {FACTS.map((f) => (
-              <GlassCard key={f.label} style={{ padding: 24 }}>
-                <div className="font-display" style={{ fontSize: "2rem", fontWeight: 700, color: "#0B6A4D", marginBottom: 6, letterSpacing: "-0.02em" }}>
-                  {f.num}
-                </div>
-                <div style={{ color: "rgba(14,42,28,0.65)", fontSize: 13, lineHeight: 1.5 }}>{f.label}</div>
-              </GlassCard>
-            ))}
           </div>
         </div>
       </section>
