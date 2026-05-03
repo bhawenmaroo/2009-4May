@@ -330,9 +330,9 @@ export default function Home() {
       </section>
 
       {/* ─── DIVISIONS — light cards on alt bg ─── */}
-      <section className="relative px-6 md:px-12 py-28" style={{ background: BG_ALT }}>
+      <section className="relative px-6 md:px-12 pt-16 pb-20" style={{ background: BG_ALT }}>
         <div className="max-w-[1180px] mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
             <div>
               <div
                 className="reveal"
@@ -377,13 +377,13 @@ export default function Home() {
                   <div
                     className="reveal cursor-pointer relative overflow-hidden flex flex-col"
                     style={{
-                      padding: 28, height: "100%", minHeight: 320, borderRadius: 16,
+                      padding: 24, height: "100%", minHeight: 260, borderRadius: 16,
                       background: "#FFFFFF",
                       border: "1px solid rgba(14,42,28,0.08)",
                       boxShadow: "0 1px 0 rgba(255,255,255,1) inset, 0 8px 24px rgba(14,42,28,0.06)",
                     }}
                   >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
                       <div
                         style={{
                           fontFamily: "Menlo, monospace",
@@ -404,11 +404,11 @@ export default function Home() {
                     {/* Division logo */}
                     <div
                       style={{
-                        height: 96,
+                        height: 72,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "flex-start",
-                        marginBottom: 18,
+                        marginBottom: 12,
                       }}
                     >
                       <img
@@ -425,7 +425,7 @@ export default function Home() {
 
                     <p style={{
                       color: TEXT_BODY, fontSize: 14.5, lineHeight: 1.65,
-                      fontWeight: 400, marginBottom: 20, flex: 1,
+                      fontWeight: 400, marginBottom: 14, flex: 1,
                     }}>
                       {d.desc}
                     </p>
