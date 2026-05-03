@@ -14,7 +14,6 @@ import Careers from "@/pages/Careers";
 import Contact from "@/pages/Contact";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Scene } from "@/components/Scene";
 import { CursorParallaxProvider } from "@/components/CursorParallax";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
@@ -53,7 +52,6 @@ function App() {
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <CursorParallaxProvider>
             <ScrollToTop />
-            <Scene />
             <Navbar />
             <main className="relative z-10">
               <Router />
