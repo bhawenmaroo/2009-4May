@@ -16,6 +16,7 @@ export default function Scientific() {
       title="A laboratory partner you can build on."
       intro="Our scientific services arm provides regulated, high-quality analytical and research capabilities to industry, government and academic clients."
       heroImage="https://images.unsplash.com/photo-1579165466949-3180a3d056d5?"
+      logo="/divisions/scientific.png"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto">

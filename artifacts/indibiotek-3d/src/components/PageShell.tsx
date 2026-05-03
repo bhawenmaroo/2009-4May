@@ -6,12 +6,14 @@ export function PageShell({
   title,
   intro,
   heroImage,
+  logo,
   children,
 }: {
   eyebrow: string;
   title: string;
   intro?: string;
   heroImage?: string;
+  logo?: string;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,6 +45,28 @@ export function PageShell({
         }}
       >
         <div className="max-w-6xl mx-auto relative">
+          {logo && (
+            <div
+              className="page-reveal"
+              style={{
+                marginBottom: 28,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
+              <img
+                src={logo}
+                alt={eyebrow}
+                style={{
+                  height: "clamp(80px, 11vw, 132px)",
+                  width: "auto",
+                  maxWidth: "min(440px, 80%)",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+          )}
           <div
             className="page-reveal"
             style={{

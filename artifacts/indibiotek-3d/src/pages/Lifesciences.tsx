@@ -16,6 +16,7 @@ export default function Lifesciences() {
       title="From molecule to medicine."
       intro="Our lifesciences division engineers therapeutics, diagnostics and biopharmaceutical processes — built on rigorous science and modern manufacturing."
       heroImage="https://images.unsplash.com/photo-1576086213369-97a306d36557?"
+      logo="/divisions/lifesciences.png"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto">
