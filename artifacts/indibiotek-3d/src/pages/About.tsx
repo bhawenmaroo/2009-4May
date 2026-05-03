@@ -383,12 +383,13 @@ export default function About() {
               >
                 <div
                   style={{
-                    height: 130,
+                    height: 180,
                     width: "100%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginBottom: 18,
+                    marginBottom: 22,
+                    padding: "0 8px",
                   }}
                 >
                   <img
