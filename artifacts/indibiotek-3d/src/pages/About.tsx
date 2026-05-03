@@ -89,6 +89,113 @@ function initialsOf(name: string) {
   return (first + last).toUpperCase();
 }
 
+function LeaderCard({ p, num }: { p: Person; num: string }) {
+  const DARK = "#0E1C14";
+  return (
+    <div
+      className="page-reveal"
+      style={{
+        background: `linear-gradient(180deg, #102218 0%, ${DARK} 100%)`,
+        border: "1px solid rgba(200,255,77,0.14)",
+        borderRadius: 20,
+        overflow: "hidden",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        boxShadow: "0 18px 44px rgba(14,42,28,0.22)",
+        position: "relative",
+      }}
+      data-testid={`person-${p.name.toLowerCase().replace(/[^a-z]/g, "")}`}
+    >
+      {/* Photo block — large rectangular */}
+      <div
+        style={{
+          width: "100%",
+          aspectRatio: "1 / 1",
+          background: p.photo
+            ? `linear-gradient(180deg, rgba(14,28,20,0) 55%, rgba(14,28,20,0.55) 100%), url("${p.photo}") center 18% / cover no-repeat`
+            : `linear-gradient(135deg, ${ACCENT_BRIGHT} 0%, ${ACCENT} 100%)`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#FFFFFF",
+          fontFamily: "var(--app-font-display, 'Outfit', sans-serif)",
+          fontWeight: 600,
+          fontSize: 56,
+          letterSpacing: "0.02em",
+          position: "relative",
+        }}
+      >
+        {!p.photo && initialsOf(p.name)}
+        {/* index */}
+        <div
+          style={{
+            position: "absolute",
+            top: 14,
+            left: 16,
+            fontFamily: "Menlo, monospace",
+            fontSize: 10.5,
+            letterSpacing: "0.22em",
+            color: LIME,
+            fontWeight: 700,
+            background: "rgba(14,28,20,0.55)",
+            padding: "4px 8px",
+            borderRadius: 6,
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          — {num}
+        </div>
+        {/* lime corner dot */}
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            right: 16,
+            width: 8,
+            height: 8,
+            borderRadius: "50%",
+            background: LIME,
+            boxShadow: `0 0 12px ${LIME}`,
+          }}
+        />
+      </div>
+
+      {/* Body */}
+      <div style={{ padding: "22px 22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
+        {/* lime hairline */}
+        <div style={{ width: 28, height: 2, background: LIME, marginBottom: 14, boxShadow: `0 0 10px ${LIME}` }} />
+        <h4
+          className="font-display"
+          style={{
+            fontSize: "1.2rem",
+            fontWeight: 700,
+            color: "#FFFFFF",
+            letterSpacing: "-0.01em",
+            marginBottom: 6,
+            lineHeight: 1.2,
+          }}
+        >
+          {p.name}
+        </h4>
+        <p
+          style={{
+            color: LIME,
+            fontFamily: "Menlo, monospace",
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            lineHeight: 1.4,
+          }}
+        >
+          {p.role}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function PersonCard({ p, num }: { p: Person; num: string }) {
   return (
     <div
@@ -347,7 +454,7 @@ export default function About() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {LEADERSHIP.map((p, i) => (
-              <PersonCard key={p.name} p={p} num={String(i + 1).padStart(2, "0")} />
+              <LeaderCard key={p.name} p={p} num={String(i + 1).padStart(2, "0")} />
             ))}
           </div>
         </div>
