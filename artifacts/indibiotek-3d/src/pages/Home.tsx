@@ -629,26 +629,26 @@ export default function Home() {
               textTransform: "uppercase", color: ACCENT,
               marginBottom: 14,
             }}>
-              — 05 / Agriculture
+              — 05 / Scientific
             </div>
             <h2 className="font-display mb-4" style={{
               fontSize: "clamp(1.8rem, 3.4vw, 2.6rem)",
               lineHeight: 1.05, letterSpacing: "-0.02em",
               fontWeight: 700, color: TEXT_DARK, maxWidth: "14ch",
             }}>
-              Biology that <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>grows</span> with the planet.
+              Precision <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>science</span>, on demand.
             </h2>
             <p style={{ color: TEXT_BODY, fontSize: "1.05rem", lineHeight: 1.7, fontWeight: 400, marginBottom: 20, maxWidth: 520 }}>
-              Biofertilizers, biopesticides and crop biotechnology that help farmers grow more food with fewer chemicals, less water and healthier soils.
+              Analytical testing, contract research and laboratory services — delivering accurate, audit-ready data for industry, academia and regulatory programmes.
             </p>
-            <Link href="/agri">
+            <Link href="/scientific">
               <span className="cursor-pointer inline-flex items-center" style={{
                 height: 44, padding: "0 18px", borderRadius: 10,
                 background: DARK_BG, color: "#FFF",
                 fontSize: 11.5, fontWeight: 700, letterSpacing: "0.10em",
                 fontFamily: "Menlo, monospace",
               }}>
-                EXPLORE AGRI →
+                EXPLORE SCIENTIFIC →
               </span>
             </Link>
           </div>
