@@ -706,6 +706,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── RECOGNISED BY — Government of India affiliations ─── */}
+      <section className="relative px-6 md:px-12 pt-20 pb-12" style={{ background: BG }}>
+        <div className="max-w-[1180px] mx-auto reveal">
+          <div
+            style={{
+              fontFamily: "Menlo, monospace",
+              fontSize: 11, letterSpacing: "0.22em",
+              textTransform: "uppercase", color: ACCENT,
+              marginBottom: 14, textAlign: "center",
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 12,
+            }}
+          >
+            <span style={{ width: 28, height: 1, background: ACCENT }} />
+            — Recognised by
+            <span style={{ width: 28, height: 1, background: ACCENT }} />
+          </div>
+          <h3
+            className="font-display"
+            style={{
+              fontSize: "clamp(1.4rem, 2.4vw, 2rem)",
+              lineHeight: 1.15, fontWeight: 600, color: TEXT_DARK,
+              letterSpacing: "-0.015em", textAlign: "center",
+              marginBottom: 36, maxWidth: "28ch", margin: "0 auto 36px",
+            }}
+          >
+            Government of India affiliations & accreditations.
+          </h3>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 24,
+              alignItems: "center",
+              maxWidth: 920,
+              margin: "0 auto",
+            }}
+          >
+            {[
+              { src: "/affiliations/startup-india.png", alt: "Recognised under Startup India — Department for Promotion of Industry and Internal Trade" },
+              { src: "/affiliations/msme.png",          alt: "MSME registered — Ministry of Micro, Small & Medium Enterprises, Government of India" },
+              { src: "/affiliations/make-in-india.png", alt: "Make in India initiative" },
+            ].map((a) => (
+              <div
+                key={a.src}
+                style={{
+                  background: "#FFFFFF",
+                  border: "1px solid rgba(14,42,28,0.08)",
+                  borderRadius: 14,
+                  padding: "22px 18px",
+                  height: 130,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 1px 0 rgba(255,255,255,1) inset, 0 6px 18px rgba(14,42,28,0.05)",
+                }}
+              >
+                <img
+                  src={a.src}
+                  alt={a.alt}
+                  style={{
+                    maxHeight: "100%",
+                    maxWidth: "100%",
+                    width: "auto",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── FINAL CTA — dark monolith with lime button ─── */}
       <section className="relative px-6 md:px-12 py-24" style={{ background: BG }}>
         <Tilt3D className="max-w-[1180px] mx-auto reveal relative" max={3} scale={1.005}>
