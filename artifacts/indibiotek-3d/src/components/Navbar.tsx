@@ -105,44 +105,6 @@ export function Navbar() {
         {/* Spacer */}
         <div className="flex-1 hidden md:block" />
 
-        {/* Ask Indibiotek search bar — only on very wide screens */}
-        <div
-          className="hidden 2xl:flex items-center"
-          style={{
-            background: "rgba(14,42,28,0.05)",
-            border: "1px solid rgba(14,42,28,0.10)",
-            borderRadius: 999,
-            padding: "0 14px",
-            height: 38,
-            gap: 8,
-            minWidth: 200,
-            color: TEXT_BODY,
-            fontSize: 12.5,
-            fontFamily: "Menlo, monospace",
-          }}
-          data-testid="search-ask"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2 L13.5 9 L20.5 10.5 L13.5 12 L12 19 L10.5 12 L3.5 10.5 L10.5 9 Z"
-              fill={ACCENT}
-              opacity="0.95"
-            />
-            <circle cx="19" cy="5" r="1.5" fill={ACCENT} opacity="0.7" />
-            <circle cx="4.5" cy="17" r="1" fill={ACCENT} opacity="0.5" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Ask Indibiotek"
-            className="bg-transparent outline-none border-0"
-            style={{
-              flex: 1, minWidth: 0,
-              color: TEXT_DARK, fontSize: 12.5, fontFamily: "inherit",
-            }}
-          />
-          <span style={{ color: TEXT_BODY, fontSize: 14 }}>→</span>
-        </div>
-
         {/* Phone — WhatsApp */}
         <a
           href="https://wa.me/919608768647"
