@@ -128,7 +128,7 @@ function PersonCard({ p, num }: { p: Person; num: string }) {
         style={{
           width: 132, height: 132, borderRadius: "50%",
           background: p.photo
-            ? `url("${p.photo}") center/cover no-repeat`
+            ? `url("${p.photo}") center 20% / cover no-repeat`
             : `linear-gradient(135deg, ${ACCENT_BRIGHT} 0%, ${ACCENT} 100%)`,
           border: "3px solid #FFFFFF",
           boxShadow: `0 0 0 1px rgba(20,181,126,0.30), 0 12px 28px rgba(14,42,28,0.18)`,
