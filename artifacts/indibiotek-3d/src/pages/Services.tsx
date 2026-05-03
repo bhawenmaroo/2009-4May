@@ -1,45 +1,219 @@
 import { PageShell, GlassCard, SectionHeading } from "@/components/PageShell";
 
-const HEALTHCARE = [
-  { title: "Diagnostic Platforms", desc: "Affordable, accurate molecular and immuno-diagnostic systems for clinical settings." },
-  { title: "Therapeutic Development", desc: "Co-development of biologics and small molecules for unmet medical needs." },
-  { title: "Hospital & Clinic Partnerships", desc: "Long-term collaborations enabling translational and outcomes research." },
+const OFFERINGS = [
+  {
+    n: "01",
+    title: "Nucleic Acid Services",
+    items: [
+      "DNA / RNA Oligo Synthesis",
+      "DNA & RNA Purification",
+      "PCR Solutions",
+    ],
+  },
+  {
+    n: "02",
+    title: "Gene Expression & Cloning",
+    items: [
+      "Gene Expression Analysis",
+      "Cloning & Subcloning",
+      "TA Cloning and Screening",
+    ],
+  },
+  {
+    n: "03",
+    title: "Protein Engineering",
+    items: [
+      "Site-Directed Mutagenesis",
+      "Recombinant Protein Expression",
+      "Recombinant Protein Purification",
+    ],
+  },
+  {
+    n: "04",
+    title: "Protein Analysis",
+    items: [
+      "Western Blot Analysis",
+      "Enzyme Kinetics",
+    ],
+  },
+  {
+    n: "05",
+    title: "Multi-Omics Studies",
+    items: [
+      "Genomics & Epigenomics",
+      "Transcriptomics",
+      "Microbiome & Metagenomics",
+      "Proteomics & Metabolomics Integration Studies",
+      "Pharmacogenomics & Toxicogenomics",
+    ],
+  },
+  {
+    n: "06",
+    title: "Genome Editing & Bioinformatics",
+    items: [
+      "Oncology Genomics",
+      "CRISPR & Genome Editing Services",
+      "Multi-Omics Integration",
+      "Bioinformatics & Data Analysis",
+      "Agricultural & Environmental Omics",
+    ],
+  },
+  {
+    n: "07",
+    title: "Custom Synthesis & Reagents",
+    items: [
+      "Gene & Peptide Synthesis",
+      "Custom Antibodies",
+      "Customised Reagents",
+    ],
+  },
 ];
 
-const WASTE = [
-  { title: "Bioremediation", desc: "Microbial systems for soil and water remediation in industrial and municipal contexts." },
-  { title: "Organic Waste-to-Value", desc: "Conversion of agricultural and food waste into bio-based fertilisers and feedstocks." },
-  { title: "Circular Bioeconomy", desc: "Designing closed-loop processes that minimise waste and maximise resource recovery." },
-];
+const ACCENT = "#0B6A4D";
+const TEXT_DARK = "#0E2A1C";
+const TEXT_BODY = "rgba(14,42,28,0.72)";
+const LIME = "#C8FF4D";
 
 export default function Services() {
   return (
     <PageShell
-      eyebrow="Healthcare & Waste Management"
-      title="Applied biology for human and planetary health."
-      intro="Beyond discovery, we design and deliver services that improve clinical outcomes and restore environmental balance — at industrial scale."
+      eyebrow="Services"
+      title="What we offer."
+      intro="A complete molecular biology and multi-omics services portfolio — from oligo synthesis and cloning to CRISPR, bioinformatics and custom reagents — delivered end-to-end."
       heroImage="https://images.unsplash.com/photo-1559757175-5700dde675bc?"
     >
       <section className="px-8 md:px-16 py-12">
         <div className="max-w-6xl mx-auto">
-          <SectionHeading eyebrow="Healthcare" title="Better diagnostics. Better therapies." />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
-            {HEALTHCARE.map((s) => (
-              <GlassCard key={s.title} style={{ padding: 28 }} className="page-reveal">
-                <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 10 }}>{s.title}</h3>
-                <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 14.5, lineHeight: 1.7, fontWeight: 300 }}>{s.desc}</p>
+          <SectionHeading eyebrow="What we offer" title="Seven service tracks. One integrated lab." />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {OFFERINGS.map((o) => (
+              <GlassCard
+                key={o.n}
+                style={{ padding: 28, position: "relative" }}
+                className="page-reveal"
+              >
+                {/* mono index */}
+                <span
+                  style={{
+                    position: "absolute",
+                    top: 18,
+                    right: 22,
+                    fontFamily: "Menlo, monospace",
+                    fontSize: 11,
+                    letterSpacing: "0.18em",
+                    color: ACCENT,
+                    fontWeight: 700,
+                  }}
+                >
+                  — {o.n}
+                </span>
+
+                <h3
+                  className="font-display"
+                  style={{
+                    fontSize: "1.18rem",
+                    fontWeight: 600,
+                    color: TEXT_DARK,
+                    marginBottom: 16,
+                    paddingRight: 40,
+                    letterSpacing: "-0.005em",
+                  }}
+                >
+                  {o.title}
+                </h3>
+
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {o.items.map((it) => (
+                    <li
+                      key={it}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 10,
+                        padding: "6px 0",
+                        color: TEXT_BODY,
+                        fontSize: 14,
+                        lineHeight: 1.55,
+                        fontWeight: 400,
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: 5,
+                          height: 5,
+                          borderRadius: "50%",
+                          background: LIME,
+                          boxShadow: `0 0 8px ${LIME}`,
+                          marginTop: 8,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
               </GlassCard>
             ))}
           </div>
 
-          <SectionHeading eyebrow="Waste Management" title="Closing the loop with biology." />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {WASTE.map((s) => (
-              <GlassCard key={s.title} style={{ padding: 28 }} className="page-reveal">
-                <h3 className="font-display" style={{ fontSize: "1.15rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 10 }}>{s.title}</h3>
-                <p style={{ color: "rgba(14,42,28,0.65)", fontSize: 14.5, lineHeight: 1.7, fontWeight: 300 }}>{s.desc}</p>
-              </GlassCard>
-            ))}
+          {/* CTA */}
+          <div
+            style={{
+              marginTop: 56,
+              padding: "32px 36px",
+              background: "rgba(255,255,255,0.7)",
+              border: "1px solid rgba(20,181,126,0.22)",
+              borderRadius: 20,
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 20,
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  fontFamily: "Menlo, monospace",
+                  fontSize: 11,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: ACCENT,
+                  marginBottom: 6,
+                  fontWeight: 700,
+                }}
+              >
+                Need a custom workflow?
+              </div>
+              <div
+                className="font-display"
+                style={{ fontSize: "1.25rem", fontWeight: 600, color: TEXT_DARK }}
+              >
+                Talk to our scientists about your project.
+              </div>
+            </div>
+            <a
+              href="https://wa.me/919608768647"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: "#0E1C14",
+                color: LIME,
+                padding: "14px 26px",
+                borderRadius: 999,
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              Contact us →
+            </a>
           </div>
         </div>
       </section>
