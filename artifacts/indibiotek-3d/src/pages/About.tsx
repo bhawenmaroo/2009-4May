@@ -73,6 +73,7 @@ const ADVISORS: Person[] = [
     name: "Dr. Rajendra Kumar Dubey",
     role: "Regulatory and Compliance",
     org: "Biocon — QA & QC Head",
+    photo: "/team/rajendra-kumar-dubey.png",
   },
   {
     name: "Dr. Subba Reddy",
