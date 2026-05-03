@@ -15,6 +15,7 @@ import Contact from "@/pages/Contact";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CursorParallaxProvider } from "@/components/CursorParallax";
+import { AtomCursor } from "@/components/AtomCursor";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
@@ -57,6 +58,7 @@ function App() {
               <Router />
             </main>
             <Footer />
+            <AtomCursor />
           </CursorParallaxProvider>
         </WouterRouter>
         <Toaster />
