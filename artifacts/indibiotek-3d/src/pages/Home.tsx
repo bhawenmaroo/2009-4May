@@ -20,9 +20,9 @@ const PIPETTE_IMG =
   "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1400&q=85&auto=format&fit=crop";
 
 const DIVISIONS = [
-  { title: "Lifesciences",          desc: "Drug discovery, biopharmaceutical development and translational research.", href: "/lifesciences", num: "01" },
-  { title: "Scientific Services",   desc: "Analytical testing, contract research and laboratory services.",            href: "/scientific",    num: "02" },
-  { title: "Agriculture",           desc: "Crop biotechnology, biofertilizers and sustainable precision farming.",     href: "/agri",          num: "03" },
+  { title: "Lifesciences",          desc: "Drug discovery, biopharmaceutical development and translational research.", href: "/lifesciences", num: "01", logo: "/divisions/lifesciences.png" },
+  { title: "Scientific Services",   desc: "Analytical testing, contract research and laboratory services.",            href: "/scientific",    num: "02", logo: "/divisions/scientific.png" },
+  { title: "Agriculture",           desc: "Crop biotechnology, biofertilizers and sustainable precision farming.",     href: "/agri",          num: "03", logo: "/divisions/agri.png" },
 ];
 
 const PILLARS = [
@@ -304,15 +304,15 @@ export default function Home() {
               <Link key={d.title} href={d.href} data-testid={`card-division-${d.title.toLowerCase().replace(/\s/g, "")}`}>
                 <Tilt3D max={10} scale={1.015}>
                   <div
-                    className="reveal cursor-pointer relative overflow-hidden"
+                    className="reveal cursor-pointer relative overflow-hidden flex flex-col"
                     style={{
-                      padding: 28, height: "100%", minHeight: 240, borderRadius: 16,
+                      padding: 28, height: "100%", minHeight: 320, borderRadius: 16,
                       background: "#FFFFFF",
                       border: "1px solid rgba(14,42,28,0.08)",
                       boxShadow: "0 1px 0 rgba(255,255,255,1) inset, 0 8px 24px rgba(14,42,28,0.06)",
                     }}
                   >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
                       <div
                         style={{
                           fontFamily: "Menlo, monospace",
@@ -329,15 +329,32 @@ export default function Home() {
                         }}
                       />
                     </div>
-                    <h3 className="font-display" style={{
-                      fontSize: "1.5rem", fontWeight: 600, color: TEXT_DARK,
-                      marginBottom: 12, letterSpacing: "-0.015em",
-                    }}>
-                      {d.title}
-                    </h3>
+
+                    {/* Division logo */}
+                    <div
+                      style={{
+                        height: 96,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
+                        marginBottom: 18,
+                      }}
+                    >
+                      <img
+                        src={d.logo}
+                        alt={`Indibiotek ${d.title}`}
+                        style={{
+                          maxHeight: "100%",
+                          maxWidth: "100%",
+                          width: "auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+
                     <p style={{
                       color: TEXT_BODY, fontSize: 14.5, lineHeight: 1.65,
-                      fontWeight: 400, marginBottom: 20, minHeight: 60,
+                      fontWeight: 400, marginBottom: 20, flex: 1,
                     }}>
                       {d.desc}
                     </p>
