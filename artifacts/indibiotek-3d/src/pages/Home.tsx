@@ -406,18 +406,18 @@ export default function Home() {
                     {/* Division logo */}
                     <div
                       style={{
-                        height: 72,
+                        height: 110,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "flex-start",
-                        marginBottom: 12,
+                        marginBottom: 14,
                       }}
                     >
                       <img
                         src={d.logo}
                         alt={`Indibiotek ${d.title}`}
                         style={{
-                          maxHeight: "100%",
+                          height: "100%",
                           maxWidth: "100%",
                           width: "auto",
                           objectFit: "contain",
