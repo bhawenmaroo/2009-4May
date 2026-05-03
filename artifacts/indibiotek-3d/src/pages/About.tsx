@@ -283,7 +283,7 @@ export default function About() {
       heroImage="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?"
     >
       {/* ─── CREDENTIALS & RECOGNITION ─── */}
-      <section className="px-8 md:px-16 py-20">
+      <section className="px-5 sm:px-8 md:px-16 py-14 sm:py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center" style={{ marginBottom: 48 }}>
             <div
@@ -354,7 +354,7 @@ export default function About() {
               >
                 <div
                   style={{
-                    height: 230,
+                    height: "clamp(160px, 30vw, 230px)",
                     width: "100%",
                     display: "flex",
                     alignItems: "center",
@@ -385,7 +385,7 @@ export default function About() {
       </section>
 
       {/* ─── LEADERSHIP TEAM ─── */}
-      <section className="px-8 md:px-16 py-20" style={{ background: "rgba(20,181,126,0.04)" }}>
+      <section className="px-5 sm:px-8 md:px-16 py-14 sm:py-20" style={{ background: "rgba(20,181,126,0.04)" }}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center" style={{ marginBottom: 56 }}>
             <div
@@ -429,7 +429,7 @@ export default function About() {
       </section>
 
       {/* ─── BOARD OF ADVISORS ─── */}
-      <section className="px-8 md:px-16 py-20">
+      <section className="px-5 sm:px-8 md:px-16 py-14 sm:py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center" style={{ marginBottom: 56 }}>
             <div
@@ -472,7 +472,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-8 md:px-16 py-16" style={{ background: "rgba(20,181,126,0.04)" }}>
+      <section className="px-5 sm:px-8 md:px-16 py-12 sm:py-16" style={{ background: "rgba(20,181,126,0.04)" }}>
         <div className="max-w-6xl mx-auto">
           <SectionHeading eyebrow="Our Values" title="What guides every decision." align="center" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">

@@ -11,10 +11,10 @@ export default function Contact() {
       intro="Reach out to discuss collaborations, partnerships, scientific services or career opportunities. Our team responds within two working days."
       heroImage="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?"
     >
-      <section className="px-8 md:px-16 py-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <section className="px-5 sm:px-8 md:px-16 py-10 sm:py-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           <div className="lg:col-span-7 page-reveal">
-            <GlassCard style={{ padding: 36 }}>
+            <GlassCard style={{ padding: "clamp(20px, 4vw, 36px)" }}>
               <SectionHeading eyebrow="Send a Message" title="We'd love to hear from you." />
               {submitted ? (
                 <div
@@ -136,7 +136,7 @@ export default function Contact() {
           </div>
 
           <div className="lg:col-span-5 page-reveal space-y-4">
-            <GlassCard style={{ padding: 28 }}>
+            <GlassCard style={{ padding: "clamp(20px, 4vw, 28px)" }}>
               <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 14 }}>
                 Headquarters
               </h3>
@@ -146,7 +146,7 @@ export default function Contact() {
               </p>
             </GlassCard>
 
-            <GlassCard style={{ padding: 28 }}>
+            <GlassCard style={{ padding: "clamp(20px, 4vw, 28px)" }}>
               <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 14 }}>
                 Email
               </h3>
@@ -159,7 +159,7 @@ export default function Contact() {
               </a>
             </GlassCard>
 
-            <GlassCard style={{ padding: 28 }}>
+            <GlassCard style={{ padding: "clamp(20px, 4vw, 28px)" }}>
               <h3 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 600, color: "#0E2A1C", marginBottom: 14 }}>
                 Departments
               </h3>

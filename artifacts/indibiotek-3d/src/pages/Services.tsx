@@ -82,7 +82,7 @@ export default function Services() {
       intro="A complete molecular biology and multi-omics services portfolio — from oligo synthesis and cloning to CRISPR, bioinformatics and custom reagents — delivered end-to-end."
       heroImage="https://images.unsplash.com/photo-1559757175-5700dde675bc?"
     >
-      <section className="px-8 md:px-16 pb-12" style={{ marginTop: -120, position: "relative", zIndex: 2 }}>
+      <section className="px-5 sm:px-8 md:px-16 pb-12 mt-0 sm:-mt-16 md:-mt-24 lg:-mt-32" style={{ position: "relative", zIndex: 2 }}>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {OFFERINGS.map((o) => (
@@ -158,8 +158,8 @@ export default function Services() {
           {/* CTA */}
           <div
             style={{
-              marginTop: 56,
-              padding: "32px 36px",
+              marginTop: 48,
+              padding: "clamp(22px, 4vw, 32px) clamp(20px, 4vw, 36px)",
               background: "rgba(255,255,255,0.7)",
               border: "1px solid rgba(20,181,126,0.22)",
               borderRadius: 20,
@@ -167,7 +167,7 @@ export default function Services() {
               flexWrap: "wrap",
               alignItems: "center",
               justifyContent: "space-between",
-              gap: 20,
+              gap: 18,
             }}
           >
             <div>

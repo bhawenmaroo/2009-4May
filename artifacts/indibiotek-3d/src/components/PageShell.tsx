@@ -34,9 +34,9 @@ export function PageShell({
     <div ref={ref} className="min-h-screen">
       {/* Page hero with optional image */}
       <section
-        className="relative pt-40 pb-24 px-6 md:px-12 overflow-hidden"
+        className="relative pt-28 sm:pt-36 md:pt-40 pb-14 sm:pb-20 md:pb-24 px-5 sm:px-6 md:px-12 overflow-hidden"
         style={{
-          minHeight: "60vh",
+          minHeight: "clamp(420px, 52vh, 640px)",
           backgroundImage: heroImage
             ? `linear-gradient(180deg, rgba(244,248,245,0.55) 0%, rgba(244,248,245,0.85) 70%, rgba(244,248,245,1) 100%), url("${heroImage}&w=1800&q=80&auto=format&fit=crop")`
             : "linear-gradient(180deg, #ECF3EE 0%, #F4F8F5 100%)",
@@ -59,7 +59,7 @@ export function PageShell({
                 src={logo}
                 alt={eyebrow}
                 style={{
-                  height: "clamp(80px, 11vw, 132px)",
+                  height: "clamp(64px, 11vw, 132px)",
                   width: "auto",
                   maxWidth: "min(440px, 80%)",
                   objectFit: "contain",
@@ -87,12 +87,12 @@ export function PageShell({
           <h1
             className="page-reveal font-display"
             style={{
-              fontSize: "clamp(2rem, 4.5vw, 3.6rem)",
-              lineHeight: 1.05,
+              fontSize: "clamp(1.75rem, 4.5vw, 3.6rem)",
+              lineHeight: 1.08,
               letterSpacing: "-0.02em",
               fontWeight: 700,
               color: "#0E2A1C",
-              marginBottom: 22,
+              marginBottom: 18,
               maxWidth: "22ch",
             }}
           >
@@ -103,8 +103,8 @@ export function PageShell({
               className="page-reveal"
               style={{
                 color: "rgba(14,42,28,0.72)",
-                fontSize: "1.05rem",
-                lineHeight: 1.7,
+                fontSize: "clamp(0.95rem, 1.6vw, 1.05rem)",
+                lineHeight: 1.65,
                 fontWeight: 400,
                 maxWidth: 640,
               }}

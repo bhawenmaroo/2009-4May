@@ -22,7 +22,7 @@ export function Footer() {
         borderTop: "1px solid rgba(20,181,126,0.18)",
       }}
     >
-      <div className="max-w-4xl mx-auto px-8 md:px-12 py-20 text-center">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 md:px-12 py-14 sm:py-20 text-center">
         {/* Logo */}
         <img
           src="/logo.png"
@@ -82,14 +82,16 @@ export function Footer() {
             <span
               key={loc}
               style={{
-                fontSize: 12.5,
+                fontSize: "clamp(11px, 2.6vw, 12.5px)",
                 lineHeight: 1.5,
                 color: TEXT_BODY,
                 background: "rgba(255,255,255,0.65)",
                 border: "1px solid rgba(20,181,126,0.20)",
-                borderRadius: 999,
+                borderRadius: 18,
                 padding: "8px 14px",
                 fontWeight: 500,
+                maxWidth: "100%",
+                overflowWrap: "anywhere",
               }}
             >
               {loc}
@@ -104,12 +106,13 @@ export function Footer() {
             flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center",
-            gap: 18,
-            padding: "16px 26px",
+            gap: 14,
+            padding: "14px 22px",
             background: "rgba(255,255,255,0.75)",
             border: "1px solid rgba(20,181,126,0.25)",
-            borderRadius: 999,
+            borderRadius: 22,
             marginBottom: 28,
+            maxWidth: "100%",
           }}
         >
           <span

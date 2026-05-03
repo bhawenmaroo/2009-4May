@@ -25,7 +25,7 @@ export default function Careers() {
       intro="We are hiring scientists, engineers and operators who want to do science that ships — and ships at scale."
       heroImage="https://images.unsplash.com/photo-1582719471384-894fbb16e074?"
     >
-      <section className="px-8 md:px-16 py-12">
+      <section className="px-5 sm:px-8 md:px-16 py-10 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <SectionHeading eyebrow="Why Indibiotek" title="What you can expect." />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
@@ -43,13 +43,13 @@ export default function Careers() {
               <div
                 key={r.title}
                 style={{
-                  padding: "20px 22px",
+                  padding: "18px 18px",
                   borderBottom: i < ROLES.length - 1 ? "1px solid rgba(20,181,126,0.12)" : "none",
                   display: "flex",
                   flexWrap: "wrap",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  gap: 16,
+                  gap: 14,
                 }}
               >
                 <div>

@@ -18,7 +18,7 @@ export default function Lifesciences() {
       heroImage="https://images.unsplash.com/photo-1576086213369-97a306d36557?"
       logo="/divisions/lifesciences.png"
     >
-      <section className="px-8 md:px-16 py-12">
+      <section className="px-5 sm:px-8 md:px-16 py-10 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <SectionHeading eyebrow="Programs" title="Capabilities across the value chain." />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

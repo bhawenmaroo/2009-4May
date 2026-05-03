@@ -65,7 +65,7 @@ export default function Home() {
       {/* ─── CINEMATIC HERO — single full-bleed photo, navbar floats over it, no text on top ─── */}
       <section
         className="relative w-full overflow-hidden"
-        style={{ height: "100vh", minHeight: 680, background: DARK_BG }}
+        style={{ height: "100svh", minHeight: 560, maxHeight: 980, background: DARK_BG }}
       >
         <div
           ref={heroBg}
@@ -90,7 +90,7 @@ export default function Home() {
         />
         {/* MAIN SOLUTIONS headline overlaid on the photo */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-6"
+          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-5 sm:px-6"
           style={{ zIndex: 2 }}
         >
           <div
@@ -115,9 +115,9 @@ export default function Home() {
             className="reveal font-display text-center"
             data-testid="hero-headline"
             style={{
-              fontSize: "clamp(2.4rem, 6.4vw, 6rem)",
-              lineHeight: 1.02,
-              letterSpacing: "-0.035em",
+              fontSize: "clamp(1.9rem, 6.4vw, 6rem)",
+              lineHeight: 1.06,
+              letterSpacing: "-0.03em",
               fontWeight: 700,
               color: "#FFFFFF",
               textShadow: "0 8px 40px rgba(0,0,0,0.55)",
@@ -129,9 +129,9 @@ export default function Home() {
           <div
             className="reveal text-center"
             style={{
-              marginTop: 26,
+              marginTop: 22,
               color: "rgba(255,255,255,0.88)",
-              fontSize: "1.08rem",
+              fontSize: "clamp(0.95rem, 2vw, 1.08rem)",
               lineHeight: 1.6,
               maxWidth: 580,
               fontWeight: 400,
@@ -145,13 +145,14 @@ export default function Home() {
         <div
           className="absolute"
           style={{
-            left: 32, bottom: 64,
+            left: 20, bottom: 28,
             color: "rgba(255,255,255,0.78)",
-            fontSize: 11,
+            fontSize: 10.5,
             letterSpacing: "0.20em",
             fontFamily: "Menlo, monospace",
             textTransform: "uppercase",
             zIndex: 2,
+            maxWidth: "calc(100% - 40px)",
           }}
         >
           <div style={{ marginBottom: 4, color: LIME }}>● Live R&amp;D</div>
@@ -178,8 +179,8 @@ export default function Home() {
 
       {/* ─── HUGE TYPOGRAPHIC STATEMENT — Terminal-style ─── */}
       <section
-        className="relative px-6 md:px-12"
-        style={{ background: BG, paddingTop: 120, paddingBottom: 32 }}
+        className="relative px-5 sm:px-6 md:px-12"
+        style={{ background: BG, paddingTop: "clamp(60px, 10vw, 120px)", paddingBottom: 32 }}
       >
         <div className="max-w-[1180px] mx-auto">
           {/* Prominent brand lockup */}
@@ -258,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* ─── RECOGNISED BY — Government of India affiliations ─── */}
-      <section className="relative px-6 md:px-12 pt-6 pb-12" style={{ background: BG }}>
+      <section className="relative px-5 sm:px-6 md:px-12 pt-6 pb-12" style={{ background: BG }}>
         <div className="max-w-[1180px] mx-auto reveal">
           <div
             style={{
@@ -285,10 +286,9 @@ export default function Home() {
             Government of India affiliations & accreditations.
           </h3>
           <div
+            className="grid grid-cols-1 sm:grid-cols-3"
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 24,
+              gap: 16,
               alignItems: "center",
               maxWidth: 920,
               margin: "0 auto",
@@ -306,7 +306,7 @@ export default function Home() {
                   border: "1px solid rgba(14,42,28,0.08)",
                   borderRadius: 14,
                   padding: "18px 22px",
-                  height: 230,
+                  height: "clamp(160px, 28vw, 230px)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -330,7 +330,7 @@ export default function Home() {
       </section>
 
       {/* ─── DIVISIONS — light cards on alt bg ─── */}
-      <section className="relative px-6 md:px-12 pt-16 pb-20" style={{ background: BG_ALT }}>
+      <section className="relative px-5 sm:px-6 md:px-12 pt-12 pb-14 sm:pt-16 sm:pb-20" style={{ background: BG_ALT }}>
         <div className="max-w-[1180px] mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
             <div>
@@ -446,7 +446,7 @@ export default function Home() {
       </section>
 
       {/* ─── DARK CINEMATIC FEATURE STRIP — like Terminal's secondary hero ─── */}
-      <section className="relative w-full overflow-hidden" style={{ background: DARK_BG, minHeight: 560 }}>
+      <section className="relative w-full overflow-hidden" style={{ background: DARK_BG, minHeight: 440 }}>
         <div
           ref={labParallax}
           className="absolute inset-0"
@@ -465,7 +465,7 @@ export default function Home() {
               "linear-gradient(90deg, rgba(14,28,20,0.92) 0%, rgba(14,28,20,0.55) 50%, rgba(14,28,20,0.30) 100%)",
           }}
         />
-        <div className="relative max-w-[1180px] mx-auto px-6 md:px-12 py-28 flex flex-col justify-center" style={{ minHeight: 560 }}>
+        <div className="relative max-w-[1180px] mx-auto px-5 sm:px-6 md:px-12 py-20 sm:py-28 flex flex-col justify-center" style={{ minHeight: 440 }}>
           <div
             className="reveal"
             style={{
@@ -519,7 +519,7 @@ export default function Home() {
       </section>
 
       {/* ─── PILLARS ─── */}
-      <section className="relative px-6 md:px-12 pt-16 pb-20" style={{ background: BG }}>
+      <section className="relative px-5 sm:px-6 md:px-12 pt-12 pb-14 sm:pt-16 sm:pb-20" style={{ background: BG }}>
         <div className="max-w-[1180px] mx-auto">
           <div
             className="reveal"
@@ -578,13 +578,13 @@ export default function Home() {
       </section>
 
       {/* ─── DUAL FEATURE — pipette + sprout zigzag ─── */}
-      <section className="relative px-6 md:px-12 pt-16 pb-20" style={{ background: BG_ALT }}>
-        <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
+      <section className="relative px-5 sm:px-6 md:px-12 pt-12 pb-14 sm:pt-16 sm:pb-20" style={{ background: BG_ALT }}>
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-10 items-center mb-10 sm:mb-16">
           <Tilt3D className="lg:col-span-6 reveal" max={6} scale={1.01}>
             <div style={{
               backgroundImage: `linear-gradient(135deg, rgba(14,28,20,0.05) 0%, rgba(14,28,20,0.25) 100%), url("${PIPETTE_IMG}")`,
               backgroundSize: "cover", backgroundPosition: "center",
-              borderRadius: 16, minHeight: 360,
+              borderRadius: 16, minHeight: "clamp(220px, 50vw, 360px)",
               border: "1px solid rgba(14,42,28,0.08)",
               boxShadow: "0 16px 40px rgba(14,42,28,0.10)",
             }} />
@@ -621,7 +621,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-10 items-center">
           <div className="lg:col-span-6 reveal lg:order-1 order-2">
             <div style={{
               fontFamily: "Menlo, monospace",
@@ -656,7 +656,7 @@ export default function Home() {
             <div style={{
               backgroundImage: `linear-gradient(135deg, rgba(14,28,20,0.05) 0%, rgba(14,28,20,0.25) 100%), url("${SPROUT_IMG}")`,
               backgroundSize: "cover", backgroundPosition: "center",
-              borderRadius: 16, minHeight: 360,
+              borderRadius: 16, minHeight: "clamp(220px, 50vw, 360px)",
               border: "1px solid rgba(14,42,28,0.08)",
               boxShadow: "0 16px 40px rgba(14,42,28,0.10)",
             }} />
@@ -665,7 +665,7 @@ export default function Home() {
       </section>
 
       {/* ─── FROM LAB TO FIELD — second cinematic strip ─── */}
-      <section className="relative w-full overflow-hidden" style={{ background: DARK_BG, minHeight: 560 }}>
+      <section className="relative w-full overflow-hidden" style={{ background: DARK_BG, minHeight: 440 }}>
         <div
           ref={fieldParallax}
           className="absolute inset-0"
@@ -684,7 +684,7 @@ export default function Home() {
               "linear-gradient(270deg, rgba(14,28,20,0.92) 0%, rgba(14,28,20,0.55) 50%, rgba(14,28,20,0.30) 100%)",
           }}
         />
-        <div className="relative max-w-[1180px] mx-auto px-6 md:px-12 py-28 flex flex-col justify-center items-end text-right" style={{ minHeight: 560 }}>
+        <div className="relative max-w-[1180px] mx-auto px-5 sm:px-6 md:px-12 py-20 sm:py-28 flex flex-col justify-center lg:items-end lg:text-right" style={{ minHeight: 440 }}>
           <div
             className="reveal"
             style={{
@@ -738,12 +738,13 @@ export default function Home() {
       </section>
 
       {/* ─── FINAL CTA — dark monolith with lime button ─── */}
-      <section className="relative px-6 md:px-12 pt-20 pb-8" style={{ background: BG }}>
+      <section className="relative px-5 sm:px-6 md:px-12 pt-14 sm:pt-20 pb-8" style={{ background: BG }}>
         <Tilt3D className="max-w-[1180px] mx-auto reveal relative" max={3} scale={1.005}>
           <div
             className="relative overflow-hidden"
             style={{
-              borderRadius: 20, padding: "80px 48px",
+              borderRadius: 20,
+              padding: "clamp(40px, 8vw, 80px) clamp(22px, 5vw, 48px)",
               background: DARK_BG,
               border: "1px solid rgba(255,255,255,0.06)",
               boxShadow: "0 30px 80px rgba(14,28,20,0.30)",

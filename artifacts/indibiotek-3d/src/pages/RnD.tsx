@@ -22,7 +22,7 @@ export default function RnD() {
       intro="Our R&D platform brings together molecular biology, computation and engineering — operating across the full path from hypothesis to product."
       heroImage="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?"
     >
-      <section className="px-8 md:px-16 py-12">
+      <section className="px-5 sm:px-8 md:px-16 py-10 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <SectionHeading eyebrow="Focus Areas" title="Four core capabilities." />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -38,7 +38,7 @@ export default function RnD() {
         </div>
       </section>
 
-      <section className="px-8 md:px-16 py-16">
+      <section className="px-5 sm:px-8 md:px-16 py-12 sm:py-16">
         <div className="max-w-6xl mx-auto">
           <SectionHeading eyebrow="Pipeline" title="From idea to impact." />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

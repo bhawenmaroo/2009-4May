@@ -34,17 +34,18 @@ export function Navbar() {
       data-testid="navbar"
       className="fixed left-1/2 z-50"
       style={{
-        top: 18,
+        top: 14,
         transform: "translateX(-50%)",
-        width: "calc(100% - 36px)",
+        width: "calc(100% - 20px)",
         maxWidth: 1180,
       }}
     >
       <div
         className="mx-auto flex items-center"
         style={{
-          padding: "8px 10px 8px 18px",
+          padding: "6px 8px 6px 12px",
           gap: 4,
+          minWidth: 0,
           background: scrolled ? "rgba(255,255,255,0.94)" : "rgba(255,255,255,0.85)",
           backdropFilter: "blur(22px)",
           WebkitBackdropFilter: "blur(22px)",
@@ -59,13 +60,14 @@ export function Navbar() {
         {/* Prominent logo */}
         <Link href="/" data-testid="link-logo">
           <div
-            className="cursor-pointer flex items-center"
-            style={{ marginRight: 14, padding: "2px 0" }}
+            className="cursor-pointer flex items-center min-w-0"
+            style={{ marginRight: 8, padding: "2px 0" }}
           >
             <img
               src="/logo.png"
               alt="Indibiotek — Biotech Solutions for People and Planet"
-              style={{ height: 38, width: "auto", display: "block" }}
+              className="h-7 sm:h-9"
+              style={{ width: "auto", display: "block", maxWidth: "100%" }}
             />
           </div>
         </Link>
@@ -125,22 +127,30 @@ export function Navbar() {
           </svg>
         </a>
 
+        {/* Spacer for mobile to push controls to the right */}
+        <div className="flex-1 md:hidden" />
+
         {/* CONTACT — opens WhatsApp */}
         <a
           href="https://wa.me/919608768647"
           target="_blank"
           rel="noopener noreferrer"
           data-testid="link-contact-cta"
-          className="inline-flex items-center justify-center cursor-pointer"
+          className="inline-flex items-center justify-center cursor-pointer shrink-0"
           style={{
-            height: 38, padding: "0 20px", borderRadius: 999,
+            height: 34,
+            padding: "0 14px",
+            borderRadius: 999,
             background: TEXT_DARK,
             color: LIME,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: "0.10em",
+            fontSize: 11.5,
+            fontWeight: 700,
+            letterSpacing: "0.10em",
             fontFamily: "Menlo, monospace",
-            marginLeft: 6,
+            marginLeft: 4,
             boxShadow: "0 6px 18px rgba(14,42,28,0.22)",
             textDecoration: "none",
+            whiteSpace: "nowrap",
           }}
         >
           CONTACT
@@ -148,14 +158,16 @@ export function Navbar() {
 
         {/* Mobile menu toggle */}
         <button
-          className="md:hidden"
+          className="md:hidden shrink-0"
           onClick={() => setOpen((v) => !v)}
           data-testid="button-mobile-menu"
           style={{
-            width: 38, height: 38, borderRadius: 999, marginLeft: 4,
+            width: 34, height: 34, borderRadius: 999, marginLeft: 4,
             background: "rgba(14,42,28,0.05)",
             border: "1px solid rgba(14,42,28,0.10)",
             color: TEXT_BODY,
+            fontSize: 16,
+            lineHeight: 1,
           }}
         >
           {open ? "×" : "☰"}
@@ -165,7 +177,7 @@ export function Navbar() {
       {/* Mobile menu panel */}
       {open && (
         <div
-          className="md:hidden mx-4 mb-3 rounded-2xl"
+          className="md:hidden mt-2 rounded-2xl"
           style={{
             background: "rgba(255,255,255,0.96)",
             backdropFilter: "blur(22px)",

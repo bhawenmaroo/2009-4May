@@ -18,7 +18,7 @@ export default function Scientific() {
       heroImage="https://images.unsplash.com/photo-1579165466949-3180a3d056d5?"
       logo="/divisions/scientific.png"
     >
-      <section className="px-8 md:px-16 py-12">
+      <section className="px-5 sm:px-8 md:px-16 py-10 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <SectionHeading eyebrow="Capabilities" title="Trusted services, end-to-end." />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
