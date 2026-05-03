@@ -35,6 +35,7 @@ const LEADERSHIP: Person[] = [
   {
     name: "Mr. Bhawen Maroo",
     role: "Chief Marketing Officer — West & South Region",
+    photo: "/team/bhawen-maroo.png",
   },
   {
     name: "Mr. Debjeet Saha",
