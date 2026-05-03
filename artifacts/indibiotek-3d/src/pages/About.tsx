@@ -67,6 +67,7 @@ const ADVISORS: Person[] = [
     name: "Mr. Akhilesh Kumar",
     role: "Advocate & Legal Consultant",
     org: "High Court",
+    photo: "/team/akhilesh-kumar.png",
   },
   {
     name: "Dr. Rajendra Kumar Dubey",
