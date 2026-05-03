@@ -578,13 +578,13 @@ export default function Home() {
       </section>
 
       {/* ─── DUAL FEATURE — pipette + sprout zigzag ─── */}
-      <section className="relative px-6 md:px-12 py-24" style={{ background: BG_ALT }}>
-        <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-24">
+      <section className="relative px-6 md:px-12 pt-16 pb-20" style={{ background: BG_ALT }}>
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
           <Tilt3D className="lg:col-span-6 reveal" max={6} scale={1.01}>
             <div style={{
               backgroundImage: `linear-gradient(135deg, rgba(14,28,20,0.05) 0%, rgba(14,28,20,0.25) 100%), url("${PIPETTE_IMG}")`,
               backgroundSize: "cover", backgroundPosition: "center",
-              borderRadius: 16, minHeight: 420,
+              borderRadius: 16, minHeight: 360,
               border: "1px solid rgba(14,42,28,0.08)",
               boxShadow: "0 16px 40px rgba(14,42,28,0.10)",
             }} />
@@ -594,18 +594,18 @@ export default function Home() {
               fontFamily: "Menlo, monospace",
               fontSize: 11, letterSpacing: "0.22em",
               textTransform: "uppercase", color: ACCENT,
-              marginBottom: 18,
+              marginBottom: 14,
             }}>
               — 04 / Lifesciences
             </div>
-            <h2 className="font-display mb-6" style={{
+            <h2 className="font-display mb-4" style={{
               fontSize: "clamp(1.8rem, 3.4vw, 2.6rem)",
               lineHeight: 1.05, letterSpacing: "-0.02em",
               fontWeight: 700, color: TEXT_DARK, maxWidth: "14ch",
             }}>
               From <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>molecule</span> to medicine.
             </h2>
-            <p style={{ color: TEXT_BODY, fontSize: "1.05rem", lineHeight: 1.7, fontWeight: 400, marginBottom: 28, maxWidth: 520 }}>
+            <p style={{ color: TEXT_BODY, fontSize: "1.05rem", lineHeight: 1.7, fontWeight: 400, marginBottom: 20, maxWidth: 520 }}>
               Discovery, development and manufacturing of next-generation therapeutics, diagnostics and biopharmaceutical processes — built on rigorous science and modern manufacturing.
             </p>
             <Link href="/lifesciences">
@@ -627,18 +627,18 @@ export default function Home() {
               fontFamily: "Menlo, monospace",
               fontSize: 11, letterSpacing: "0.22em",
               textTransform: "uppercase", color: ACCENT,
-              marginBottom: 18,
+              marginBottom: 14,
             }}>
               — 05 / Agriculture
             </div>
-            <h2 className="font-display mb-6" style={{
+            <h2 className="font-display mb-4" style={{
               fontSize: "clamp(1.8rem, 3.4vw, 2.6rem)",
               lineHeight: 1.05, letterSpacing: "-0.02em",
               fontWeight: 700, color: TEXT_DARK, maxWidth: "14ch",
             }}>
               Biology that <span style={{ color: ACCENT_BRIGHT, fontStyle: "italic" }}>grows</span> with the planet.
             </h2>
-            <p style={{ color: TEXT_BODY, fontSize: "1.05rem", lineHeight: 1.7, fontWeight: 400, marginBottom: 28, maxWidth: 520 }}>
+            <p style={{ color: TEXT_BODY, fontSize: "1.05rem", lineHeight: 1.7, fontWeight: 400, marginBottom: 20, maxWidth: 520 }}>
               Biofertilizers, biopesticides and crop biotechnology that help farmers grow more food with fewer chemicals, less water and healthier soils.
             </p>
             <Link href="/agri">
@@ -656,7 +656,7 @@ export default function Home() {
             <div style={{
               backgroundImage: `linear-gradient(135deg, rgba(14,28,20,0.05) 0%, rgba(14,28,20,0.25) 100%), url("${SPROUT_IMG}")`,
               backgroundSize: "cover", backgroundPosition: "center",
-              borderRadius: 16, minHeight: 420,
+              borderRadius: 16, minHeight: 360,
               border: "1px solid rgba(14,42,28,0.08)",
               boxShadow: "0 16px 40px rgba(14,42,28,0.10)",
             }} />
