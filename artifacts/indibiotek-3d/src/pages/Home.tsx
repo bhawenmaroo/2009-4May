@@ -25,13 +25,6 @@ const DIVISIONS = [
   { title: "Agriculture",           desc: "Crop biotechnology, biofertilizers and sustainable precision farming.",     href: "/agri",          num: "03" },
 ];
 
-const STATS = [
-  { num: "15+",  label: "Active research pipelines" },
-  { num: "120+", label: "Scientists & engineers" },
-  { num: "20+",  label: "Industry partners" },
-  { num: "3",    label: "Operating divisions" },
-];
-
 const PILLARS = [
   { num: "01", title: "Science First",        desc: "Rigorous scientific method underpins every product, paper and partnership." },
   { num: "02", title: "Built for Scale",      desc: "From bench to bioreactor — engineered to translate discovery into impact." },
@@ -261,50 +254,6 @@ export default function Home() {
             >
               We bring deep scientific capability and operational rigour together to build durable bio-based businesses across human health, agriculture, scientific services and the environment — including bioremediation and circular waste management.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── STATS BAR — under the headline, terminal-style ─── */}
-      <section className="relative px-6 md:px-12 pb-20" style={{ background: BG }}>
-        <div className="max-w-[1180px] mx-auto">
-          <div
-            className="reveal grid grid-cols-2 md:grid-cols-4"
-            style={{
-              borderTop: "1px solid rgba(14,42,28,0.12)",
-              borderBottom: "1px solid rgba(14,42,28,0.12)",
-            }}
-          >
-            {STATS.map((s, i) => (
-              <div
-                key={s.label}
-                style={{
-                  padding: "32px 0",
-                  borderRight: i < 3 ? "1px solid rgba(14,42,28,0.08)" : "none",
-                  paddingLeft: i === 0 ? 0 : 24,
-                }}
-              >
-                <div
-                  className="font-display"
-                  style={{
-                    fontSize: "clamp(2rem, 4vw, 3rem)",
-                    fontWeight: 700, color: TEXT_DARK,
-                    lineHeight: 1, marginBottom: 8, letterSpacing: "-0.02em",
-                  }}
-                >
-                  {s.num}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "Menlo, monospace",
-                    fontSize: 11, color: TEXT_MUTED,
-                    letterSpacing: "0.10em", textTransform: "uppercase",
-                  }}
-                >
-                  {s.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
