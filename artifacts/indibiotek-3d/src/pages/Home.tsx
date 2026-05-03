@@ -519,7 +519,7 @@ export default function Home() {
       </section>
 
       {/* ─── PILLARS ─── */}
-      <section className="relative px-6 md:px-12 py-28" style={{ background: BG }}>
+      <section className="relative px-6 md:px-12 pt-16 pb-20" style={{ background: BG }}>
         <div className="max-w-[1180px] mx-auto">
           <div
             className="reveal"
@@ -527,13 +527,13 @@ export default function Home() {
               fontFamily: "Menlo, monospace",
               fontSize: 11, letterSpacing: "0.22em",
               textTransform: "uppercase", color: ACCENT,
-              marginBottom: 18,
+              marginBottom: 14,
             }}
           >
             — 03 / Our Approach
           </div>
           <h2
-            className="reveal font-display mb-14"
+            className="reveal font-display mb-8"
             style={{
               fontSize: "clamp(2rem, 4.4vw, 3.4rem)",
               lineHeight: 1.04, letterSpacing: "-0.02em",
@@ -546,7 +546,7 @@ export default function Home() {
             {PILLARS.map((p) => (
               <Tilt3D key={p.num} max={8} scale={1.015}>
                 <div className="reveal" style={{
-                  padding: 28, height: "100%", borderRadius: 16,
+                  padding: 24, height: "100%", borderRadius: 16,
                   background: "#FFFFFF",
                   border: "1px solid rgba(14,42,28,0.08)",
                   boxShadow: "0 1px 0 rgba(255,255,255,1) inset, 0 8px 24px rgba(14,42,28,0.06)",
@@ -556,7 +556,7 @@ export default function Home() {
                     style={{
                       fontFamily: "Menlo, monospace",
                       fontSize: 11, fontWeight: 700, letterSpacing: "0.18em",
-                      color: ACCENT, marginBottom: 22,
+                      color: ACCENT, marginBottom: 14,
                     }}
                   >
                     — {p.num}
