@@ -6,7 +6,29 @@ const LIME = "#C8FF4D";
 const DARK = "#0E2A1C";
 const DARK_DEEP = "#061A10";
 
-type Burst = { id: number; x: number; y: number };
+type Burst = { id: number; x: number; y: number; dark: boolean };
+
+// Walk up from the clicked point until we find an element with a non-transparent
+// background, then return true if that background is "dark" (luminance < 0.5).
+function isPointOnDarkBg(x: number, y: number): boolean {
+  const el = document.elementFromPoint(x, y) as HTMLElement | null;
+  let node: HTMLElement | null = el;
+  while (node) {
+    const bg = getComputedStyle(node).backgroundColor;
+    const m = bg.match(/rgba?\(([^)]+)\)/);
+    if (m) {
+      const parts = m[1].split(",").map((s) => parseFloat(s.trim()));
+      const [r, g, b, a = 1] = parts;
+      if (a > 0.05) {
+        // Relative luminance (sRGB approx)
+        const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+        return lum < 0.5;
+      }
+    }
+    node = node.parentElement;
+  }
+  return false;
+}
 
 export function AtomCursor() {
   const dotRef = useRef<HTMLDivElement | null>(null);
@@ -34,7 +56,8 @@ export function AtomCursor() {
     const onDown = (e: MouseEvent) => {
       pressed.current = true;
       const id = Date.now() + Math.random();
-      setBursts((b) => [...b, { id, x: e.clientX, y: e.clientY }]);
+      const dark = isPointOnDarkBg(e.clientX, e.clientY);
+      setBursts((b) => [...b, { id, x: e.clientX, y: e.clientY, dark }]);
       window.setTimeout(() => {
         setBursts((b) => b.filter((x) => x.id !== id));
       }, 900);
@@ -167,79 +190,87 @@ export function AtomCursor() {
         aria-hidden
       />
 
-      {/* Click bursts */}
-      {bursts.map((b) => (
-        <div
-          key={b.id}
-          className="atom-cursor-root"
-          style={{
-            position: "fixed",
-            top: b.y,
-            left: b.x,
-            width: 0,
-            height: 0,
-            zIndex: 99997,
-          }}
-          aria-hidden
-        >
-          {/* Primary expanding ring — dark, reads on light bg */}
+      {/* Click bursts — color adapts to background luminance under the click */}
+      {bursts.map((b) => {
+        const ringMain    = b.dark ? LIME       : DARK;
+        const ringTrail   = b.dark ? ACCENT_BRIGHT : ACCENT;
+        const particleA   = b.dark ? LIME       : DARK_DEEP;
+        const particleB   = b.dark ? ACCENT_BRIGHT : ACCENT;
+        const ringGlow    = b.dark ? "rgba(200,255,77,0.55)"  : "rgba(14,42,28,0.45)";
+        const particleGlow = b.dark ? "rgba(200,255,77,0.55)" : "rgba(14,42,28,0.55)";
+        return (
           <div
+            key={b.id}
+            className="atom-cursor-root"
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: 44,
-              height: 44,
-              borderRadius: "50%",
-              border: `2.5px solid ${DARK}`,
-              boxShadow: `0 0 16px rgba(14,42,28,0.45)`,
-              animation: "atom-burst-ring 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+              position: "fixed",
+              top: b.y,
+              left: b.x,
+              width: 0,
+              height: 0,
+              zIndex: 99997,
             }}
-          />
-          {/* Soft trailing ring — deep teal */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: 44,
-              height: 44,
-              borderRadius: "50%",
-              border: `1px solid ${ACCENT}`,
-              opacity: 0.75,
-              animation: "atom-burst-ring 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards",
-            }}
-          />
-          {/* Six radiating particles — dark/deep alternating */}
-          {Array.from({ length: 6 }).map((_, i) => {
-            const angle = (i / 6) * Math.PI * 2;
-            const dist = 32;
-            const bx = `${Math.cos(angle) * dist}px`;
-            const by = `${Math.sin(angle) * dist}px`;
-            const color = i % 2 === 0 ? DARK_DEEP : ACCENT;
-            return (
-              <div
-                key={i}
-                style={
-                  {
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: 4,
-                    height: 4,
-                    borderRadius: "50%",
-                    background: color,
-                    boxShadow: `0 0 6px rgba(14,42,28,0.55)`,
-                    "--bx": bx,
-                    "--by": by,
-                    animation: "atom-burst-particle 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-                  } as React.CSSProperties
-                }
-              />
-            );
-          })}
-        </div>
-      ))}
+            aria-hidden
+          >
+            {/* Primary expanding ring */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: 44,
+                height: 44,
+                borderRadius: "50%",
+                border: `2.5px solid ${ringMain}`,
+                boxShadow: `0 0 16px ${ringGlow}`,
+                animation: "atom-burst-ring 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+              }}
+            />
+            {/* Soft trailing ring */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: 44,
+                height: 44,
+                borderRadius: "50%",
+                border: `1px solid ${ringTrail}`,
+                opacity: 0.75,
+                animation: "atom-burst-ring 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards",
+              }}
+            />
+            {/* Six radiating particles */}
+            {Array.from({ length: 6 }).map((_, i) => {
+              const angle = (i / 6) * Math.PI * 2;
+              const dist = 32;
+              const bx = `${Math.cos(angle) * dist}px`;
+              const by = `${Math.sin(angle) * dist}px`;
+              const color = i % 2 === 0 ? particleA : particleB;
+              return (
+                <div
+                  key={i}
+                  style={
+                    {
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: 4,
+                      height: 4,
+                      borderRadius: "50%",
+                      background: color,
+                      boxShadow: `0 0 6px ${particleGlow}`,
+                      "--bx": bx,
+                      "--by": by,
+                      animation: "atom-burst-particle 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+                    } as React.CSSProperties
+                  }
+                />
+              );
+            })}
+          </div>
+        );
+      })}
     </>
   );
 }
