@@ -33,12 +33,15 @@ function isPointOnDarkBg(x: number, y: number): boolean {
 export function AtomCursor() {
   const dotRef = useRef<HTMLDivElement | null>(null);
   const ringRef = useRef<HTMLDivElement | null>(null);
+  const electronRef = useRef<HTMLDivElement | null>(null);
 
   const mouse = useRef({ x: -200, y: -200 });
   const dot = useRef({ x: -200, y: -200 });
   const ring = useRef({ x: -200, y: -200 });
   const raf = useRef<number | null>(null);
   const pressed = useRef(false);
+  const lastBgSample = useRef(0);
+  const isDarkBg = useRef(false);
 
   const [bursts, setBursts] = useState<Burst[]>([]);
   const [enabled, setEnabled] = useState(false);
@@ -67,7 +70,7 @@ export function AtomCursor() {
       pressed.current = false;
     };
 
-    const tick = () => {
+    const tick = (now: number) => {
       // Inner dot — quick, tight follow
       dot.current.x += (mouse.current.x - dot.current.x) * 0.32;
       dot.current.y += (mouse.current.y - dot.current.y) * 0.32;
@@ -85,6 +88,32 @@ export function AtomCursor() {
         ringRef.current.style.transform =
           `translate3d(${ring.current.x}px, ${ring.current.y}px, 0) translate(-50%, -50%) scale(${pressed.current ? 1.25 : 1})`;
       }
+
+      // Sample background under cursor ~every 120ms and update electron / ring tint
+      if (now - lastBgSample.current > 120 && mouse.current.x >= 0) {
+        lastBgSample.current = now;
+        const dark = isPointOnDarkBg(mouse.current.x, mouse.current.y);
+        if (dark !== isDarkBg.current) {
+          isDarkBg.current = dark;
+          if (electronRef.current) {
+            const c = dark ? LIME : ACCENT;
+            const glow = dark
+              ? `0 0 8px ${LIME}, 0 0 14px rgba(200,255,77,0.5)`
+              : `0 0 8px ${ACCENT}, 0 0 14px rgba(11,106,77,0.55)`;
+            electronRef.current.style.background = c;
+            electronRef.current.style.boxShadow = glow;
+          }
+          if (ringRef.current) {
+            ringRef.current.style.borderColor = dark
+              ? "rgba(20,181,126,0.55)"
+              : "rgba(11,106,77,0.55)";
+            ringRef.current.style.boxShadow = dark
+              ? "0 0 14px rgba(20,181,126,0.18)"
+              : "0 0 14px rgba(11,106,77,0.20)";
+          }
+        }
+      }
+
       raf.current = requestAnimationFrame(tick);
     };
 
@@ -155,6 +184,7 @@ export function AtomCursor() {
           }}
         >
           <div
+            ref={electronRef}
             style={{
               position: "absolute",
               top: "50%",
@@ -165,6 +195,7 @@ export function AtomCursor() {
               background: LIME,
               boxShadow: `0 0 8px ${LIME}, 0 0 14px rgba(200,255,77,0.5)`,
               transform: "translate(-50%, -50%)",
+              transition: "background 0.25s ease, box-shadow 0.25s ease",
             }}
           />
         </div>
