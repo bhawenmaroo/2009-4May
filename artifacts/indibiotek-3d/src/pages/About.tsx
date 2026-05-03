@@ -90,30 +90,29 @@ function initialsOf(name: string) {
 }
 
 function LeaderCard({ p, num }: { p: Person; num: string }) {
-  const DARK = "#0E1C14";
   return (
     <div
       className="page-reveal"
       style={{
-        background: `linear-gradient(180deg, #102218 0%, ${DARK} 100%)`,
-        border: "1px solid rgba(200,255,77,0.14)",
-        borderRadius: 20,
+        background: "#FFFFFF",
+        border: "1px solid rgba(14,42,28,0.08)",
+        borderRadius: 16,
         overflow: "hidden",
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        boxShadow: "0 18px 44px rgba(14,42,28,0.22)",
+        boxShadow: "0 1px 0 rgba(255,255,255,1) inset, 0 14px 34px rgba(14,42,28,0.10)",
         position: "relative",
       }}
       data-testid={`person-${p.name.toLowerCase().replace(/[^a-z]/g, "")}`}
     >
-      {/* Photo block — large rectangular */}
+      {/* Tall portrait photo — no dark overlay, faces stay clear */}
       <div
         style={{
           width: "100%",
-          aspectRatio: "1 / 1",
+          aspectRatio: "4 / 5",
           background: p.photo
-            ? `linear-gradient(180deg, rgba(14,28,20,0) 55%, rgba(14,28,20,0.55) 100%), url("${p.photo}") center 18% / cover no-repeat`
+            ? `url("${p.photo}") center 15% / cover no-repeat`
             : `linear-gradient(135deg, ${ACCENT_BRIGHT} 0%, ${ACCENT} 100%)`,
           display: "flex",
           alignItems: "center",
@@ -124,53 +123,59 @@ function LeaderCard({ p, num }: { p: Person; num: string }) {
           fontSize: 56,
           letterSpacing: "0.02em",
           position: "relative",
+          borderBottom: "1px solid rgba(14,42,28,0.06)",
         }}
       >
         {!p.photo && initialsOf(p.name)}
-        {/* index */}
-        <div
-          style={{
-            position: "absolute",
-            top: 14,
-            left: 16,
-            fontFamily: "Menlo, monospace",
-            fontSize: 10.5,
-            letterSpacing: "0.22em",
-            color: LIME,
-            fontWeight: 700,
-            background: "rgba(14,28,20,0.55)",
-            padding: "4px 8px",
-            borderRadius: 6,
-            backdropFilter: "blur(6px)",
-          }}
-        >
-          — {num}
-        </div>
-        {/* lime corner dot */}
-        <div
-          style={{
-            position: "absolute",
-            top: 16,
-            right: 16,
-            width: 8,
-            height: 8,
-            borderRadius: "50%",
-            background: LIME,
-            boxShadow: `0 0 12px ${LIME}`,
-          }}
-        />
       </div>
 
-      {/* Body */}
-      <div style={{ padding: "22px 22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
-        {/* lime hairline */}
-        <div style={{ width: 28, height: 2, background: LIME, marginBottom: 14, boxShadow: `0 0 10px ${LIME}` }} />
+      {/* Body — left aligned editorial block */}
+      <div
+        style={{
+          padding: "20px 22px 24px",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "left",
+          alignItems: "flex-start",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            marginBottom: 12,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "Menlo, monospace",
+              fontSize: 10.5,
+              letterSpacing: "0.22em",
+              color: ACCENT,
+              fontWeight: 700,
+            }}
+          >
+            — {num}
+          </span>
+          <span style={{ flex: 1, height: 1, background: "rgba(14,42,28,0.12)" }} />
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: LIME,
+              boxShadow: `0 0 8px ${LIME}`,
+            }}
+          />
+        </div>
         <h4
           className="font-display"
           style={{
-            fontSize: "1.2rem",
+            fontSize: "1.15rem",
             fontWeight: 700,
-            color: "#FFFFFF",
+            color: TEXT_DARK,
             letterSpacing: "-0.01em",
             marginBottom: 6,
             lineHeight: 1.2,
@@ -180,13 +185,10 @@ function LeaderCard({ p, num }: { p: Person; num: string }) {
         </h4>
         <p
           style={{
-            color: LIME,
-            fontFamily: "Menlo, monospace",
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            lineHeight: 1.4,
+            color: ACCENT,
+            fontSize: 12.5,
+            fontWeight: 600,
+            lineHeight: 1.45,
           }}
         >
           {p.role}
