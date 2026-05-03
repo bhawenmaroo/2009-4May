@@ -261,39 +261,6 @@ export default function Home() {
             >
               We bring deep scientific capability and operational rigour together to build durable bio-based businesses across human health, agriculture, scientific services and the environment — including bioremediation and circular waste management.
             </p>
-            <div className="reveal lg:col-span-5 flex flex-wrap gap-3 lg:justify-end">
-              <Link href="/about" data-testid="button-explore-divisions">
-                <span
-                  className="cursor-pointer inline-flex items-center"
-                  style={{
-                    height: 48, padding: "0 22px", borderRadius: 10,
-                    background: DARK_BG, color: "#FFFFFF",
-                    fontWeight: 700, fontSize: 12.5, letterSpacing: "0.10em",
-                    fontFamily: "Menlo, monospace",
-                    boxShadow: "0 8px 24px rgba(14,28,20,0.20)",
-                  }}
-                >
-                  EXPLORE DIVISIONS →
-                </span>
-              </Link>
-              <a
-                href="https://wa.me/919608768647"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="button-contact-hero"
-                className="cursor-pointer inline-flex items-center"
-                style={{
-                  height: 48, padding: "0 22px", borderRadius: 10,
-                  background: LIME, color: DARK_BG,
-                  fontWeight: 700, fontSize: 12.5, letterSpacing: "0.10em",
-                  fontFamily: "Menlo, monospace",
-                  boxShadow: "0 8px 24px rgba(200,255,77,0.30)",
-                  textDecoration: "none",
-                }}
-              >
-                GET A DEMO →
-              </a>
-            </div>
           </div>
         </div>
       </section>
