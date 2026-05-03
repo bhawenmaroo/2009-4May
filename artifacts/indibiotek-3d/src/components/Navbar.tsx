@@ -29,6 +29,17 @@ export function Navbar() {
   }, []);
   useEffect(() => setOpen(false), [location]);
 
+  // Close mobile menu when user scrolls
+  useEffect(() => {
+    if (!open) return;
+    const startY = window.scrollY;
+    const onScroll = () => {
+      if (Math.abs(window.scrollY - startY) > 6) setOpen(false);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [open]);
+
   return (
     <nav
       data-testid="navbar"
