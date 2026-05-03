@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 const ACCENT = "#0B6A4D";
 const ACCENT_BRIGHT = "#14B57E";
 const LIME = "#C8FF4D";
+const DARK = "#0E2A1C";
+const DARK_DEEP = "#061A10";
 
 type Burst = { id: number; x: number; y: number };
 
@@ -180,7 +182,7 @@ export function AtomCursor() {
           }}
           aria-hidden
         >
-          {/* Primary expanding ring */}
+          {/* Primary expanding ring — dark, reads on light bg */}
           <div
             style={{
               position: "absolute",
@@ -189,12 +191,12 @@ export function AtomCursor() {
               width: 44,
               height: 44,
               borderRadius: "50%",
-              border: `2.5px solid ${ACCENT_BRIGHT}`,
-              boxShadow: `0 0 18px rgba(20,181,126,0.55)`,
+              border: `2.5px solid ${DARK}`,
+              boxShadow: `0 0 16px rgba(14,42,28,0.45)`,
               animation: "atom-burst-ring 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards",
             }}
           />
-          {/* Soft trailing ring */}
+          {/* Soft trailing ring — deep teal */}
           <div
             style={{
               position: "absolute",
@@ -203,18 +205,18 @@ export function AtomCursor() {
               width: 44,
               height: 44,
               borderRadius: "50%",
-              border: `1px solid ${LIME}`,
-              opacity: 0.7,
+              border: `1px solid ${ACCENT}`,
+              opacity: 0.75,
               animation: "atom-burst-ring 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards",
             }}
           />
-          {/* Six radiating particles — alternating colors */}
+          {/* Six radiating particles — dark/deep alternating */}
           {Array.from({ length: 6 }).map((_, i) => {
             const angle = (i / 6) * Math.PI * 2;
             const dist = 32;
             const bx = `${Math.cos(angle) * dist}px`;
             const by = `${Math.sin(angle) * dist}px`;
-            const color = i % 2 === 0 ? ACCENT_BRIGHT : LIME;
+            const color = i % 2 === 0 ? DARK_DEEP : ACCENT;
             return (
               <div
                 key={i}
@@ -227,7 +229,7 @@ export function AtomCursor() {
                     height: 4,
                     borderRadius: "50%",
                     background: color,
-                    boxShadow: `0 0 6px ${color}`,
+                    boxShadow: `0 0 6px rgba(14,42,28,0.55)`,
                     "--bx": bx,
                     "--by": by,
                     animation: "atom-burst-particle 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
