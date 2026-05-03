@@ -719,7 +719,7 @@ export default function Home() {
             }}
           >
             <span style={{ width: 28, height: 1, background: ACCENT }} />
-            — Recognised by
+            Recognised by
             <span style={{ width: 28, height: 1, background: ACCENT }} />
           </div>
           <h3
