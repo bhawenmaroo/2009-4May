@@ -2,7 +2,6 @@ const ACCENT = "#0B6A4D";
 const TEXT_DARK = "#0E2A1C";
 const TEXT_BODY = "rgba(14,42,28,0.72)";
 const TEXT_MUTE = "rgba(14,42,28,0.55)";
-const LIME = "#C8FF4D";
 
 export function Footer() {
   return (
@@ -14,63 +13,55 @@ export function Footer() {
         borderTop: "1px solid rgba(20,181,126,0.18)",
       }}
     >
-      <div className="max-w-5xl mx-auto px-6 md:px-10 py-10 text-center">
-        {/* Eyebrow with logo */}
+      <div className="max-w-5xl mx-auto px-6 md:px-10 py-14 text-center">
+        {/* Logo - prominent */}
+        <img
+          src="/logo.png"
+          alt="Indibiotek Private Limited"
+          style={{ height: 64, width: "auto", margin: "0 auto 24px" }}
+        />
+
+        {/* Locations - structured rows for clarity */}
         <div
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            marginBottom: 10,
+            maxWidth: 820,
+            margin: "0 auto 24px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
           }}
         >
-          <span
-            style={{
-              width: 6, height: 6, borderRadius: "50%",
-              background: LIME, boxShadow: `0 0 10px ${LIME}`,
-            }}
+          <LocationRow
+            label="R&D Facility"
+            text="Centre for Drug Design Discovery & Development (C4D), SRM University, Delhi-NCR, Sonipat"
           />
-          <img
-            src="/logo.png"
-            alt="Indibiotek Private Limited"
-            style={{ height: 26, width: "auto" }}
+          <LocationRow
+            label="Incubation"
+            text="E-YUVA Centre (Supported by BIRAC), Adamas University · The Bengal Chamber of Commerce & Industry (BCCI)"
+          />
+          <LocationRow
+            label="Registered Office"
+            text="Kolkata, West Bengal"
+          />
+          <LocationRow
+            label="Regional Offices"
+            text="Kolkata · Guwahati · Bengaluru · Delhi-NCR · Andaman & Nicobar (UT)"
           />
         </div>
 
-        {/* Locations as one tight paragraph */}
-        <p
-          style={{
-            fontSize: 12.5,
-            lineHeight: 1.7,
-            color: TEXT_BODY,
-            maxWidth: 880,
-            margin: "0 auto 14px",
-          }}
-        >
-          <strong style={{ color: ACCENT, fontWeight: 700 }}>R&D Facility:</strong>{" "}
-          Centre for Drug Design Discovery & Development (C4D), SRM University, Delhi-NCR, Sonipat
-          <span style={{ color: TEXT_MUTE, margin: "0 8px" }}>|</span>
-          E-YUVA Centre (Supported by BIRAC), Adamas University
-          <span style={{ color: TEXT_MUTE, margin: "0 8px" }}>|</span>
-          The Bengal Chamber of Commerce & Industry (BCCI)
-          <span style={{ color: TEXT_MUTE, margin: "0 8px" }}>|</span>
-          <strong style={{ color: ACCENT, fontWeight: 700 }}>Registered Office:</strong>{" "}
-          Kolkata, West Bengal
-          <span style={{ color: TEXT_MUTE, margin: "0 8px" }}>|</span>
-          <strong style={{ color: ACCENT, fontWeight: 700 }}>Regional Offices:</strong>{" "}
-          Kolkata · Guwahati · Bengaluru · Delhi-NCR · Andaman & Nicobar (UT)
-        </p>
-
-        {/* Contact line - inline, no pill */}
+        {/* Contact pill */}
         <div
           style={{
             display: "inline-flex",
             flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center",
-            gap: 12,
-            fontSize: 13,
-            marginBottom: 14,
+            gap: 14,
+            padding: "10px 22px",
+            background: "rgba(255,255,255,0.7)",
+            border: "1px solid rgba(20,181,126,0.22)",
+            borderRadius: 999,
+            marginBottom: 22,
           }}
         >
           <span
@@ -83,11 +74,11 @@ export function Footer() {
               fontWeight: 700,
             }}
           >
-            Contact us
+            Contact
           </span>
           <a
             href="tel:+918902052927"
-            style={{ color: TEXT_DARK, fontWeight: 600, textDecoration: "none" }}
+            style={{ color: TEXT_DARK, fontWeight: 600, textDecoration: "none", fontSize: 13.5 }}
             data-testid="footer-phone"
           >
             +91 89020 52927
@@ -95,7 +86,7 @@ export function Footer() {
           <span style={{ color: TEXT_MUTE }}>·</span>
           <a
             href="mailto:info@indibiotek.com"
-            style={{ color: TEXT_DARK, fontWeight: 600, textDecoration: "none" }}
+            style={{ color: TEXT_DARK, fontWeight: 600, textDecoration: "none", fontSize: 13.5 }}
             data-testid="footer-email"
           >
             info@indibiotek.com
@@ -108,7 +99,7 @@ export function Footer() {
             color: TEXT_MUTE,
             fontSize: 11.5,
             letterSpacing: "0.02em",
-            paddingTop: 12,
+            paddingTop: 16,
             borderTop: "1px solid rgba(20,181,126,0.18)",
           }}
         >
@@ -120,5 +111,36 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function LocationRow({ label, text }: { label: string; text: string }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "baseline",
+        gap: 10,
+        fontSize: 12.5,
+        lineHeight: 1.6,
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "Menlo, monospace",
+          fontSize: 10,
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          color: ACCENT,
+          fontWeight: 700,
+          flexShrink: 0,
+        }}
+      >
+        {label}
+      </span>
+      <span style={{ color: TEXT_BODY }}>{text}</span>
+    </div>
   );
 }
