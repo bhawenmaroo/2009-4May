@@ -49,11 +49,13 @@ const ADVISORS: Person[] = [
     name: "Mr. Ajjay Manohar Sharma",
     role: "Director",
     org: "Zenith Transformers & Switchgears Pvt. Ltd.",
+    photo: "/team/ajjay-manohar-sharma.png",
   },
   {
     name: "Prof. V. Samuel Raj",
     role: "Registrar & Dean Academic Affairs & Director",
     org: "Department of Microbiology & Biotechnology, SRM University, Delhi-NCR, Sonipat",
+    photo: "/team/v-samuel-raj.png",
   },
   {
     name: "Dr. Shounak Roy",
