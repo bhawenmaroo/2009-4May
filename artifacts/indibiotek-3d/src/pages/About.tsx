@@ -144,9 +144,10 @@ function LeaderCard({ p }: { p: Person }) {
           style={{
             width: 28,
             height: 2,
-            background: LIME,
-            boxShadow: `0 0 8px ${LIME}`,
+            background: ACCENT,
+            boxShadow: `0 0 10px rgba(20,181,126,0.65), 0 0 4px rgba(11,106,77,0.9)`,
             marginBottom: 14,
+            borderRadius: 2,
           }}
         />
         <h4
@@ -221,12 +222,12 @@ function PersonCard({ p }: { p: Person }) {
         {!p.photo && initialsOf(p.name)}
       </div>
 
-      {/* Lime accent dot */}
+      {/* Dark-green glowing hyphen */}
       <div
         style={{
-          width: 6, height: 6, borderRadius: "50%",
-          background: LIME,
-          boxShadow: `0 0 10px ${LIME}`,
+          width: 24, height: 2, borderRadius: 2,
+          background: ACCENT,
+          boxShadow: `0 0 10px rgba(20,181,126,0.65), 0 0 4px rgba(11,106,77,0.9)`,
           marginBottom: 14,
         }}
       />
