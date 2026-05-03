@@ -354,7 +354,8 @@ export default function About() {
               >
                 <div
                   style={{
-                    height: "clamp(160px, 30vw, 230px)",
+                    aspectRatio: "16 / 10",
+                    maxHeight: 200,
                     width: "100%",
                     display: "flex",
                     alignItems: "center",
