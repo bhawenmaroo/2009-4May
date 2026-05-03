@@ -61,6 +61,7 @@ const ADVISORS: Person[] = [
     name: "Dr. Shounak Roy",
     role: "Scientist (PDR)",
     org: "Department of Biomedical Engineering, Texas A&M University, USA",
+    photo: "/team/shounak-roy.png",
   },
   {
     name: "Mr. Akhilesh Kumar",
