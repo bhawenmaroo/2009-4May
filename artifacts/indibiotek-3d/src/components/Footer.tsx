@@ -125,9 +125,7 @@ export function Footer() {
             Contact us
           </span>
           <a
-            href="https://wa.me/919608768647"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+918902052927"
             style={{
               color: TEXT_DARK,
               fontSize: 14,
@@ -136,7 +134,7 @@ export function Footer() {
             }}
             data-testid="footer-phone"
           >
-            +91 96087 68647
+            +91 89020 52927
           </a>
           <span style={{ color: TEXT_MUTE, fontSize: 14 }}>·</span>
           <a
