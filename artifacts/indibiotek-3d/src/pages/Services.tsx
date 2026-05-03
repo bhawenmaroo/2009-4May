@@ -82,7 +82,7 @@ export default function Services() {
       intro="A complete molecular biology and multi-omics services portfolio — from oligo synthesis and cloning to CRISPR, bioinformatics and custom reagents — delivered end-to-end."
       heroImage="https://images.unsplash.com/photo-1559757175-5700dde675bc?"
     >
-      <section className="px-8 md:px-16 pt-2 pb-12">
+      <section className="px-8 md:px-16 pb-12" style={{ marginTop: -120, position: "relative", zIndex: 2 }}>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {OFFERINGS.map((o) => (
