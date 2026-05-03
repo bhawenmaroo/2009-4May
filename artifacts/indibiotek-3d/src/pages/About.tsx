@@ -89,7 +89,7 @@ function initialsOf(name: string) {
   return (first + last).toUpperCase();
 }
 
-function LeaderCard({ p, num }: { p: Person; num: string }) {
+function LeaderCard({ p }: { p: Person }) {
   return (
     <div
       className="page-reveal"
@@ -129,47 +129,26 @@ function LeaderCard({ p, num }: { p: Person; num: string }) {
         {!p.photo && initialsOf(p.name)}
       </div>
 
-      {/* Body — left aligned editorial block */}
+      {/* Body — center aligned */}
       <div
         style={{
-          padding: "20px 22px 24px",
+          padding: "22px 22px 26px",
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          textAlign: "left",
-          alignItems: "flex-start",
+          textAlign: "center",
+          alignItems: "center",
         }}
       >
-        <div
+        <span
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            marginBottom: 12,
+            width: 28,
+            height: 2,
+            background: LIME,
+            boxShadow: `0 0 8px ${LIME}`,
+            marginBottom: 14,
           }}
-        >
-          <span
-            style={{
-              fontFamily: "Menlo, monospace",
-              fontSize: 10.5,
-              letterSpacing: "0.22em",
-              color: ACCENT,
-              fontWeight: 700,
-            }}
-          >
-            — {num}
-          </span>
-          <span style={{ flex: 1, height: 1, background: "rgba(14,42,28,0.12)" }} />
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              background: LIME,
-              boxShadow: `0 0 8px ${LIME}`,
-            }}
-          />
-        </div>
+        />
         <h4
           className="font-display"
           style={{
@@ -198,7 +177,7 @@ function LeaderCard({ p, num }: { p: Person; num: string }) {
   );
 }
 
-function PersonCard({ p, num }: { p: Person; num: string }) {
+function PersonCard({ p }: { p: Person }) {
   return (
     <div
       className="page-reveal"
@@ -218,21 +197,6 @@ function PersonCard({ p, num }: { p: Person; num: string }) {
       }}
       data-testid={`person-${p.name.toLowerCase().replace(/[^a-z]/g, "")}`}
     >
-      {/* Top-right index marker */}
-      <div
-        style={{
-          position: "absolute",
-          top: 14, right: 16,
-          fontFamily: "Menlo, monospace",
-          fontSize: 10.5,
-          letterSpacing: "0.18em",
-          color: ACCENT,
-          fontWeight: 700,
-        }}
-      >
-        — {num}
-      </div>
-
       {/* Avatar */}
       <div
         style={{
@@ -455,8 +419,8 @@ export default function About() {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {LEADERSHIP.map((p, i) => (
-              <LeaderCard key={p.name} p={p} num={String(i + 1).padStart(2, "0")} />
+            {LEADERSHIP.map((p) => (
+              <LeaderCard key={p.name} p={p} />
             ))}
           </div>
         </div>
@@ -499,8 +463,8 @@ export default function About() {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {ADVISORS.map((p, i) => (
-              <PersonCard key={p.name} p={p} num={String(i + 1).padStart(2, "0")} />
+            {ADVISORS.map((p) => (
+              <PersonCard key={p.name} p={p} />
             ))}
           </div>
         </div>
