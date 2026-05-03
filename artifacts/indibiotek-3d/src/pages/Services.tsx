@@ -188,10 +188,29 @@ export default function Services() {
               </div>
               <div
                 className="font-display"
-                style={{ fontSize: "1.25rem", fontWeight: 600, color: TEXT_DARK }}
+                style={{ fontSize: "1.25rem", fontWeight: 600, color: TEXT_DARK, marginBottom: 8 }}
               >
                 Talk to our scientists about your project.
               </div>
+              <a
+                href="mailto:info@indibiotek.com"
+                style={{
+                  color: ACCENT,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+                data-testid="services-cta-email"
+              >
+                <span style={{
+                  width: 5, height: 5, borderRadius: "50%",
+                  background: LIME, boxShadow: `0 0 8px ${LIME}`,
+                }} />
+                info@indibiotek.com
+              </a>
             </div>
             <a
               href="https://wa.me/919608768647"
