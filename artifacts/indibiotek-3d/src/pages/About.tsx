@@ -207,18 +207,104 @@ export default function About() {
       intro="Indibiotek brings deep scientific capability and operational rigour together to build durable bio-based businesses across human health, agriculture and the environment."
       heroImage="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?"
     >
-      <section className="px-8 md:px-16 py-12">
-        <div className="max-w-5xl mx-auto">
-          <div className="page-reveal">
-            <GlassCard style={{ padding: 40 }}>
-              <SectionHeading eyebrow="Our Story" title="From laboratory to landscape." />
-              <p style={{ color: "rgba(14,42,28,0.80)", fontSize: "1.05rem", lineHeight: 1.8, fontWeight: 300, marginBottom: 16 }}>
-                Founded by scientists and entrepreneurs with decades of combined experience across biotechnology, healthcare and agriculture, Indibiotek was created to bridge the gap between deep science and commercial viability.
-              </p>
-              <p style={{ color: "rgba(14,42,28,0.65)", fontSize: "1rem", lineHeight: 1.8, fontWeight: 300 }}>
-                We believe biology is the most powerful manufacturing platform on Earth — one that can decarbonise industries, restore ecosystems, feed populations and heal diseases. Our work spans every step of that translation.
-              </p>
-            </GlassCard>
+      {/* ─── CREDENTIALS & RECOGNITION ─── */}
+      <section className="px-8 md:px-16 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center" style={{ marginBottom: 48 }}>
+            <div
+              className="page-reveal"
+              style={{
+                fontFamily: "Menlo, monospace",
+                fontSize: 11,
+                letterSpacing: "0.24em",
+                textTransform: "uppercase",
+                color: ACCENT,
+                marginBottom: 16,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: LIME, boxShadow: `0 0 10px ${LIME}` }} />
+              — 01 / Credentials & Recognition
+            </div>
+            <h2
+              className="page-reveal font-display"
+              style={{
+                fontSize: "clamp(2rem, 4.4vw, 3.4rem)",
+                lineHeight: 1.04,
+                letterSpacing: "-0.02em",
+                fontWeight: 700,
+                color: TEXT_DARK,
+                maxWidth: "22ch",
+                margin: "0 auto",
+              }}
+            >
+              Recognised by the Government of India.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                src: "/affiliations/startup-india.png",
+                title: "Startup India",
+                caption: "Recognised by the Department for Promotion of Industry and Internal Trade, Ministry of Commerce and Industry.",
+              },
+              {
+                src: "/affiliations/msme.png",
+                title: "MSME Registered",
+                caption: "Ministry of Micro, Small & Medium Enterprises — Government of India.",
+              },
+              {
+                src: "/affiliations/make-in-india.png",
+                title: "Make in India",
+                caption: "Aligned with the national initiative to design, develop and manufacture biotechnology in India.",
+              },
+            ].map((a) => (
+              <div
+                key={a.src}
+                className="page-reveal"
+                style={{
+                  background: "#FFFFFF",
+                  border: "1px solid rgba(14,42,28,0.08)",
+                  borderRadius: 18,
+                  padding: 28,
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  boxShadow: "0 1px 0 rgba(255,255,255,1) inset, 0 8px 24px rgba(14,42,28,0.06)",
+                }}
+              >
+                <div
+                  style={{
+                    height: 180,
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 22,
+                    padding: "0 8px",
+                  }}
+                >
+                  <img
+                    src={a.src}
+                    alt={a.title}
+                    style={{ maxHeight: "100%", maxWidth: "100%", width: "auto", objectFit: "contain" }}
+                  />
+                </div>
+                <h4
+                  className="font-display"
+                  style={{ fontSize: "1.1rem", fontWeight: 700, color: TEXT_DARK, marginBottom: 8, letterSpacing: "-0.01em" }}
+                >
+                  {a.title}
+                </h4>
+                <p style={{ color: TEXT_BODY, fontSize: 13, lineHeight: 1.6, fontWeight: 400 }}>
+                  {a.caption}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -311,109 +397,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─── CREDENTIALS & RECOGNITION ─── */}
-      <section className="px-8 md:px-16 py-20" style={{ background: "rgba(20,181,126,0.04)" }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center" style={{ marginBottom: 48 }}>
-            <div
-              className="page-reveal"
-              style={{
-                fontFamily: "Menlo, monospace",
-                fontSize: 11,
-                letterSpacing: "0.24em",
-                textTransform: "uppercase",
-                color: ACCENT,
-                marginBottom: 16,
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: LIME, boxShadow: `0 0 10px ${LIME}` }} />
-              — 04 / Credentials & Recognition
-            </div>
-            <h2
-              className="page-reveal font-display"
-              style={{
-                fontSize: "clamp(2rem, 4.4vw, 3.4rem)",
-                lineHeight: 1.04,
-                letterSpacing: "-0.02em",
-                fontWeight: 700,
-                color: TEXT_DARK,
-                maxWidth: "22ch",
-                margin: "0 auto",
-              }}
-            >
-              Recognised by the Government of India.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                src: "/affiliations/startup-india.png",
-                title: "Startup India",
-                caption: "Recognised by the Department for Promotion of Industry and Internal Trade, Ministry of Commerce and Industry.",
-              },
-              {
-                src: "/affiliations/msme.png",
-                title: "MSME Registered",
-                caption: "Ministry of Micro, Small & Medium Enterprises — Government of India.",
-              },
-              {
-                src: "/affiliations/make-in-india.png",
-                title: "Make in India",
-                caption: "Aligned with the national initiative to design, develop and manufacture biotechnology in India.",
-              },
-            ].map((a) => (
-              <div
-                key={a.src}
-                className="page-reveal"
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid rgba(14,42,28,0.08)",
-                  borderRadius: 18,
-                  padding: 28,
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  boxShadow: "0 1px 0 rgba(255,255,255,1) inset, 0 8px 24px rgba(14,42,28,0.06)",
-                }}
-              >
-                <div
-                  style={{
-                    height: 180,
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 22,
-                    padding: "0 8px",
-                  }}
-                >
-                  <img
-                    src={a.src}
-                    alt={a.title}
-                    style={{ maxHeight: "100%", maxWidth: "100%", width: "auto", objectFit: "contain" }}
-                  />
-                </div>
-                <h4
-                  className="font-display"
-                  style={{ fontSize: "1.1rem", fontWeight: 700, color: TEXT_DARK, marginBottom: 8, letterSpacing: "-0.01em" }}
-                >
-                  {a.title}
-                </h4>
-                <p style={{ color: TEXT_BODY, fontSize: 13, lineHeight: 1.6, fontWeight: 400 }}>
-                  {a.caption}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-8 md:px-16 py-16">
+      <section className="px-8 md:px-16 py-16" style={{ background: "rgba(20,181,126,0.04)" }}>
         <div className="max-w-6xl mx-auto">
           <SectionHeading eyebrow="Our Values" title="What guides every decision." align="center" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
