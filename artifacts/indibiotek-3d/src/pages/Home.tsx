@@ -179,7 +179,7 @@ export default function Home() {
       {/* ─── HUGE TYPOGRAPHIC STATEMENT — Terminal-style ─── */}
       <section
         className="relative px-6 md:px-12"
-        style={{ background: BG, paddingTop: 120, paddingBottom: 100 }}
+        style={{ background: BG, paddingTop: 120, paddingBottom: 32 }}
       >
         <div className="max-w-[1180px] mx-auto">
           {/* Prominent brand lockup */}
@@ -258,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* ─── RECOGNISED BY — Government of India affiliations ─── */}
-      <section className="relative px-6 md:px-12 pt-16 pb-20" style={{ background: BG }}>
+      <section className="relative px-6 md:px-12 pt-6 pb-12" style={{ background: BG }}>
         <div className="max-w-[1180px] mx-auto reveal">
           <div
             style={{
