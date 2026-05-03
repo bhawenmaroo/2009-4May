@@ -5,7 +5,7 @@ const ROLES = [
   { title: "Senior Scientist — Synthetic Biology", loc: "India · Full-time", team: "R&D" },
   { title: "Bioprocess Engineer", loc: "India · Full-time", team: "Manufacturing" },
   { title: "Computational Biologist", loc: "Remote / India · Full-time", team: "R&D" },
-  { title: "Field Agronomist", loc: "India · Field-based", team: "Agri" },
+  { title: "Field Agronomist", loc: "India · Field-based", team: "Agriculture" },
   { title: "Quality Assurance Lead", loc: "India · Full-time", team: "Scientific Services" },
   { title: "Business Development Manager", loc: "India · Full-time", team: "Commercial" },
 ];

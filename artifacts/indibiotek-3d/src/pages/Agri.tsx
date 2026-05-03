@@ -12,7 +12,7 @@ const PROGRAMS = [
 export default function Agri() {
   return (
     <PageShell
-      eyebrow="Agri Division"
+      eyebrow="Agriculture Division"
       title="Biology that grows with the planet."
       intro="Our agricultural biotechnology division develops products and platforms that help farmers grow more food with fewer chemicals, less water and healthier soils."
       heroImage="https://images.unsplash.com/photo-1500382017468-9049fed747ef?"

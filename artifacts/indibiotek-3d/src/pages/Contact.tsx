@@ -86,7 +86,7 @@ export default function Contact() {
                       <option style={{ background: "#FFFFFF" }}>I'm interested in…</option>
                       <option style={{ background: "#FFFFFF" }}>Partnership / Investment</option>
                       <option style={{ background: "#FFFFFF" }}>Lifesciences</option>
-                      <option style={{ background: "#FFFFFF" }}>Agri</option>
+                      <option style={{ background: "#FFFFFF" }}>Agriculture</option>
                       <option style={{ background: "#FFFFFF" }}>Scientific Services</option>
                       <option style={{ background: "#FFFFFF" }}>Careers</option>
                       <option style={{ background: "#FFFFFF" }}>Other</option>

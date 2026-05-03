@@ -138,7 +138,7 @@ export default function Home() {
               textShadow: "0 2px 12px rgba(0,0,0,0.4)",
             }}
           >
-            A science-driven biotechnology company building integrated solutions across the lifesciences and agri value chain — from molecular discovery to scaled, sustainable delivery.
+            A science-driven biotechnology company building integrated solutions across the lifesciences and agriculture value chain — from molecular discovery to scaled, sustainable delivery.
           </div>
         </div>
         {/* Bottom-left attribution / caption */}
@@ -715,7 +715,7 @@ export default function Home() {
               maxWidth: 540, marginBottom: 32,
             }}
           >
-            Our agri division partners with farmers across India to deliver biological inputs at meaningful scale — from research bench to working fields.
+            Our agriculture division partners with farmers across India to deliver biological inputs at meaningful scale — from research bench to working fields.
           </p>
           <div className="reveal">
             <Link href="/agri">
@@ -730,7 +730,7 @@ export default function Home() {
                   backdropFilter: "blur(8px)",
                 }}
               >
-                EXPLORE AGRI →
+                EXPLORE AGRICULTURE →
               </span>
             </Link>
           </div>
