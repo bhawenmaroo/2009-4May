@@ -21,18 +21,15 @@ const PIPETTE_IMG =
 
 const DIVISIONS = [
   { title: "Lifesciences",          desc: "Drug discovery, biopharmaceutical development and translational research.", href: "/lifesciences", num: "01" },
-  { title: "Agriculture",           desc: "Crop biotechnology, biofertilizers and sustainable precision farming.",     href: "/agri",          num: "02" },
-  { title: "Healthcare",            desc: "Diagnostics, therapeutics and patient-centred biomedical solutions.",       href: "/services",      num: "03" },
-  { title: "Waste Management",      desc: "Bioremediation and circular bio-based environmental solutions.",            href: "/services",      num: "04" },
-  { title: "Scientific Services",   desc: "Analytical testing, contract research and laboratory services.",            href: "/scientific",    num: "05" },
-  { title: "R&D",                   desc: "Cross-disciplinary research labs driving every Indibiotek division.",       href: "/rnd",           num: "06" },
+  { title: "Scientific Services",   desc: "Analytical testing, contract research and laboratory services.",            href: "/scientific",    num: "02" },
+  { title: "Agriculture",           desc: "Crop biotechnology, biofertilizers and sustainable precision farming.",     href: "/agri",          num: "03" },
 ];
 
 const STATS = [
   { num: "15+",  label: "Active research pipelines" },
   { num: "120+", label: "Scientists & engineers" },
   { num: "20+",  label: "Industry partners" },
-  { num: "6",    label: "Operating divisions" },
+  { num: "3",    label: "Operating divisions" },
 ];
 
 const PILLARS = [
@@ -369,7 +366,7 @@ export default function Home() {
                   fontWeight: 700, color: TEXT_DARK, maxWidth: "16ch",
                 }}
               >
-                Six pillars, one integrated company.
+                Three pillars, one company.
               </h2>
             </div>
             <Link href="/about">
