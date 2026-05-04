@@ -260,7 +260,37 @@ export default function Home() {
 
       {/* ─── RECOGNISED BY — Government of India affiliations ─── */}
       <section className="relative px-5 sm:px-6 md:px-12 pt-6 pb-12" style={{ background: BG }}>
-        <div className="max-w-[1180px] mx-auto reveal">
+        <div
+          className="max-w-[1180px] mx-auto reveal relative overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(244,248,245,0.85) 100%)",
+            border: "1px solid rgba(11,106,77,0.16)",
+            borderRadius: 22,
+            padding: "clamp(28px, 4vw, 48px) clamp(20px, 3.5vw, 44px)",
+            boxShadow:
+              "0 1px 0 rgba(255,255,255,0.9) inset, 0 18px 40px -18px rgba(11,106,77,0.18), 0 4px 14px rgba(14,42,28,0.04)",
+          }}
+        >
+          {/* Accent corner glows */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute", top: -60, left: -60, width: 220, height: 220,
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(20,181,126,0.18) 0%, rgba(20,181,126,0) 70%)",
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            aria-hidden
+            style={{
+              position: "absolute", bottom: -80, right: -60, width: 260, height: 260,
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(200,255,77,0.18) 0%, rgba(200,255,77,0) 70%)",
+              pointerEvents: "none",
+            }}
+          />
           <div
             style={{
               fontFamily: "Menlo, monospace",
@@ -268,6 +298,7 @@ export default function Home() {
               textTransform: "uppercase", color: ACCENT,
               marginBottom: 14, textAlign: "center",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 12,
+              position: "relative",
             }}
           >
             <span style={{ width: 28, height: 1, background: ACCENT }} />
@@ -281,6 +312,7 @@ export default function Home() {
               lineHeight: 1.15, fontWeight: 600, color: TEXT_DARK,
               letterSpacing: "-0.015em", textAlign: "center",
               marginBottom: 36, maxWidth: "28ch", margin: "0 auto 36px",
+              position: "relative",
             }}
           >
             Government of India affiliations & accreditations.
