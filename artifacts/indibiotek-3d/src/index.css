@@ -117,6 +117,7 @@
     background: #F4F8F5;
     color: #0E2A1C;
     min-height: 100vh;
+    transition: background-color 0.35s ease, color 0.35s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -134,6 +135,111 @@
 
   ::selection { background: rgba(20,181,126,0.25); color: #0E2A1C; }
 }
+
+/* ============================================================
+   DARK THEME — overrides applied when html[data-theme="dark"]
+   Targets common inline-style patterns used throughout the site.
+   ============================================================ */
+html[data-theme="dark"] body {
+  background: #0A1410;
+  color: #DCE9DF;
+}
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+  color: #F4F8F5;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-track { background: #0E1C14; }
+html[data-theme="dark"] ::selection {
+  background: rgba(200,255,77,0.30);
+  color: #F4F8F5;
+}
+
+/* Off-white page surfaces -> dark surfaces */
+html[data-theme="dark"] [style*="background: #F4F8F5"],
+html[data-theme="dark"] [style*="background:#F4F8F5"],
+html[data-theme="dark"] [style*="background: #ECF3EE"],
+html[data-theme="dark"] [style*="background:#ECF3EE"],
+html[data-theme="dark"] [style*="background: #DCE9DF"],
+html[data-theme="dark"] [style*="background:#DCE9DF"],
+html[data-theme="dark"] [style*="background-color: #F4F8F5"],
+html[data-theme="dark"] [style*="background-color:#F4F8F5"] {
+  background: #0A1410 !important;
+}
+
+/* Light gradient backgrounds (e.g. card highlights) -> dark gradient */
+html[data-theme="dark"] [style*="linear-gradient(180deg, #ECF3EE"],
+html[data-theme="dark"] [style*="linear-gradient(180deg,#ECF3EE"] {
+  background: linear-gradient(180deg, #0E1C14 0%, #06120C 100%) !important;
+}
+
+/* Plain white card surfaces (rgba(255,255,255,...)) -> dark glass.
+   Excludes navbar/footer/page-transition/cursor which manage their own bg. */
+html[data-theme="dark"] [style*="rgba(255, 255, 255"]:not([data-testid="navbar"] *):not([data-testid="footer"] *),
+html[data-theme="dark"] [style*="rgba(255,255,255"]:not([data-testid="navbar"] *):not([data-testid="footer"] *) {
+  background: rgba(20, 30, 24, 0.55) !important;
+  border-color: rgba(20, 181, 126, 0.20) !important;
+}
+
+/* Solid #FFFFFF -> dark surface */
+html[data-theme="dark"] [style*="background: #FFFFFF"]:not([data-testid="navbar"] *):not([data-testid="footer"] *),
+html[data-theme="dark"] [style*="background:#FFFFFF"]:not([data-testid="navbar"] *):not([data-testid="footer"] *),
+html[data-theme="dark"] [style*="background: #fff"]:not([data-testid="navbar"] *):not([data-testid="footer"] *) {
+  background: #131F18 !important;
+}
+
+/* Heading dark text -> bright text */
+html[data-theme="dark"] [style*="color: #0E2A1C"],
+html[data-theme="dark"] [style*="color:#0E2A1C"],
+html[data-theme="dark"] [style*="color: #0E1C14"],
+html[data-theme="dark"] [style*="color:#0E1C14"] {
+  color: #F4F8F5 !important;
+}
+
+/* Body text muted -> light muted */
+html[data-theme="dark"] [style*="color: rgba(14,42,28,0.72"],
+html[data-theme="dark"] [style*="color: rgba(14, 42, 28, 0.72"],
+html[data-theme="dark"] [style*="color:rgba(14,42,28,0.72"] {
+  color: rgba(220, 233, 223, 0.78) !important;
+}
+html[data-theme="dark"] [style*="color: rgba(14,42,28,0.55"],
+html[data-theme="dark"] [style*="color: rgba(14, 42, 28, 0.55"],
+html[data-theme="dark"] [style*="color:rgba(14,42,28,0.55"] {
+  color: rgba(220, 233, 223, 0.55) !important;
+}
+html[data-theme="dark"] [style*="color: rgba(14,42,28,0.45"],
+html[data-theme="dark"] [style*="color: rgba(14, 42, 28, 0.45"] {
+  color: rgba(220, 233, 223, 0.45) !important;
+}
+
+/* Accent teal text — keep but brighten slightly */
+html[data-theme="dark"] [style*="color: #0B6A4D"],
+html[data-theme="dark"] [style*="color:#0B6A4D"] {
+  color: #14B57E !important;
+}
+
+/* Soft borders that referenced the dark text color */
+html[data-theme="dark"] [style*="rgba(14,42,28,0.10"],
+html[data-theme="dark"] [style*="rgba(14, 42, 28, 0.10"] {
+  border-color: rgba(220, 233, 223, 0.12) !important;
+}
+html[data-theme="dark"] [style*="rgba(14,42,28,0.05"],
+html[data-theme="dark"] [style*="rgba(14, 42, 28, 0.05"] {
+  background-color: rgba(220, 233, 223, 0.06) !important;
+}
+
+/* Tailwind utility text-gray / text-zinc fallbacks */
+html[data-theme="dark"] .text-gray-900,
+html[data-theme="dark"] .text-zinc-900,
+html[data-theme="dark"] .text-neutral-900,
+html[data-theme="dark"] .text-slate-900 { color: #F4F8F5 !important; }
+html[data-theme="dark"] .text-gray-700,
+html[data-theme="dark"] .text-gray-600 { color: rgba(220,233,223,0.78) !important; }
+html[data-theme="dark"] .bg-white { background-color: #131F18 !important; }
 
 @keyframes molecule-spin {
   0%   { transform: rotateY(0deg)   rotateX(8deg); }
