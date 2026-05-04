@@ -16,6 +16,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CursorParallaxProvider } from "@/components/CursorParallax";
 import { AtomCursor } from "@/components/AtomCursor";
+import { PageTransition } from "@/components/PageTransition";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
@@ -59,6 +60,7 @@ function App() {
             </main>
             <Footer />
             <AtomCursor />
+            <PageTransition />
           </CursorParallaxProvider>
         </WouterRouter>
         <Toaster />
