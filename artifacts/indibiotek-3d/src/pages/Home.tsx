@@ -358,19 +358,6 @@ export default function Home() {
                 Three pillars, one company.
               </h2>
             </div>
-            <Link href="/about">
-              <span
-                className="cursor-pointer inline-flex items-center"
-                style={{
-                  height: 44, padding: "0 18px", borderRadius: 10,
-                  background: DARK_BG, color: "#FFF",
-                  fontSize: 11.5, fontWeight: 700, letterSpacing: "0.10em",
-                  fontFamily: "Menlo, monospace",
-                }}
-              >
-                VIEW ALL →
-              </span>
-            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {DIVISIONS.map((d) => (
