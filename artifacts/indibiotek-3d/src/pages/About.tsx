@@ -284,8 +284,38 @@ export default function About() {
     >
       {/* ─── CREDENTIALS & RECOGNITION ─── */}
       <section className="px-5 sm:px-8 md:px-16 py-14 sm:py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center" style={{ marginBottom: 48 }}>
+        <div
+          className="max-w-6xl mx-auto relative overflow-hidden page-reveal"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(244,248,245,0.85) 100%)",
+            border: "1px solid rgba(11,106,77,0.16)",
+            borderRadius: 24,
+            padding: "clamp(32px, 5vw, 64px) clamp(20px, 4vw, 56px)",
+            boxShadow:
+              "0 1px 0 rgba(255,255,255,0.9) inset, 0 22px 50px -22px rgba(11,106,77,0.20), 0 4px 14px rgba(14,42,28,0.04)",
+          }}
+        >
+          {/* Accent corner glows */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute", top: -80, left: -80, width: 260, height: 260,
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(20,181,126,0.18) 0%, rgba(20,181,126,0) 70%)",
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            aria-hidden
+            style={{
+              position: "absolute", bottom: -100, right: -80, width: 300, height: 300,
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(200,255,77,0.18) 0%, rgba(200,255,77,0) 70%)",
+              pointerEvents: "none",
+            }}
+          />
+          <div className="text-center relative" style={{ marginBottom: 48 }}>
             <div
               className="page-reveal"
               style={{
@@ -319,7 +349,7 @@ export default function About() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
             {[
               {
                 src: "/affiliations/startup-india.png",
