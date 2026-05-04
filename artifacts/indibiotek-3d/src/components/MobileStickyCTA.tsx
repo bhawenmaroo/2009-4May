@@ -1,14 +1,8 @@
-import { Link, useLocation } from "wouter";
-
 const ACCENT = "#0B6A4D";
 const ACCENT_BRIGHT = "#14B57E";
 const TEXT_DARK = "#0E2A1C";
-const LIME = "#C8FF4D";
 
 export function MobileStickyCTA() {
-  const [location] = useLocation();
-  const onContact = location === "/contact";
-
   return (
     <div
       data-testid="mobile-sticky-cta"
@@ -25,7 +19,7 @@ export function MobileStickyCTA() {
         style={{
           pointerEvents: "auto",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
+          gridTemplateColumns: "1fr 1fr",
           gap: 8,
           background: "rgba(255,255,255,0.96)",
           border: "1px solid rgba(14,42,28,0.10)",
@@ -82,32 +76,6 @@ export function MobileStickyCTA() {
           </svg>
           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>WhatsApp</span>
         </a>
-
-        <Link
-          href="/contact"
-          data-testid="mcta-inquire"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 3,
-            padding: "10px 6px",
-            borderRadius: 14,
-            color: onContact ? TEXT_DARK : LIME,
-            background: onContact ? LIME : TEXT_DARK,
-            textDecoration: "none",
-            cursor: "pointer",
-            boxShadow: onContact
-              ? "0 6px 16px rgba(200,255,77,0.40)"
-              : "0 6px 16px rgba(14,42,28,0.30)",
-          }}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>Inquire</span>
-        </Link>
       </div>
     </div>
   );

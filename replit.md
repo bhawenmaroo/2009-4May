@@ -39,7 +39,7 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 - **Shared components**:
   - `PageShell` + `GlassCard` + `SectionHeading` for division pages
   - `InquiryForm` — per-page inquiry with auto-filled subject; opens WhatsApp (primary) or mailto (secondary); validates name + message + optional email/phone, with maxLength on message
-  - `MobileStickyCTA` — fixed bottom bar (md:hidden, z-40) with Call · WhatsApp · Inquire; body has `padding-bottom` on mobile + safe-area inset
+  - `MobileStickyCTA` — fixed bottom bar (md:hidden, z-40) with Call · WhatsApp; body has `padding-bottom` on mobile + safe-area inset
   - `AtomCursor`, `PageTransition` — both respect `prefers-reduced-motion`
 - **A11y / perf**:
   - All below-the-fold `<img>` use `loading="lazy" decoding="async"`
