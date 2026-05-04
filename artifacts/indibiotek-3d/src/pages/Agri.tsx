@@ -1,4 +1,5 @@
 import { PageShell, GlassCard, SectionHeading } from "@/components/PageShell";
+import { InquiryForm } from "@/components/InquiryForm";
 
 const PROGRAMS = [
   { title: "Biofertilizers", desc: "Microbial consortia that improve soil health and nutrient uptake — reducing chemical inputs." },
@@ -33,6 +34,13 @@ export default function Agri() {
           </div>
         </div>
       </section>
+
+      <InquiryForm
+        subject="Agri"
+        eyebrow="Inquire · Agri"
+        title="Bring biology to your fields."
+        intro="Whether you're a distributor, FPO, agronomist or research partner — let's talk about how our biofertilizers, biopesticides and field programs can fit your geography."
+      />
     </PageShell>
   );
 }

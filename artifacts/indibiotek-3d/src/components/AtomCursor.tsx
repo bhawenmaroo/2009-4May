@@ -48,7 +48,9 @@ export function AtomCursor() {
 
   useEffect(() => {
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!canHover) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Respect users who request reduced motion — no custom cursor at all
+    if (!canHover || reduceMotion) return;
     setEnabled(true);
 
     const onMove = (e: MouseEvent) => {

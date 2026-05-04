@@ -17,6 +17,7 @@ import { Footer } from "@/components/Footer";
 import { CursorParallaxProvider } from "@/components/CursorParallax";
 import { AtomCursor } from "@/components/AtomCursor";
 import { PageTransition } from "@/components/PageTransition";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
@@ -61,6 +62,7 @@ function App() {
             <Footer />
             <AtomCursor />
             <PageTransition />
+            <MobileStickyCTA />
           </CursorParallaxProvider>
         </WouterRouter>
         <Toaster />

@@ -1,4 +1,5 @@
 import { PageShell, GlassCard } from "@/components/PageShell";
+import { InquiryForm } from "@/components/InquiryForm";
 
 const OFFERINGS = [
   {
@@ -234,6 +235,13 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      <InquiryForm
+        subject="Services"
+        eyebrow="Inquire · Services"
+        title="Request a quote on any service."
+        intro="Share your project goals, sample details and expected turnaround. We'll respond with a tailored quote and timeline."
+      />
     </PageShell>
   );
 }

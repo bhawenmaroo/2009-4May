@@ -27,6 +27,8 @@ export function Footer() {
         <img
           src="/logo.png"
           alt="Indibiotek Private Limited"
+          loading="lazy"
+          decoding="async"
           style={{ height: 56, width: "auto", margin: "0 auto 22px" }}
         />
 

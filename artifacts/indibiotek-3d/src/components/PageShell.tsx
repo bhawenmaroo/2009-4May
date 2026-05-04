@@ -20,6 +20,12 @@ export function PageShell({
 
   useEffect(() => {
     if (!ref.current) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      // Skip the staggered reveal — show everything immediately
+      gsap.set(".page-reveal", { y: 0, opacity: 1, clearProps: "transform,opacity" });
+      return;
+    }
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".page-reveal",
@@ -58,6 +64,7 @@ export function PageShell({
               <img
                 src={logo}
                 alt={eyebrow}
+                decoding="async"
                 style={{
                   height: "clamp(64px, 11vw, 132px)",
                   width: "auto",

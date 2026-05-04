@@ -1,4 +1,5 @@
 import { PageShell, GlassCard, SectionHeading } from "@/components/PageShell";
+import { InquiryForm } from "@/components/InquiryForm";
 
 const FOCUS = [
   { title: "Synthetic Biology", desc: "Rationally engineered microbes and cell-free systems for therapeutics, materials and food." },
@@ -57,6 +58,13 @@ export default function RnD() {
           </div>
         </div>
       </section>
+
+      <InquiryForm
+        subject="R&D Collaboration"
+        eyebrow="Inquire · R&D"
+        title="Co-develop with our R&D platform."
+        intro="Sponsored research, joint development, or licensing — tell us about your hypothesis and we'll set up an introductory call with the relevant principal investigator."
+      />
     </PageShell>
   );
 }

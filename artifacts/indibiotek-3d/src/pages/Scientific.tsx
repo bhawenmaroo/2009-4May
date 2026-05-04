@@ -1,4 +1,5 @@
 import { PageShell, GlassCard, SectionHeading } from "@/components/PageShell";
+import { InquiryForm } from "@/components/InquiryForm";
 
 const SERVICES = [
   { title: "Analytical Testing", desc: "HPLC, LC-MS, NMR, microbiology and genomic assays under quality systems." },
@@ -33,6 +34,13 @@ export default function Scientific() {
           </div>
         </div>
       </section>
+
+      <InquiryForm
+        subject="Scientific Services"
+        eyebrow="Inquire · Scientific Services"
+        title="Request a quote or scope of work."
+        intro="Share your sample type, assay needs and turnaround. Our scientific services team will respond with a tailored proposal."
+      />
     </PageShell>
   );
 }

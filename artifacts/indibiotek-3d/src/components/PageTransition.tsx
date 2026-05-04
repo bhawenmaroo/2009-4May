@@ -3,6 +3,11 @@ import { useLocation } from "wouter";
 
 const TOTAL_MS = 1250;
 
+function prefersReducedMotion(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export function PageTransition() {
   const [location] = useLocation();
   const [transitionKey, setTransitionKey] = useState(0);
@@ -15,6 +20,8 @@ export function PageTransition() {
       firstRender.current = false;
       return;
     }
+    // Respect users who request reduced motion — skip the transition entirely
+    if (prefersReducedMotion()) return;
     if (hideTimer.current) window.clearTimeout(hideTimer.current);
     setTransitionKey((k) => k + 1);
     setActive(true);

@@ -1,4 +1,5 @@
 import { PageShell, GlassCard, SectionHeading } from "@/components/PageShell";
+import { InquiryForm } from "@/components/InquiryForm";
 
 const PROGRAMS = [
   { title: "Drug Discovery", desc: "Small-molecule and biologics discovery across oncology, infectious disease and metabolic disorders." },
@@ -33,6 +34,13 @@ export default function Lifesciences() {
           </div>
         </div>
       </section>
+
+      <InquiryForm
+        subject="Lifesciences"
+        eyebrow="Inquire · Lifesciences"
+        title="Partner with our lifesciences team."
+        intro="From discovery collaborations to GMP-aligned process work — tell us what you're solving and we'll route you to the right specialist."
+      />
     </PageShell>
   );
 }

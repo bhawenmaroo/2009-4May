@@ -119,6 +119,30 @@
     min-height: 100vh;
   }
 
+  /* Leave room for the mobile sticky CTA bar at the bottom of every page */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  /* Honor users who request reduced motion across the site */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal,
+    .page-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--app-font-display);
     color: #0E2A1C;
