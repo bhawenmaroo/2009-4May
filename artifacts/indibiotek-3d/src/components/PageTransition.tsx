@@ -43,8 +43,8 @@ export function PageTransition() {
       <style>{`
         @keyframes pt-blur-veil {
           0%   { backdrop-filter: blur(0px) saturate(100%); -webkit-backdrop-filter: blur(0px) saturate(100%); background-color: rgba(244,248,245,0); }
-          38%  { backdrop-filter: blur(18px) saturate(115%); -webkit-backdrop-filter: blur(18px) saturate(115%); background-color: rgba(244,248,245,0.45); }
-          62%  { backdrop-filter: blur(18px) saturate(115%); -webkit-backdrop-filter: blur(18px) saturate(115%); background-color: rgba(244,248,245,0.45); }
+          38%  { backdrop-filter: blur(6px) saturate(108%); -webkit-backdrop-filter: blur(6px) saturate(108%); background-color: rgba(244,248,245,0.22); }
+          62%  { backdrop-filter: blur(6px) saturate(108%); -webkit-backdrop-filter: blur(6px) saturate(108%); background-color: rgba(244,248,245,0.22); }
           100% { backdrop-filter: blur(0px) saturate(100%); -webkit-backdrop-filter: blur(0px) saturate(100%); background-color: rgba(244,248,245,0); }
         }
         @keyframes pt-logo-rise {
