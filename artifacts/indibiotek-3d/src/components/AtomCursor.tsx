@@ -164,8 +164,8 @@ export function AtomCursor() {
           position: "fixed",
           top: 0,
           left: 0,
-          width: 38,
-          height: 38,
+          width: 26,
+          height: 26,
           borderRadius: "50%",
           border: `1.5px solid rgba(20,181,126,0.55)`,
           boxShadow: "0 0 14px rgba(20,181,126,0.18)",
@@ -189,8 +189,8 @@ export function AtomCursor() {
               position: "absolute",
               top: "50%",
               left: 0,
-              width: 4,
-              height: 4,
+              width: 3,
+              height: 3,
               borderRadius: "50%",
               background: LIME,
               boxShadow: `0 0 8px ${LIME}, 0 0 14px rgba(200,255,77,0.5)`,
@@ -209,8 +209,8 @@ export function AtomCursor() {
           position: "fixed",
           top: 0,
           left: 0,
-          width: 9,
-          height: 9,
+          width: 7,
+          height: 7,
           borderRadius: "50%",
           background: ACCENT_BRIGHT,
           zIndex: 99999,
@@ -249,11 +249,11 @@ export function AtomCursor() {
                 position: "absolute",
                 top: 0,
                 left: 0,
-                width: 44,
-                height: 44,
+                width: 32,
+                height: 32,
                 borderRadius: "50%",
-                border: `2.5px solid ${ringMain}`,
-                boxShadow: `0 0 16px ${ringGlow}`,
+                border: `2px solid ${ringMain}`,
+                boxShadow: `0 0 12px ${ringGlow}`,
                 animation: "atom-burst-ring 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards",
               }}
             />
@@ -263,8 +263,8 @@ export function AtomCursor() {
                 position: "absolute",
                 top: 0,
                 left: 0,
-                width: 44,
-                height: 44,
+                width: 32,
+                height: 32,
                 borderRadius: "50%",
                 border: `1px solid ${ringTrail}`,
                 opacity: 0.75,
@@ -274,7 +274,7 @@ export function AtomCursor() {
             {/* Six radiating particles */}
             {Array.from({ length: 6 }).map((_, i) => {
               const angle = (i / 6) * Math.PI * 2;
-              const dist = 32;
+              const dist = 24;
               const bx = `${Math.cos(angle) * dist}px`;
               const by = `${Math.sin(angle) * dist}px`;
               const color = i % 2 === 0 ? particleA : particleB;
@@ -286,11 +286,11 @@ export function AtomCursor() {
                       position: "absolute",
                       top: 0,
                       left: 0,
-                      width: 4,
-                      height: 4,
+                      width: 3,
+                      height: 3,
                       borderRadius: "50%",
                       background: color,
-                      boxShadow: `0 0 6px ${particleGlow}`,
+                      boxShadow: `0 0 5px ${particleGlow}`,
                       "--bx": bx,
                       "--by": by,
                       animation: "atom-burst-particle 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
