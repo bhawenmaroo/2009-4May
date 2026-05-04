@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 
-const DARK_BG = "#0E1C14";
 const TOTAL_MS = 1100;
 
 export function PageTransition() {
@@ -36,58 +35,64 @@ export function PageTransition() {
         inset: 0,
         zIndex: 100000,
         pointerEvents: "none",
-        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <style>{`
-        @keyframes pt-curtain-sweep {
-          0%   { transform: translate3d(0, 100%, 0); }
-          42%  { transform: translate3d(0, 0%, 0); }
-          58%  { transform: translate3d(0, 0%, 0); }
-          100% { transform: translate3d(0, -100%, 0); }
+        @keyframes pt-blur-veil {
+          0%   { backdrop-filter: blur(0px) saturate(100%); -webkit-backdrop-filter: blur(0px) saturate(100%); background-color: rgba(244,248,245,0); }
+          38%  { backdrop-filter: blur(18px) saturate(115%); -webkit-backdrop-filter: blur(18px) saturate(115%); background-color: rgba(244,248,245,0.45); }
+          62%  { backdrop-filter: blur(18px) saturate(115%); -webkit-backdrop-filter: blur(18px) saturate(115%); background-color: rgba(244,248,245,0.45); }
+          100% { backdrop-filter: blur(0px) saturate(100%); -webkit-backdrop-filter: blur(0px) saturate(100%); background-color: rgba(244,248,245,0); }
         }
-        @keyframes pt-logo-reveal {
-          0%   { opacity: 0; transform: translateY(14px); }
-          42%  { opacity: 1; transform: translateY(0); }
-          58%  { opacity: 1; transform: translateY(0); }
-          100% { opacity: 0; transform: translateY(-14px); }
+        @keyframes pt-logo-rise {
+          0%   { opacity: 0; transform: translateY(28px) scale(0.94); }
+          38%  { opacity: 1; transform: translateY(0) scale(1); }
+          62%  { opacity: 1; transform: translateY(0) scale(1); }
+          100% { opacity: 0; transform: translateY(-22px) scale(0.96); }
         }
         @keyframes pt-bar-grow {
-          0%   { transform: scaleX(0); }
-          42%  { transform: scaleX(1); }
-          58%  { transform: scaleX(1); }
-          100% { transform: scaleX(0); }
+          0%   { transform: scaleX(0); opacity: 0; }
+          38%  { transform: scaleX(1); opacity: 1; }
+          62%  { transform: scaleX(1); opacity: 1; }
+          100% { transform: scaleX(0); opacity: 0; }
         }
       `}</style>
 
-      {/* The curtain — solid dark panel that sweeps up across the viewport */}
+      {/* Frosted veil — blurs whatever is underneath, no solid color */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: DARK_BG,
-          willChange: "transform",
-          animation: `pt-curtain-sweep ${TOTAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1) forwards`,
+          willChange: "backdrop-filter, background-color",
+          animation: `pt-blur-veil ${TOTAL_MS}ms cubic-bezier(0.4, 0, 0.2, 1) forwards`,
+        }}
+      />
+
+      {/* Centered stack — logo + lime accent bar rise into view */}
+      <div
+        style={{
+          position: "relative",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           flexDirection: "column",
-          gap: 18,
+          alignItems: "center",
+          gap: 16,
         }}
       >
         <img
           src="/logo-mark.png"
           alt=""
           style={{
-            width: "min(96px, 18vw)",
+            width: "min(110px, 20vw)",
             height: "auto",
             opacity: 0,
-            filter: "drop-shadow(0 0 22px rgba(20,181,126,0.35))",
-            animation: `pt-logo-reveal ${TOTAL_MS}ms cubic-bezier(0.4, 0, 0.2, 1) forwards`,
+            filter: "drop-shadow(0 12px 32px rgba(11,106,77,0.35))",
+            animation: `pt-logo-rise ${TOTAL_MS}ms cubic-bezier(0.22, 1, 0.36, 1) forwards`,
             willChange: "opacity, transform",
           }}
         />
-        {/* Thin lime accent bar that grows under the logo, then collapses */}
         <div
           style={{
             width: "min(120px, 22vw)",
@@ -96,8 +101,9 @@ export function PageTransition() {
             boxShadow: "0 0 14px rgba(200,255,77,0.55)",
             transformOrigin: "center",
             transform: "scaleX(0)",
-            animation: `pt-bar-grow ${TOTAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1) forwards`,
-            willChange: "transform",
+            opacity: 0,
+            animation: `pt-bar-grow ${TOTAL_MS}ms cubic-bezier(0.22, 1, 0.36, 1) forwards`,
+            willChange: "transform, opacity",
           }}
         />
       </div>
