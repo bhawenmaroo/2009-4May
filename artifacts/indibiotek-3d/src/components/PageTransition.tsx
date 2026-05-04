@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 
 const DARK_BG = "#0E1C14";
-const TOTAL_MS = 950;
+const TOTAL_MS = 1100;
 
 export function PageTransition() {
   const [location] = useLocation();
   const [transitionKey, setTransitionKey] = useState(0);
+  const [active, setActive] = useState(false);
   const firstRender = useRef(true);
   const hideTimer = useRef<number | null>(null);
-  const [active, setActive] = useState(false);
 
   useEffect(() => {
     if (firstRender.current) {
@@ -27,10 +27,6 @@ export function PageTransition() {
 
   if (!active) return null;
 
-  // Use a fresh seed each transition so the noise pattern varies
-  const seed = (transitionKey * 37) % 997;
-  const filterId = `pt-dissolve-${transitionKey}`;
-
   return (
     <div
       key={transitionKey}
@@ -40,72 +36,71 @@ export function PageTransition() {
         inset: 0,
         zIndex: 100000,
         pointerEvents: "none",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        animation: `pt-bg-fade ${TOTAL_MS}ms cubic-bezier(0.4, 0, 0.2, 1) forwards`,
-        background: DARK_BG,
+        overflow: "hidden",
       }}
     >
       <style>{`
-        @keyframes pt-bg-fade {
-          0%   { opacity: 0; }
-          32%  { opacity: 1; }
-          68%  { opacity: 1; }
-          100% { opacity: 0; }
+        @keyframes pt-curtain-sweep {
+          0%   { transform: translate3d(0, 100%, 0); }
+          42%  { transform: translate3d(0, 0%, 0); }
+          58%  { transform: translate3d(0, 0%, 0); }
+          100% { transform: translate3d(0, -100%, 0); }
         }
-        @keyframes pt-logo-fade {
-          0%   { opacity: 0; }
-          18%  { opacity: 0.15; }
-          45%  { opacity: 1; }
-          60%  { opacity: 1; }
-          88%  { opacity: 0.15; }
-          100% { opacity: 0; }
+        @keyframes pt-logo-reveal {
+          0%   { opacity: 0; transform: translateY(14px); }
+          42%  { opacity: 1; transform: translateY(0); }
+          58%  { opacity: 1; transform: translateY(0); }
+          100% { opacity: 0; transform: translateY(-14px); }
+        }
+        @keyframes pt-bar-grow {
+          0%   { transform: scaleX(0); }
+          42%  { transform: scaleX(1); }
+          58%  { transform: scaleX(1); }
+          100% { transform: scaleX(0); }
         }
       `}</style>
 
-      {/* Inline SVG filter with SMIL — remounted per transition so it auto-runs */}
-      <svg
-        width="0"
-        height="0"
-        style={{ position: "absolute", pointerEvents: "none" }}
-        aria-hidden
-      >
-        <defs>
-          <filter id={filterId} x="-20%" y="-20%" width="140%" height="140%">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.022"
-              numOctaves="2"
-              seed={seed}
-              result="noise"
-            />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="0">
-              <animate
-                attributeName="scale"
-                values="140;0;0;140"
-                keyTimes="0;0.45;0.6;1"
-                dur={`${TOTAL_MS}ms`}
-                fill="freeze"
-                calcMode="spline"
-                keySplines="0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"
-              />
-            </feDisplacementMap>
-          </filter>
-        </defs>
-      </svg>
-
-      <img
-        src="/logo-mark.png"
-        alt=""
+      {/* The curtain — solid dark panel that sweeps up across the viewport */}
+      <div
         style={{
-          width: "min(140px, 24vw)",
-          height: "auto",
-          filter: `url(#${filterId}) drop-shadow(0 0 22px rgba(20,181,126,0.35))`,
-          animation: `pt-logo-fade ${TOTAL_MS}ms cubic-bezier(0.4, 0, 0.2, 1) forwards`,
-          willChange: "filter, opacity",
+          position: "absolute",
+          inset: 0,
+          background: DARK_BG,
+          willChange: "transform",
+          animation: `pt-curtain-sweep ${TOTAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1) forwards`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: 18,
         }}
-      />
+      >
+        <img
+          src="/logo-mark.png"
+          alt=""
+          style={{
+            width: "min(96px, 18vw)",
+            height: "auto",
+            opacity: 0,
+            filter: "drop-shadow(0 0 22px rgba(20,181,126,0.35))",
+            animation: `pt-logo-reveal ${TOTAL_MS}ms cubic-bezier(0.4, 0, 0.2, 1) forwards`,
+            willChange: "opacity, transform",
+          }}
+        />
+        {/* Thin lime accent bar that grows under the logo, then collapses */}
+        <div
+          style={{
+            width: "min(120px, 22vw)",
+            height: 2,
+            background: "#C8FF4D",
+            boxShadow: "0 0 14px rgba(200,255,77,0.55)",
+            transformOrigin: "center",
+            transform: "scaleX(0)",
+            animation: `pt-bar-grow ${TOTAL_MS}ms cubic-bezier(0.76, 0, 0.24, 1) forwards`,
+            willChange: "transform",
+          }}
+        />
+      </div>
     </div>
   );
 }
