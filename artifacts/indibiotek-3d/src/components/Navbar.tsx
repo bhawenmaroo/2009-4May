@@ -1,6 +1,5 @@
 import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
 
 const NAV = [
   { label: "About",       href: "/about" },
@@ -21,8 +20,6 @@ export function Navbar() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggle } = useTheme();
-  const isDark = theme === "dark";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -60,19 +57,15 @@ export function Navbar() {
           padding: "6px 8px 6px 12px",
           gap: 4,
           minWidth: 0,
-          background: isDark
-            ? scrolled ? "rgba(14,28,20,0.92)" : "rgba(14,28,20,0.78)"
-            : scrolled ? "rgba(255,255,255,0.94)" : "rgba(255,255,255,0.85)",
+          background: scrolled ? "rgba(255,255,255,0.94)" : "rgba(255,255,255,0.85)",
           backdropFilter: "blur(22px)",
           WebkitBackdropFilter: "blur(22px)",
-          border: isDark
-            ? "1px solid rgba(20,181,126,0.22)"
-            : "1px solid rgba(14,42,28,0.10)",
+          border: "1px solid rgba(14,42,28,0.10)",
           borderRadius: 999,
           boxShadow: scrolled
-            ? isDark ? "0 14px 40px rgba(0,0,0,0.45)" : "0 14px 40px rgba(11,28,18,0.14)"
-            : isDark ? "0 8px 28px rgba(0,0,0,0.35)" : "0 8px 28px rgba(11,28,18,0.10)",
-          transition: "background 0.25s, box-shadow 0.25s, border-color 0.25s",
+            ? "0 14px 40px rgba(11,28,18,0.14)"
+            : "0 8px 28px rgba(11,28,18,0.10)",
+          transition: "background 0.25s, box-shadow 0.25s",
         }}
       >
         {/* Prominent logo */}
@@ -106,16 +99,12 @@ export function Navbar() {
                     padding: "8px 14px",
                     fontSize: 13,
                     fontWeight: 500,
-                    color: isDark
-                      ? active ? "#F4F8F5" : "rgba(220,233,223,0.72)"
-                      : active ? TEXT_ACT : TEXT_BODY,
+                    color: active ? TEXT_ACT : TEXT_BODY,
                     letterSpacing: "0.005em",
                     borderRadius: 999,
                     transition: "all 0.2s",
                     display: "inline-block",
-                    background: active
-                      ? isDark ? "rgba(20,181,126,0.22)" : "rgba(20,181,126,0.12)"
-                      : "transparent",
+                    background: active ? "rgba(20,181,126,0.12)" : "transparent",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -129,40 +118,6 @@ export function Navbar() {
         {/* Spacer */}
         <div className="flex-1 hidden md:block" />
 
-        {/* Theme toggle — Sun / Moon */}
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-          title={isDark ? "Switch to light theme" : "Switch to dark theme"}
-          data-testid="button-theme-toggle"
-          className="flex items-center justify-center shrink-0"
-          style={{
-            width: 34, height: 34, borderRadius: 999,
-            background: isDark ? "rgba(200,255,77,0.10)" : "rgba(14,42,28,0.05)",
-            border: isDark
-              ? "1px solid rgba(200,255,77,0.30)"
-              : "1px solid rgba(14,42,28,0.10)",
-            color: isDark ? "#C8FF4D" : TEXT_BODY,
-            marginLeft: 4,
-            cursor: "pointer",
-            transition: "background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s",
-          }}
-        >
-          {isDark ? (
-            // Sun icon — shown in dark mode (click to go light)
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-            </svg>
-          ) : (
-            // Moon icon — shown in light mode (click to go dark)
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          )}
-        </button>
-
         {/* Phone — WhatsApp */}
         <a
           href="https://wa.me/919608768647"
@@ -171,11 +126,9 @@ export function Navbar() {
           className="hidden md:flex items-center justify-center"
           style={{
             width: 38, height: 38, borderRadius: 999,
-            background: isDark ? "rgba(255,255,255,0.06)" : "rgba(14,42,28,0.05)",
-            border: isDark
-              ? "1px solid rgba(255,255,255,0.10)"
-              : "1px solid rgba(14,42,28,0.10)",
-            color: isDark ? "rgba(220,233,223,0.78)" : TEXT_BODY,
+            background: "rgba(14,42,28,0.05)",
+            border: "1px solid rgba(14,42,28,0.10)",
+            color: TEXT_BODY,
             marginLeft: 4,
           }}
           data-testid="link-phone"
@@ -194,11 +147,9 @@ export function Navbar() {
           className="hidden md:flex items-center justify-center"
           style={{
             width: 38, height: 38, borderRadius: 999,
-            background: isDark ? "rgba(255,255,255,0.06)" : "rgba(14,42,28,0.05)",
-            border: isDark
-              ? "1px solid rgba(255,255,255,0.10)"
-              : "1px solid rgba(14,42,28,0.10)",
-            color: isDark ? "rgba(220,233,223,0.78)" : TEXT_BODY,
+            background: "rgba(14,42,28,0.05)",
+            border: "1px solid rgba(14,42,28,0.10)",
+            color: TEXT_BODY,
             marginLeft: 4,
           }}
           data-testid="link-linkedin"
@@ -222,16 +173,14 @@ export function Navbar() {
             height: 34,
             padding: "0 14px",
             borderRadius: 999,
-            background: isDark ? LIME : TEXT_DARK,
-            color: isDark ? "#0E2A1C" : LIME,
+            background: TEXT_DARK,
+            color: LIME,
             fontSize: 11.5,
             fontWeight: 700,
             letterSpacing: "0.10em",
             fontFamily: "Menlo, monospace",
             marginLeft: 4,
-            boxShadow: isDark
-              ? "0 6px 18px rgba(200,255,77,0.30)"
-              : "0 6px 18px rgba(14,42,28,0.22)",
+            boxShadow: "0 6px 18px rgba(14,42,28,0.22)",
             textDecoration: "none",
             whiteSpace: "nowrap",
           }}
@@ -246,11 +195,9 @@ export function Navbar() {
           data-testid="button-mobile-menu"
           style={{
             width: 34, height: 34, borderRadius: 999, marginLeft: 4,
-            background: isDark ? "rgba(255,255,255,0.06)" : "rgba(14,42,28,0.05)",
-            border: isDark
-              ? "1px solid rgba(255,255,255,0.10)"
-              : "1px solid rgba(14,42,28,0.10)",
-            color: isDark ? "rgba(220,233,223,0.78)" : TEXT_BODY,
+            background: "rgba(14,42,28,0.05)",
+            border: "1px solid rgba(14,42,28,0.10)",
+            color: TEXT_BODY,
             fontSize: 16,
             lineHeight: 1,
           }}
@@ -264,15 +211,11 @@ export function Navbar() {
         <div
           className="md:hidden mt-2 rounded-2xl"
           style={{
-            background: isDark ? "rgba(14,28,20,0.96)" : "rgba(255,255,255,0.96)",
+            background: "rgba(255,255,255,0.96)",
             backdropFilter: "blur(22px)",
-            border: isDark
-              ? "1px solid rgba(20,181,126,0.18)"
-              : "1px solid rgba(14,42,28,0.08)",
+            border: "1px solid rgba(14,42,28,0.08)",
             padding: 12,
-            boxShadow: isDark
-              ? "0 12px 40px rgba(0,0,0,0.45)"
-              : "0 12px 40px rgba(11,28,18,0.10)",
+            boxShadow: "0 12px 40px rgba(11,28,18,0.10)",
           }}
         >
           {NAV.map((item) => (
@@ -281,14 +224,10 @@ export function Navbar() {
                 style={{
                   padding: "12px 16px",
                   fontSize: 14,
-                  color: isDark
-                    ? location.startsWith(item.href) ? "#F4F8F5" : "rgba(220,233,223,0.72)"
-                    : location.startsWith(item.href) ? TEXT_ACT : TEXT_BODY,
+                  color: location.startsWith(item.href) ? TEXT_ACT : TEXT_BODY,
                   cursor: "pointer",
                   borderRadius: 8,
-                  background: location.startsWith(item.href)
-                    ? isDark ? "rgba(20,181,126,0.20)" : "rgba(20,181,126,0.10)"
-                    : "transparent",
+                  background: location.startsWith(item.href) ? "rgba(20,181,126,0.10)" : "transparent",
                 }}
               >
                 {item.label}

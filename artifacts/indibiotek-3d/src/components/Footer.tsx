@@ -1,7 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
-
 const ACCENT = "#0B6A4D";
-const ACCENT_BRIGHT = "#14B57E";
 const TEXT_DARK = "#0E2A1C";
 const TEXT_BODY = "rgba(14,42,28,0.72)";
 const TEXT_MUTE = "rgba(14,42,28,0.55)";
@@ -16,23 +13,13 @@ const LOCATIONS = [
 ];
 
 export function Footer() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-  const txtDark = isDark ? "#F4F8F5" : TEXT_DARK;
-  const txtBody = isDark ? "rgba(220,233,223,0.72)" : TEXT_BODY;
-  const txtMute = isDark ? "rgba(220,233,223,0.55)" : TEXT_MUTE;
-  const accent = isDark ? ACCENT_BRIGHT : ACCENT;
   return (
     <footer
       className="relative z-10 mt-24"
       data-testid="footer"
       style={{
-        background: isDark
-          ? "linear-gradient(180deg, #0E1C14 0%, #06120C 100%)"
-          : "linear-gradient(180deg, #ECF3EE 0%, #DCE9DF 100%)",
-        borderTop: isDark
-          ? "1px solid rgba(20,181,126,0.28)"
-          : "1px solid rgba(20,181,126,0.18)",
+        background: "linear-gradient(180deg, #ECF3EE 0%, #DCE9DF 100%)",
+        borderTop: "1px solid rgba(20,181,126,0.18)",
       }}
     >
       <div className="max-w-4xl mx-auto px-5 sm:px-8 md:px-12 py-14 sm:py-20 text-center">
@@ -50,7 +37,7 @@ export function Footer() {
             fontSize: 11,
             letterSpacing: "0.30em",
             textTransform: "uppercase",
-            color: accent,
+            color: ACCENT,
             marginBottom: 14,
             display: "inline-flex",
             alignItems: "center",
@@ -72,7 +59,7 @@ export function Footer() {
           style={{
             fontSize: "clamp(1.2rem, 2vw, 1.55rem)",
             fontWeight: 600,
-            color: txtDark,
+            color: TEXT_DARK,
             letterSpacing: "-0.01em",
             marginBottom: 28,
           }}
@@ -97,11 +84,9 @@ export function Footer() {
               style={{
                 fontSize: "clamp(11px, 2.6vw, 12.5px)",
                 lineHeight: 1.5,
-                color: txtBody,
-                background: isDark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.65)",
-                border: isDark
-                  ? "1px solid rgba(20,181,126,0.25)"
-                  : "1px solid rgba(20,181,126,0.20)",
+                color: TEXT_BODY,
+                background: "rgba(255,255,255,0.65)",
+                border: "1px solid rgba(20,181,126,0.20)",
                 borderRadius: 18,
                 padding: "8px 14px",
                 fontWeight: 500,
@@ -123,10 +108,8 @@ export function Footer() {
             alignItems: "center",
             gap: 14,
             padding: "14px 22px",
-            background: isDark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.75)",
-            border: isDark
-              ? "1px solid rgba(20,181,126,0.30)"
-              : "1px solid rgba(20,181,126,0.25)",
+            background: "rgba(255,255,255,0.75)",
+            border: "1px solid rgba(20,181,126,0.25)",
             borderRadius: 22,
             marginBottom: 28,
             maxWidth: "100%",
@@ -138,7 +121,7 @@ export function Footer() {
               fontSize: 11,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: accent,
+              color: ACCENT,
               fontWeight: 700,
             }}
           >
@@ -147,7 +130,7 @@ export function Footer() {
           <a
             href="tel:+918902052927"
             style={{
-              color: txtDark,
+              color: TEXT_DARK,
               fontSize: 14,
               fontWeight: 600,
               textDecoration: "none",
@@ -156,11 +139,11 @@ export function Footer() {
           >
             +91 89020 52927
           </a>
-          <span style={{ color: txtMute, fontSize: 14 }}>·</span>
+          <span style={{ color: TEXT_MUTE, fontSize: 14 }}>·</span>
           <a
             href="mailto:info@indibiotek.com"
             style={{
-              color: txtDark,
+              color: TEXT_DARK,
               fontSize: 14,
               fontWeight: 600,
               textDecoration: "none",
@@ -169,7 +152,7 @@ export function Footer() {
           >
             info@indibiotek.com
           </a>
-          <span style={{ color: txtMute, fontSize: 14 }}>·</span>
+          <span style={{ color: TEXT_MUTE, fontSize: 14 }}>·</span>
           <a
             href="https://in.linkedin.com/company/indibiotek-private-limited"
             target="_blank"
@@ -183,11 +166,9 @@ export function Footer() {
               width: 32,
               height: 32,
               borderRadius: 999,
-              background: isDark ? "rgba(20,181,126,0.15)" : "rgba(11,106,77,0.08)",
-              border: isDark
-                ? "1px solid rgba(20,181,126,0.40)"
-                : "1px solid rgba(20,181,126,0.30)",
-              color: accent,
+              background: "rgba(11,106,77,0.08)",
+              border: "1px solid rgba(20,181,126,0.30)",
+              color: ACCENT,
               textDecoration: "none",
             }}
           >
@@ -202,7 +183,7 @@ export function Footer() {
           style={{
             width: 80,
             height: 1,
-            background: isDark ? "rgba(20,181,126,0.40)" : "rgba(20,181,126,0.30)",
+            background: "rgba(20,181,126,0.30)",
             margin: "0 auto 22px",
           }}
         />
@@ -210,13 +191,13 @@ export function Footer() {
         {/* Copyright */}
         <div
           style={{
-            color: txtMute,
+            color: TEXT_MUTE,
             fontSize: 12.5,
             letterSpacing: "0.02em",
           }}
         >
           © {new Date().getFullYear()}{" "}
-          <span style={{ color: txtDark, fontWeight: 700, letterSpacing: "0.05em" }}>
+          <span style={{ color: TEXT_DARK, fontWeight: 700, letterSpacing: "0.05em" }}>
             INDIBIOTEK PRIVATE LIMITED
           </span>{" "}
           — All Rights Reserved.
